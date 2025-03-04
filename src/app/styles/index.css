@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import './variables/global.css';
+
+body {
+    overflow-x: hidden;
+}
+

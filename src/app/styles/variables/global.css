@@ -1,0 +1,16 @@
+:root {
+    /* colors */
+    --primary-color: #005070;
+    --secondary-color: #68708C;
+    /* gradients */
+    --green-gradient-from: #50FF8B;
+    --green-gradient-to: #18FFE3;
+    --blue-gradient-from: #01658E;
+    --blue-gradient-to: #003C55;
+    /* text sizes */
+    --text-xxl: 40px;
+    --text-xl: 26px;
+    --text-lg: 22px;
+    --text-md: 18px;
+
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "app/styles/index.css";
 import { Header } from "widgets/Header";
 
 export const metadata: Metadata = {
@@ -14,11 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body>
         <Header />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
