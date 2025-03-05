@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const FreelancerBenefits = () => {
+const FreelancerBenefits = () => {
   return (
     <div className="mt-20">
           <div className="text-primary text-xxl font-bold">
@@ -59,3 +59,5 @@ export const FreelancerBenefits = () => {
     </div>
   );
 };
+
+export default FreelancerBenefits

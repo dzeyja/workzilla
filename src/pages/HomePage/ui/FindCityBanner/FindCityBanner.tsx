@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Banner } from "shared/ui/Banner/Banner";
 import { Button } from "shared/ui/Button/Button";
 
-export const FindCityBanner = () => {
+const FindCityBanner = () => {
   return (
     <Banner className="mt-20 relative overflow-hidden">
         <div className="text-xxl font-bold text-white">
@@ -24,3 +24,5 @@ export const FindCityBanner = () => {
     </Banner>
   );
 };
+
+export default FindCityBanner

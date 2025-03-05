@@ -1,14 +1,14 @@
-import { CompletedTasks } from "../CompletedTasks/CompletedTasks";
-import { FaqSection } from "../FaqSection/FaqSection";
-import { FeedBacks } from "../FeedBacks/FeedBacks";
-import { FindCityBanner } from "../FindCityBanner/FindCityBanner";
-import { FreelancerBenefits } from "../FreelancerBenefits/FreelancerBenefits";
-import { HeroSection } from "../HeroSection/HeroSection";
-import { Metrics } from "../Metrics/Metrics";
-import { WhyUs } from "../WhyUs/WhyUs";
-import { WithdrawMoney } from "../WithdrawMoney/WithdrawMoney";
+import CompletedTasks from "../CompletedTasks/CompletedTasks";
+import FaqSection from "../FaqSection/FaqSection";
+import FeedBacks from "../FeedBacks/FeedBacks";
+import FindCityBanner from "../FindCityBanner/FindCityBanner";
+import FreelancerBenefits from "../FreelancerBenefits/FreelancerBenefits";
+import HeroSection from "../HeroSection/HeroSection";
+import Metrics from "../Metrics/Metrics";
+import WhyUs from "../WhyUs/WhyUs";
+import WithdrawMoney from "../WithdrawMoney/WithdrawMoney";
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <HeroSection />
@@ -27,3 +27,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage

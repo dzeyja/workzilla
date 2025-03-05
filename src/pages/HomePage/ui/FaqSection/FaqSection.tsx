@@ -10,7 +10,7 @@ const faqs = [
   { question: "Какие задания я могу найти на WorkZilla?", answer: "Разработка, дизайн, копирайтинг, маркетинг и многое другое." },
 ];
 
-export const FaqSection = () => {
+const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -35,4 +35,6 @@ export const FaqSection = () => {
     </div>
   );
 };
+
+export default FaqSection
 

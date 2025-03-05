@@ -38,7 +38,7 @@ const whyUsData = [
   },
 ];
 
-export const WhyUs = () => {
+const WhyUs = () => {
   return (
     <div className="mt-20">
           <div className="text-primary text-xxl font-bold">
@@ -69,3 +69,5 @@ export const WhyUs = () => {
     </div>
   );
 };
+
+export default WhyUs

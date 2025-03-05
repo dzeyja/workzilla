@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
-
-export const HeroSection = () => {
+ 
+const HeroSection = () => {
   return (
     <div className="w-screen bg-gradient-to-b from-primary-gradient-from to-primary-gradient-to h-screen">
         <div className="flex justify-between w-7xl mx-auto">
@@ -42,3 +42,5 @@ export const HeroSection = () => {
     </div>
   );
 };
+
+export default HeroSection

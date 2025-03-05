@@ -1,4 +1,4 @@
-export const Metrics = () => {
+const Metrics = () => {
   return (
     <div className="flex justify-between gap-5 mt-20">
         <div> 
@@ -43,3 +43,5 @@ export const Metrics = () => {
     </div>
   );
 };
+
+export default Metrics

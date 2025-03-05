@@ -1,11 +1,6 @@
-import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Footer.module.scss";
 
-interface FooterProps {
-  className?: string;
-}
-
-export const Footer = ({ className }: FooterProps) => {
+export const Footer = () => {
   return (
     <footer className={"mt-14 w-full border pt-12 bg-footer-bg text-white"}>
       <div className="max-w-7xl mx-auto flex justify-between gap-12">

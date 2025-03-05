@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 
-export const CompletedTasks = () => {
+const CompletedTasks = () => {
   return (
     <div className="py-20 bg-[#DCF6FF] mt-20 w-screen">
         <div className="max-w-7xl mx-auto">
@@ -89,3 +89,5 @@ export const CompletedTasks = () => {
     </div>
   );
 };
+
+export default CompletedTasks

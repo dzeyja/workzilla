@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const WithdrawMoney = () => {
+const WithdrawMoney = () => {
   return (
     <div className="mt-20 w-full bg-primary p-banner rounded-2xl overflow-hidden">
         <div className="text-white text-xxl font-bold">
@@ -42,3 +42,5 @@ export const WithdrawMoney = () => {
     </div>
   );
 };
+
+export default WithdrawMoney
