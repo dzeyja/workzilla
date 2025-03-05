@@ -1,4 +1,6 @@
 import { CompletedTasks } from "../CompletedTasks/CompletedTasks";
+import { FaqSection } from "../FaqSection/FaqSection";
+import { FeedBacks } from "../FeedBacks/FeedBacks";
 import { FindCityBanner } from "../FindCityBanner/FindCityBanner";
 import { FreelancerBenefits } from "../FreelancerBenefits/FreelancerBenefits";
 import { HeroSection } from "../HeroSection/HeroSection";
@@ -20,6 +22,8 @@ export const HomePage = () => {
       <div className="max-w-7xl mx-auto">
         <FindCityBanner />
       </div>
+      <FeedBacks />
+      <FaqSection />
     </>
   );
 };

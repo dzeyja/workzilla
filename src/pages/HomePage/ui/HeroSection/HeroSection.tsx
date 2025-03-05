@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const HeroSection = () => {
   return (
-    <div className="w-screen bg-gradient-to-b from-[var(--blue-gradient-from)] to-[var(--blue-gradient-to)] h-screen">
+    <div className="w-screen bg-gradient-to-b from-[#FF9A8B] to-[#FF6A88] h-screen">
         <div className="flex justify-between w-7xl mx-auto">
             <div>
                 <div className="text-6xl text-white font-bold mt-36">

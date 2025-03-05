@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "app/styles/index.css";
+import "app/styles/index.scss";
 import { Header } from "widgets/Header";
 
 export const metadata: Metadata = {

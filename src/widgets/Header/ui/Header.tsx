@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 
 export const Header = () => {
   return (
@@ -12,14 +13,17 @@ export const Header = () => {
                     height={42}
                 />
                 <div className='text-3xl text-white'>
-                    workzilla
+                    workKing
                 </div>
             </div>
             <div className='flex gap-3 items-center'>
                 Войти
-                <button className='bg-blue-300 py-3 px-5 rounded-xl'>
+                <Button 
+                    theme={ButtonTheme.OUTLINED}
+                    size={ButtonSize.L}
+                >
                     Дать задание
-                </button>
+                </Button>
             </div>
         </div>
     </header>

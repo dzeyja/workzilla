@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 
 export const CompletedTasks = () => {
   return (
@@ -74,12 +75,12 @@ export const CompletedTasks = () => {
                 </div>
             </div>
             <div className="mt-16 flex items-center gap-8">
-                <button className="py-4 px-24 bg-[var(--blue-color)] text-[22px] rounded-[var(--btn-radius)] text-white">
+                <Button>
                     Начать зарабатывать
-                </button>
-                <button className="py-4 px-24 bg-transparent border-[var(--blue-color)] border text-[22px] rounded-[var(--btn-radius)] text-[var(--blue-color)]">
-                    Начать зарабатывать
-                </button>
+                </Button>
+                <Button theme={ButtonTheme.OUTLINED}>
+                    Смотреть все задания
+                </Button>
             </div>
         </div>
     </div>

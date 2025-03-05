@@ -1,24 +1,41 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
+import cls from './Button.module.scss'
 import { classNames } from "shared/lib/classNames/classNames";
 
 export enum ButtonTheme {
-    PRIMARY = 'primary'
+    PRIMARY = 'primary',
+    OUTLINED = 'outlined'
 }
 
-interface ButtonProps {
+export enum ButtonSize {
+    M = 'size_m',
+    MD = 'size_md',
+    L = 'size_l',
+    XL = 'size_xl'
+}
+
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     className?: string
+    theme?: ButtonTheme
+    size?: ButtonSize
 }
 
 export const Button = (props: ButtonProps) => {
     const { 
         className, 
-        children 
+        children,
+        theme = ButtonTheme.PRIMARY,
+        size = ButtonSize.M,
+        ...otherProps
     } = props
 
     return (
-        <button className={classNames('', {}, [className])}>
+        <button 
+            className={classNames('py-4 px-12 text-[22px] rounded-[var(--btn-radius)]', {}, [className, cls[theme], cls[size]])}
+            {...otherProps}
+        >
             {children}
         </button>
-  );
+    );
 };

@@ -1,0 +1,25 @@
+.primary {
+    background: var(--blue-color);
+    color: #fff;
+}
+
+.outlined {
+    border: 1px solid var(--blue-color);
+    color: var(--blue-color);
+}
+
+.size_m {
+    font: var(--font-m);
+}
+
+.size_md {
+    font: var(--font-md);
+}
+
+.size_l {
+    font: var(--font-l);
+}
+
+.size_l {
+    font: var(--font-xl);
+}
