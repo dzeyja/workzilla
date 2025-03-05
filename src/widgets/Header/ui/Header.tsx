@@ -26,6 +26,7 @@ export const Header = () => {
 
     const mods: Mods = {
         [cls.scrolled]: scrolled,
+        [cls.scrollEmpty]: !scrolled
     }
 
   return (

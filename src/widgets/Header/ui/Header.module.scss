@@ -1,3 +1,9 @@
 .scrolled {
     background: var(--color-primary);
+    transition: all .2s linear;
+}
+
+.scrollEmpty {
+    background: transparent;
+    transition: all 0.2s linear;
 }

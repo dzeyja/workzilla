@@ -11,7 +11,7 @@ export const Footer = ({ className }: FooterProps) => {
       <div className="max-w-7xl mx-auto flex justify-between gap-12">
         <div className="w-1/4">
           <div className="text-3xl font-semibold mb-3">WorkKing</div>
-          <div className="text-primary text-sm">
+          <div className="text-gray text-sm">
             Мы создаем удобный сервис для поиска работы и подбора лучших специалистов в разных сферах. Надежность и качество — наш приоритет!
           </div>
         </div>
@@ -59,10 +59,10 @@ export const Footer = ({ className }: FooterProps) => {
             г. Алматы, ул. Достык, 210, БЦ "Platinum Tower", офис 12
           </div>
           <div className={cls.link}>
-            Телефон: <span className="text-primary">+7 (777) 123-45-67</span>
+            Телефон: <span className="text-gray">+7 (777) 123-45-67</span>
           </div>
           <div className={cls.link}>
-            Email: <span className="text-primary">support@workking.kz</span>
+            Email: <span className="text-gray">support@workking.kz</span>
           </div>
         </div>
       </div>
