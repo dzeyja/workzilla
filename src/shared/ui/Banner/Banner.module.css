@@ -1,3 +1,0 @@
-.Banner {
-    @apply p-[var(--banner-pad)] rounded-[var(--banner-radius)] bg-gradient-to-b from-[var(--blue-gradient-from)] to-[var(--blue-gradient-to)]
-}

@@ -4,7 +4,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 
 export enum ButtonTheme {
     PRIMARY = 'primary',
-    OUTLINED = 'outlined'
+    OUTLINED = 'outlined',
+    OUTLINED_WHITE = 'outlined_white',
 }
 
 export enum ButtonSize {
@@ -32,7 +33,7 @@ export const Button = (props: ButtonProps) => {
 
     return (
         <button 
-            className={classNames('py-4 px-12 text-[22px] rounded-[var(--btn-radius)]', {}, [className, cls[theme], cls[size]])}
+            className={classNames('py-4 px-12 text-xl rounded-btn', {}, [className, cls[theme], cls[size]])}
             {...otherProps}
         >
             {children}

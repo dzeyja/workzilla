@@ -5,10 +5,10 @@ import { Button } from "shared/ui/Button/Button";
 export const FindCityBanner = () => {
   return (
     <Banner className="mt-20 relative overflow-hidden">
-        <div className="text-[40px] font-bold text-white">
+        <div className="text-xxl font-bold text-white">
             Задания со всего мира
         </div>
-        <div className="text-[22px] text-[var(--secondary-color)]">
+        <div className="text-xl text-secondary">
             Найдем задание в конкретном городе!
         </div>
         <Button className="mt-10">

@@ -15,7 +15,7 @@ export const FaqSection = () => {
 
   return (
     <div className="max-w-2xl mx-auto my-20">
-      <div className="text-[40px] text-[var(--primary-color)] font-bold text-center mb-6">Вопросы и ответы</div>
+      <div className="text-xxl text-primary font-bold text-center mb-6">Вопросы и ответы</div>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="rounded-lg overflow-hidden">

@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export const WithdrawMoney = () => {
   return (
-    <div className="mt-20 w-full bg-[var(--blue-gradient-to)] p-[60px] rounded-2xl overflow-hidden">
-          <div className="text-white text-[40px] font-bold">
+    <div className="mt-20 w-full bg-primary p-banner rounded-2xl overflow-hidden">
+        <div className="text-white text-xxl font-bold">
             Как вывести деньги?
           </div>
-          <div className="text-[var(--secondary-color)] text-[22px]">
+          <div className="text-secondary text-xl">
             Вывести деньги можно на банковскую<br/>
             карту и кошельки популярных систем
           </div>
@@ -18,7 +18,7 @@ export const WithdrawMoney = () => {
                 width={70}
                 height={70}
               />
-              <div className="text-[22px] font-bold">
+              <div className="text-xl font-bold">
                 Банковская<br />
                 карта
               </div>

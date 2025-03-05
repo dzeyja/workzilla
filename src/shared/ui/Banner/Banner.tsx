@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import cls from './Banner.module.css'
 import { classNames } from "shared/lib/classNames/classNames";
 
 interface BannerProps {
@@ -11,7 +10,7 @@ export const Banner = (props: BannerProps) => {
     const { children, className } = props
   
     return (
-        <div className={classNames(cls.Banner, {}, [className])}>
+        <div className={classNames('p-banner rounded-banner bg-gradient-to-b from-accent-gradient-from to-accent-gradient-to', {}, [className])}>
             {children}
         </div>
     );

@@ -89,7 +89,7 @@ export const Slider = () => {
                     >
                     {schools.map((item) => (
                         <SwiperSlide key={item.id} className='rounded-2xl bg-white p-4'>
-                            <div className='text-[14px] cursor-pointer hover:text-primary duration-200'>
+                            <div className='text-xs cursor-pointer hover:text-primary duration-200'>
                                 {item.text}
                             </div>
                             <div className='mt-6 flex items-center gap-1.5'>
@@ -98,10 +98,10 @@ export const Slider = () => {
                                     size={50}
                                 />
                                 <div>
-                                    <div className='text-[14px] text-[var(--primary-color)] font-bold'>
+                                    <div className='text-xs text-primary font-bold'>
                                         {item.userName}
                                     </div>
-                                    <div className='text-[14px] text-[var(--secondary-color)]'>
+                                    <div className='text-xs text-secondary'>
                                         Исполнитель
                                     </div>
                                 </div>

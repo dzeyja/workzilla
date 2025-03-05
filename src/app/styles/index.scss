@@ -2,7 +2,41 @@
 @import './variables/global.scss';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-body {
-    overflow-x: hidden;
+@theme {
+    // colors
+    --color-primary: #283593; // Темно-синий
+    --color-secondary: #546E7A; // Серый с голубым оттенком
+    --color-accent: #FF7043; // Оранжево-красный
+    --color-background: #F5F5F5; // Светло-серый
+    --color-card-bg: #FFFFFF; // Белый
+    --color-footer-bg: #1A237E; // Темно-синий насыщенный
+
+    // gradients 
+    --color-primary-gradient-from: #1E88E5;
+    --color-primary-gradient-to: #1565C0;
+    --color-accent-gradient-from: #FF8A65;
+    --color-accent-gradient-to: #D84315;
+
+    // text sizes
+    --text-xxl: 42px;
+    --text-xl: 24px;
+    --text-lg: 20px;
+    --text-md: 18px;
+    --text-sm: 16px;
+    --text-xs: 14px;
+
+    // shadows
+    --shadow-card: 0px 4px 10px rgba(0, 0, 0, 0.12);
+
+    // paddings
+    --spacing-banner: 64px;
+
+    // border radius
+    --radius-btn: 10px;
+    --radius-banner: 48px;
 }
 
+body {
+    overflow-x: hidden;
+    background-color: var(--color-background);
+}

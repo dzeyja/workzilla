@@ -3,7 +3,7 @@ import Image from "next/image";
 export const FreelancerBenefits = () => {
   return (
     <div className="mt-20">
-          <div className="text-[var(--primary-color)] text-[40px] font-bold">
+          <div className="text-primary text-xxl font-bold">
             Что получает фрилансер?
           </div>
           <div className="flex gap-12 mt-16">
@@ -14,10 +14,10 @@ export const FreelancerBenefits = () => {
                 width={164}
                 height={128}
               />
-              <div className="text-[26px] text-[var(--primary-color)] mt-2.5">
+              <div className="text-xl text-primary mt-2.5">
                 Деньги
               </div>
-              <div className="text-[18px] text-[var(--secondary-color)]">
+              <div className="text-md text-secondary">
                 На Workzilla можно стабильно
                 зарабатывать, занимаясь тем, что
                 нравится
@@ -30,10 +30,10 @@ export const FreelancerBenefits = () => {
                 width={164}
                 height={128}
               />
-              <div className="text-[26px] text-[var(--primary-color)] mt-2.5">
+              <div className="text-xl text-primary mt-2.5">
                 Свободное время
               </div>
-              <div className="text-[18px] text-[var(--secondary-color)]">
+              <div className="text-md text-secondary">
                 Больше не нужно работать от звонка
                 до звонка. Вы можете сами
                 составлять свой график
@@ -46,10 +46,10 @@ export const FreelancerBenefits = () => {
                 width={164}
                 height={128}
               />
-              <div className="text-[26px] text-[var(--primary-color)] mt-2.5">
+              <div className="text-xl text-primary mt-2.5">
                 Свободу выбора
               </div>
-              <div className="text-[18px] text-[var(--secondary-color)]">
+              <div className="text-md text-secondary">
                 Только вы решаете, с какими
                 заданиями или вакансиями вам
                 работать
