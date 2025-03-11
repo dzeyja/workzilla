@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link';
 import cls from './Header.module.scss'
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -32,19 +33,23 @@ export const Header = () => {
   return (
     <header className={classNames('fixed w-full z-50', mods, [])}>
         <div className='max-w-7xl mx-auto flex justify-between py-2'>
-            <div className="flex items-center gap-2">
-                <Image 
-                    src='icons/logo.svg'
-                    alt='logo'
-                    width={42}
-                    height={42}
-                />
-                <div className='text-xl text-white'>
-                    workKing
+            <Link href='/'>
+                <div className="flex items-center gap-2">
+                    <Image 
+                        src='icons/logo.svg'
+                        alt='logo'
+                        width={42}
+                        height={42}
+                    />
+                    <div className='text-xl text-white'>
+                        workKing
+                    </div>
                 </div>
-            </div>
+            </Link>
             <div className='flex gap-3 items-center text-white'>
-                Войти
+                <Link href='/auth'>
+                    Войти
+                </Link>
                 <Button 
                     theme={ButtonTheme.OUTLINED_WHITE}
                     size={ButtonSize.M}
