@@ -3,6 +3,7 @@ import "app/styles/index.scss";
 import { Header } from "widgets/Header";
 import { Footer } from "widgets/Footer";
 import { StoreProvider } from "app/Providers/StoreProvider";
+import { InitUser } from "app/Providers/InitUser";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,15 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
-        <body>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </body>
-      </html>
+      <InitUser>
+        <html lang="en">
+          <body>
+            <Header />
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </body>
+        </html>
+      </InitUser>
     </StoreProvider>
   );
 }

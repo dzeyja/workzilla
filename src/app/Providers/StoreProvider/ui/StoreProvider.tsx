@@ -1,8 +1,9 @@
 'use client'
 
-import { Provider } from "react-redux"
+import { Provider, useDispatch, useSelector } from "react-redux"
 import { createReduxStore } from "../config/store"
-import { ReactNode, useMemo } from "react"
+import { ReactNode, useEffect, useMemo } from "react"
+import { userActions } from "entities/User"
 
 interface StoreProviderProps {
     children: ReactNode

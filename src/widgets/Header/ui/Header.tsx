@@ -6,9 +6,12 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
+    const user = useSelector(getUserAuthData)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,9 +50,11 @@ export const Header = () => {
                 </div>
             </Link>
             <div className='flex gap-3 items-center text-white'>
-                <Link href='/auth'>
-                    Войти
-                </Link>
+                {user ? null : (
+                    <Link href='/auth'>
+                        Войти
+                    </Link>
+                )}
                 <Button 
                     theme={ButtonTheme.OUTLINED_WHITE}
                     size={ButtonSize.M}

@@ -7,18 +7,19 @@ import { Button } from "shared/ui/Button/Button";
 import { authByUsernameActions } from "../../model/slice/authByUsernameSlice";
 import { authByUsername } from "../../model/services/authByUsername/authByUsername";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Input } from "shared/ui/Input/Input";
 
 export const LoginModal = () => {
     const username = useSelector(getAuthByUsername)
     const password = useSelector(getAuthByUsernamePassword)
     const dispatch = useAppDispatch()
 
-    const onUsernameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(authByUsernameActions.setUsername(e.target.value))
+    const onUsernameChange = useCallback((value: string) => {
+        dispatch(authByUsernameActions.setUsername(value))
     }, [dispatch])
     
-    const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(authByUsernameActions.setPassword(e.target.value))
+    const onPasswordChange = useCallback((value: string) => {
+        dispatch(authByUsernameActions.setPassword(value))
     }, [dispatch])
 
     const onClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,20 +27,19 @@ export const LoginModal = () => {
         dispatch(authByUsername())
         dispatch(authByUsernameActions.setUsername(''))
         dispatch(authByUsernameActions.setPassword(''))
+        alert('Вы успешно авторизовались')
     }, [dispatch])
 
     return (
         <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
             <div className="text-xxl">Войти</div>
-            <input 
-                placeholder="Имя пользователя" 
-                className="p-4 w-full bg-white rounded-xl border" 
+            <Input 
+                placeholder="Имя пользователя"
                 onChange={onUsernameChange}
                 value={username}
             />
-            <input 
-                placeholder="Пароль" 
-                className="p-4 w-full bg-white rounded-xl border" 
+            <Input 
+                placeholder="Пароль"
                 onChange={onPasswordChange}
                 value={password}
             />
