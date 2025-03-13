@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import cls from './Header.module.scss'
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -34,6 +36,16 @@ export const Header = () => {
         dispatch(userActions.logout())
     }, [])
 
+    const dropdownItems = useMemo<DropItem[]>(() => [
+        {
+            content: 'Профиль',
+            link: 'hello'
+        },
+        {
+            content: <Button theme={ButtonTheme.CLEAR} onClick={onLogout} >Выйти</Button>,
+        },
+    ], [])
+
     const mods: Mods = {
         [cls.scrolled]: scrolled,
         [cls.scrollEmpty]: !scrolled
@@ -57,17 +69,18 @@ export const Header = () => {
             </Link>
             <div className='flex gap-3 items-center text-white'>
                 {user ? (
-                    <Button 
-                        onClick={onLogout}
-                        theme={ButtonTheme.OUTLINED_WHITE}
-                    >
-                        Выйти
-                    </Button> 
+                    <Dropdown items={dropdownItems}>
+                        <Avatar 
+                            size={50} 
+                            borderR='50%' 
+                            src={user?.avatar} 
+                        />
+                    </Dropdown>
                 ) : (
                     <Link href='/auth'>
                         Войти
                     </Link>
-                )}
+                ) }
                 <Button 
                     theme={ButtonTheme.OUTLINED_WHITE}
                     size={ButtonSize.M}

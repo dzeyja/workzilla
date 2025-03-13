@@ -13,6 +13,13 @@
     color: #fff;
 }
 
+.clear {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-primary);
+}
+
 .size_m {
     font: var(--font-m);
 }
