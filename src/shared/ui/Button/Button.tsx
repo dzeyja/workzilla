@@ -33,7 +33,7 @@ export const Button = (props: ButtonProps) => {
 
     return (
         <button 
-            className={classNames('py-4 px-12 text-xl rounded-btn', {}, [className, cls[theme], cls[size]])}
+            className={classNames('py-4 px-12 text-xl rounded-btn cursor-pointer hover:opacity-75 duration-300', {}, [className, cls[theme], cls[size]])}
             {...otherProps}
         >
             {children}

@@ -3,15 +3,17 @@
 import Link from 'next/link';
 import cls from './Header.module.scss'
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
+import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const user = useSelector(getUserAuthData)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,6 +28,10 @@ export const Header = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
+    }, [])
+
+    const onLogout = useCallback(() => {
+        dispatch(userActions.logout())
     }, [])
 
     const mods: Mods = {
@@ -50,7 +56,14 @@ export const Header = () => {
                 </div>
             </Link>
             <div className='flex gap-3 items-center text-white'>
-                {user ? null : (
+                {user ? (
+                    <Button 
+                        onClick={onLogout}
+                        theme={ButtonTheme.OUTLINED_WHITE}
+                    >
+                        Выйти
+                    </Button> 
+                ) : (
                     <Link href='/auth'>
                         Войти
                     </Link>

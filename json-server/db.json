@@ -835,7 +835,8 @@
         "country": "Kazahstan",
         "city": "Almaty",
         "username": "dauksh",
-        "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
+        "avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj",
+        "role": "executor"
       },
       {
         "id": "2",
@@ -846,7 +847,8 @@
         "country": "Kazahstan",
         "city": "Almaty",
         "username": "sula",
-        "avatar": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png"
+        "avatar": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
+        "role": "customer"
       }
     ]
   }
