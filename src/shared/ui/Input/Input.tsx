@@ -9,7 +9,7 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void
     className?: string
-    value?: string
+    value?: string | number
 }
 
 export const Input = (props: InputProps) => {
@@ -17,6 +17,7 @@ export const Input = (props: InputProps) => {
         className, 
         onChange,
         value,
+        type='text',
         ...otherProps
     } = props
 
@@ -25,9 +26,10 @@ export const Input = (props: InputProps) => {
     }
 
     return <input 
-        value={value}
-        onChange={onChangeHandler}
-        className={classNames(cls.Input, {}, [])}
-        {...otherProps}
-    />
+                value={value}
+                onChange={onChangeHandler}
+                className={classNames(cls.Input, {}, [className])}
+                type={type}
+                {...otherProps}
+            />
 };

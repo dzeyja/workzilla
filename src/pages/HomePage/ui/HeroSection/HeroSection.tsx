@@ -1,7 +1,12 @@
+'use client'
+
+import { getUserAuthData } from "entities/User";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
  
 const HeroSection = () => {
+
   return (
     <div className="w-screen bg-gradient-to-b from-primary-gradient-from to-primary-gradient-to h-screen">
         <div className="flex justify-between w-7xl mx-auto">

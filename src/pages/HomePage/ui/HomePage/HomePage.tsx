@@ -9,6 +9,7 @@ import WhyUs from "../WhyUs/WhyUs";
 import WithdrawMoney from "../WithdrawMoney/WithdrawMoney";
 
 const HomePage = () => {
+
   return (
     <>
       <HeroSection />

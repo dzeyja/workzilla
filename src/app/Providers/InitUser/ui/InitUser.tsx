@@ -1,8 +1,8 @@
 "use client";
 
-import { userActions } from "entities/User";
+import { getUserAuthData, userActions } from "entities/User";
 import { ReactNode, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface InitUserProps {
     children: ReactNode
@@ -11,10 +11,13 @@ interface InitUserProps {
 export const InitUser = (props: InitUserProps) => {
     const { children } = props;
     const dispatch = useDispatch()
+    const user = useSelector(getUserAuthData)
 
     useEffect(() => {
-        dispatch(userActions.initAuhtData())
-    }, [dispatch])
+        if(!user) {
+            dispatch(userActions.initAuhtData())
+        }
+    }, [dispatch, user])
     
     return (
         <>

@@ -36,15 +36,17 @@ export const Header = () => {
         dispatch(userActions.logout())
     }, [])
 
-    const dropdownItems = useMemo<DropItem[]>(() => [
-        {
+    const dropdownItems = useMemo<DropItem[]>(() => {
+        return [
+            {
             content: 'Профиль',
-            link: 'hello'
-        },
-        {
-            content: <Button theme={ButtonTheme.CLEAR} onClick={onLogout} >Выйти</Button>,
-        },
-    ], [])
+            link: `/profile`
+            },
+            {
+                content: <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>Выйти</Button>,
+            },
+        ]
+    }, [])
 
     const mods: Mods = {
         [cls.scrolled]: scrolled,
@@ -52,7 +54,7 @@ export const Header = () => {
     }
 
   return (
-    <header className={classNames('fixed w-full z-50', mods, [])}>
+    <header className={classNames('fixed w-full h-16 z-50', mods, [])}>
         <div className='max-w-7xl mx-auto flex justify-between py-2'>
             <Link href='/'>
                 <div className="flex items-center gap-2">
@@ -68,7 +70,7 @@ export const Header = () => {
                 </div>
             </Link>
             <div className='flex gap-3 items-center text-white'>
-                {user ? (
+                {user?.id ? (
                     <Dropdown items={dropdownItems}>
                         <Avatar 
                             size={50} 
