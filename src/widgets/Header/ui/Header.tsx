@@ -11,13 +11,20 @@ import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
+import { usePathname } from 'next/navigation';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const user = useSelector(getUserAuthData)
+    const pathname = usePathname()
     const dispatch = useAppDispatch()
 
     useEffect(() => {
+        if (pathname !== '/') {
+            setScrolled(true)
+            return
+        }
+
         const handleScroll = () => {
             if(window.scrollY > 50) {
                 setScrolled(true)
@@ -30,11 +37,11 @@ export const Header = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [])
+    }, [pathname])
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout())
-    }, [])
+    }, [dispatch])
 
     const dropdownItems = useMemo<DropItem[]>(() => {
         return [
@@ -54,21 +61,26 @@ export const Header = () => {
     }
 
   return (
-    <header className={classNames('fixed w-full h-16 z-50', mods, [])}>
+    <header className={classNames('fixed w-full h-18 z-50', mods, [])}>
         <div className='max-w-7xl mx-auto flex justify-between py-2'>
-            <Link href='/'>
-                <div className="flex items-center gap-2">
-                    <Image 
-                        src='icons/logo.svg'
-                        alt='logo'
-                        width={42}
-                        height={42}
-                    />
-                    <div className='text-xl text-white'>
-                        workKing
+            <div className='flex gap-4 items-center'>
+                <Link href='/'>
+                    <div className="flex items-center gap-2">
+                        <Image 
+                            src='icons/logo.svg'
+                            alt='logo'
+                            width={42}
+                            height={42}
+                        />
+                        <div className='text-xl text-white'>
+                            workKing
+                        </div>
                     </div>
-                </div>
-            </Link>
+                </Link>
+                <Link href='/vacancies'>
+                    Вакансии
+                </Link>
+            </div>
             <div className='flex gap-3 items-center text-white'>
                 {user?.id ? (
                     <Dropdown items={dropdownItems}>

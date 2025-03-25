@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     
     return config;
   },
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
@@ -22,6 +23,13 @@ const nextConfig: NextConfig = {
         hostname: 'yt3.ggpht.com',
         port: '',
         pathname: '/ytc/**',
+        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hsto.org',
+        port: '',
+        pathname: '/**',
         search: '',
       },
     ],

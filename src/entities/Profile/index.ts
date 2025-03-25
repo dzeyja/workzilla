@@ -1,6 +1,6 @@
 export type { ProfileSchema } from './model/types/ProfileSchema'
 export { fetchProfile } from './model/services/fetchProfile/fetchProfile'
 export { profileActions, profileReducer } from './model/slice/profileSlice'
-export { getProfileData, getProfileReadonly, getProfileFormData } from './model/selectors/profile'
+export { getProfileData, getProfileReadonly, getProfileFormData, getProfileIsLoading } from './model/selectors/profile'
 export { ProfileCard } from './ui/ProfileCard/ProfileCard'
 export { updateProfile } from './model/services/updateProfile/updateProfile'

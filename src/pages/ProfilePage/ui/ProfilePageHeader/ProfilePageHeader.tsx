@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 interface ProfilePageHeaderProps {
     readonly?: boolean
@@ -27,11 +28,14 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }, [dispatch])
 
     return (
-        <div className="w-200 border flex justify-between p-4 mx-auto mb-6">
+        <div className="w-200 flex items-center justify-between p-4 mx-auto mb-6 rounded-lg bg-gray">
             {readonly ? (
-                <Button onClick={onEdit}>
-                    Редактировать
-                </Button>
+                <>
+                    <Text title="Профиль" theme={TextTheme.PRIMARY} />
+                    <Button onClick={onEdit}>
+                        Редактировать
+                    </Button>
+                </>
             ) : (
                 <>
                     <Button className="mr-4" onClick={onCancelEdit}>

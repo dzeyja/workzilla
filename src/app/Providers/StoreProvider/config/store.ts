@@ -1,29 +1,32 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
+import { configureStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User";
-import { authByUsernameReducer } from "features/AuthByUsername";
 import { $api } from "shared/api/api";
-import { profileReducer } from "entities/Profile";
+import { createReducerManager } from "./reducerManager";
 
-export function createReduxStore() {
+export function createReduxStore(asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootState: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         user: userReducer,
-        authByUsernameForm: authByUsernameReducer,
-        profile: profileReducer
     }
+
+    const reducerManager = createReducerManager(rootState)
 
     const extraArg: ThunkExtraArg = {
         api: $api
     }
 
     const store = configureStore({
-        reducer: rootState,
+        reducer: reducerManager.reduce as Reducer<StateSchema>,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
                 extraArgument: extraArg,
             },
         }),
     })
+
+    //@ts-ignore
+    store.reducerManager = reducerManager
 
     return store
 }
