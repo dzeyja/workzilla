@@ -1,0 +1,11 @@
+.gray {
+    background: var(--color-gray);
+    padding: 16px;
+    border-radius: var(--radius-btn);
+}
+
+.outlined {
+    background: transparent;
+    border-radius: var(--radius-btn);
+    border: var(--color-primary);
+}

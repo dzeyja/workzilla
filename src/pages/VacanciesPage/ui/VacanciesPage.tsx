@@ -1,14 +1,17 @@
 import { VacancyList } from "entities/Vacancy";
+import { SelectTypes } from "features/SelectTypes";
 import { Page } from "shared/ui/Page/Page";
+import { VacanciesPageFilters } from "./VacanciesPageFilters/VacanciesPageFilters";
 
 export const VacanciesPage = () => {
   return (
     <Page>
       <div className="flex gap-5">
-        <div className="w-[500px] bg-primary h-64">
-          Категорий
+        <SelectTypes />
+        <div>
+          <VacanciesPageFilters />
+          <VacancyList />
         </div>
-        <VacancyList />
       </div>
     </Page>
   );

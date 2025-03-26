@@ -4,6 +4,7 @@ import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { VacancySchema } from "entities/Vacancy";
 import { AuthByUsernameSchema } from "features/AuthByUsername";
+import { SelectTypesSchema } from "features/SelectTypes";
 
 export interface StateSchema {
     user: UserSchema
@@ -12,6 +13,7 @@ export interface StateSchema {
     authByUsernameForm?: AuthByUsernameSchema
     profile?: ProfileSchema
     vacancy?: VacancySchema
+    selectType?: SelectTypesSchema
 }
 
 export interface ThunkExtraArg {

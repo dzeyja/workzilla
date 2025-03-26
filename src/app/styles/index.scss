@@ -11,13 +11,14 @@
     --color-card-bg: #FFFFFF; // Белый
     --color-footer-bg: #1A237E; // Темно-синий насыщенный
     --color-gray: #e5e7ed;
-
+    --color-skeleton: #ffffff;
+    
     // gradients 
     --color-primary-gradient-from: #1E88E5;
     --color-primary-gradient-to: #1565C0;
     --color-accent-gradient-from: #FF8A65;
     --color-accent-gradient-to: #D84315;
-
+    
     // text sizes
     --text-xxl: 42px;
     --text-xl: 24px;
@@ -25,9 +26,10 @@
     --text-md: 18px;
     --text-sm: 16px;
     --text-xs: 14px;
-
+    
     // shadows
     --shadow-card: 0px 4px 10px rgba(0, 0, 0, 0.12);
+    --shadow-skeleton: rgba(0 0 0 / 20%);
 
     // paddings
     --spacing-banner: 64px;

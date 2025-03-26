@@ -1,3 +1,5 @@
+import { OrderType } from "shared/types";
+
 export type EmploymentType = 'full-time' | 'part-time' | 'contract' | 'internship'
 export type ExperienceLevel = 'junior' | 'middle' | 'senior'
 
@@ -20,4 +22,6 @@ export interface VacancySchema {
     data: Vacancy[]
     error?: string
     isLoading: boolean
+    search?: string
+    order?: OrderType
 }

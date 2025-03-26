@@ -1,21 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { VacancySchema } from '../types/vacancy'
 import { fetchVacancies } from '../services/fetchVacancies/fetchVacancies'
+import { OrderType } from 'shared/types'
 
 const initialState: VacancySchema = {
     data: [],
     error: undefined,
-    isLoading: false
+    isLoading: false,
+    search: '',
+    order: 'asc'
 }
 
 const vacancySlice = createSlice({
     name: 'vacancy',
     initialState,
-    reducers: {},
+    reducers: {
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload
+        },
+        setOrder: (state, action: PayloadAction<OrderType>) => {
+            state.order = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchVacancies.pending, (state) => {
                 state.isLoading = true
+                state.data = []
+                state.error = undefined
             })
             .addCase(fetchVacancies.fulfilled, (state, action) => {
                 state.isLoading = false
