@@ -19,7 +19,7 @@ export interface Vacancy {
 }
 
 export interface VacancySchema {
-    data: Vacancy[]
+    data?: Vacancy[]
     error?: string
     isLoading: boolean
     search?: string

@@ -7,7 +7,7 @@ interface VacancyListItemProps {
 export const VacancyListItem = ({ vacancy }: VacancyListItemProps) => {
   
     return (
-        <div className="p-8 bg-gray mb-4">
+        <div className="p-8 bg-gray mb-4 rounded-btn">
             <div className="text-primary text-xl">
                 {vacancy.title}
             </div>
