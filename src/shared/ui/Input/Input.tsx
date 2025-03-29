@@ -26,7 +26,7 @@ export const Input = (props: InputProps) => {
     }
 
     return <input 
-                value={value}
+                value={value ?? ''}
                 onChange={onChangeHandler}
                 className={classNames(cls.Input, {}, [className])}
                 type={type}

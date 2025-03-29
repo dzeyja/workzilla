@@ -16,17 +16,21 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Page } from "shared/ui/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { getUserAuthData } from "entities/User";
 
 export const ProfilePage = () => {
     const dispatch = useAppDispatch()
+    const user = useSelector(getUserAuthData)
     const isLoading = useSelector(getProfileIsLoading)
     const profileData = useSelector(getProfileData)
     const profileFormData = useSelector(getProfileFormData)
     const readonly = useSelector(getProfileReadonly)
 
     useEffect(() => {
-        dispatch(fetchProfile())
-    }, [dispatch])
+        if (user?.id) {
+            dispatch(fetchProfile())
+        }
+    }, [dispatch, user?.id])
 
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value || '' }))
@@ -44,6 +48,7 @@ export const ProfilePage = () => {
         dispatch(profileActions.updateProfile({ city: value || '' }))
     }, [dispatch])
 
+    const onChangeBio = use
 
     return (
         <DynamicModuleLoader reducer={profileReducer} name='profile'>
@@ -52,6 +57,7 @@ export const ProfilePage = () => {
                 <ProfileCard 
                     isLoading={isLoading}
                     data={profileData} 
+                    user={user}
                     form={profileFormData}
                     readonly={readonly}
                     onChangeFirstname={onChangeFirstname}

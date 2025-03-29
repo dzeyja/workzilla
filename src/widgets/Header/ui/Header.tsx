@@ -84,11 +84,20 @@ export const Header = () => {
             <div className='flex gap-3 items-center text-white'>
                 {user?.id ? (
                     <Dropdown items={dropdownItems}>
-                        <Avatar 
-                            size={50} 
-                            borderR='50%' 
-                            src={user?.avatar} 
-                        />
+                        {user.avatar ? (
+                            <Avatar 
+                                size={50} 
+                                borderR='50%' 
+                                src={user?.avatar} 
+                            />
+                        ) : (
+                            <Image 
+                                src='/icons/profile.png'
+                                width={50}
+                                height={50}
+                                alt='profile'
+                            />
+                        )}
                     </Dropdown>
                 ) : (
                     <Link href='/auth'>

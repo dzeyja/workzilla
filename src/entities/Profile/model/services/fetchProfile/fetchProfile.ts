@@ -16,7 +16,7 @@ export const fetchProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>
         }
 
         try {
-            const response = await extra.api.get(`/profile/${user?.id}`)
+            const response = await extra.api.get(`/profile/${user.id}`)
             
             if (!response.data) {
                 throw new Error()
@@ -24,7 +24,7 @@ export const fetchProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>
 
             return response.data
         } catch(e) {
-           rejectWithValue('error') 
+           rejectWithValue('Оштбка при получения профиля') 
         }
     },
   )

@@ -11,6 +11,7 @@ import { Input } from "shared/ui/Input/Input";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import Link from "next/link";
 
 export const LoginModal = () => {
     const username = useSelector(getAuthByUsername)
@@ -59,6 +60,9 @@ export const LoginModal = () => {
                 <Button onClick={onClick}>
                     Войти
                 </Button>
+                <div>
+                    Если у вас нет аккаунта то <Link href={'/sign-up'}>зарегестрируйтесь</Link>
+                </div>
             </div>
         </DynamicModuleLoader>
     );

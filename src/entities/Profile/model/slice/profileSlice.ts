@@ -56,7 +56,7 @@ const profileSlice = createSlice({
             state.form = action.payload
             state.readonly = true
         })
-        .addCase(updateProfile.rejected, (state, action) => {
+        .addCase(updateProfile.rejected, (state) => {
             state.isLoading = false
         })
   }

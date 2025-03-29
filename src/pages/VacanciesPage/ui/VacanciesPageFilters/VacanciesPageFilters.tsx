@@ -30,7 +30,7 @@ export const VacanciesPageFilters = (props: VacanciesPageFiltersProps) => {
             <Input 
                 className="w-full"
                 placeholder="Поиск..."
-                value={search}
+                value={search ?? ''}
                 onChange={onChangeSearch}
             />
         </div>

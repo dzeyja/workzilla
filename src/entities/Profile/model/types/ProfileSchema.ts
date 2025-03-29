@@ -1,11 +1,18 @@
+import { UserRole } from "entities/User";
+
 export interface Profile {
-    id?: string
+    id?: string;
+    userId?: string; 
     first?: string;
     lastname?: string;
-    age?: number,
-    city?: string,
-    username?: string;
+    age?: number;
+    city?: string;
     avatar?: string;
+    specialty?: string; 
+    experience?: number; 
+    portfolio?: string[]; 
+    bio?: string; 
+    role?: UserRole
 }
 
 export interface ProfileSchema {

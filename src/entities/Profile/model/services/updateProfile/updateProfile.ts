@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/Providers/StoreProvider"
 import { Profile } from "../../types/ProfileSchema"
 import { getProfileFormData } from "../../selectors/profile"
+import { getUserAuthData } from "entities/User"
 
 export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>(
     'profile/updateProfile',
@@ -10,9 +11,14 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>
         const { extra, rejectWithValue, getState } = thunkAPI
 
         const formData = getProfileFormData(getState())
+        const user = getUserAuthData(getState())
+
+        if(!user?.id) {
+            return rejectWithValue('Пользователь не найден')
+        }
 
         try {
-            const response = await extra.api.put<Profile>(`/profile/${formData?.id}`, formData)
+            const response = await extra.api.put<Profile>(`/profile/${user?.id}`, formData)
             
             if (!response.data) {
                 throw new Error()
@@ -20,7 +26,7 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>
 
             return response.data
         } catch(e) {
-           rejectWithValue('error') 
+           rejectWithValue('Ошибка обновления профиля') 
         }
     },
   )

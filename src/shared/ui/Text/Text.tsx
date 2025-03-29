@@ -7,12 +7,19 @@ export enum TextTheme {
     BLACK = 'black'
 }
 
+export enum TextAlign {
+    LEFT = 'left',
+    RIGHT = 'right',
+    CENTER = 'center'
+}
+
 interface TextProps {
     titleBig?: string
     title?: string
     text?: string
     className?: string
     theme?: TextTheme
+    align?: TextAlign
 }
 
 export const Text = (props: TextProps) => {
@@ -21,14 +28,15 @@ export const Text = (props: TextProps) => {
         title, 
         text, 
         className,
+        align = TextAlign.LEFT,
         theme = TextTheme.BLACK
     } = props
     
     return (
         <div>
-            {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme]])}>{titleBig}</p>}
-            {title && <p className={classNames('text-xl', {}, [className, cls[theme]])}>{title}</p>}
-            {text && <p className={classNames('text-lg', {}, [className, cls[theme]])}>{text}</p>}
+            {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme], cls[align]])}>{titleBig}</p>}
+            {title && <p className={classNames('text-xl', {}, [className, cls[theme], cls[align]])}>{title}</p>}
+            {text && <p className={classNames('text-lg', {}, [className, cls[theme], cls[align]])}>{text}</p>}
         </div>
     );
 };
