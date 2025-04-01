@@ -16,13 +16,14 @@ export enum TextWeight {
 export enum TextAlign {
     LEFT = 'left',
     RIGHT = 'right',
-    CENTER = 'center'
+    CENTER = 'center',
 }
 
 interface TextProps {
     titleBig?: string
     title?: string
     text?: string
+    smallText?: string
     className?: string
     theme?: TextTheme
     align?: TextAlign
@@ -34,6 +35,7 @@ export const Text = (props: TextProps) => {
         titleBig, 
         title, 
         text, 
+        smallText,
         className,
         align = TextAlign.LEFT,
         theme = TextTheme.BLACK,
@@ -45,6 +47,7 @@ export const Text = (props: TextProps) => {
             {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme], cls[align], cls[weight]])}>{titleBig}</p>}
             {title && <p className={classNames('text-xl', {}, [className, cls[theme], cls[align], cls[weight]])}>{title}</p>}
             {text && <p className={classNames('text-lg', {}, [className, cls[theme], cls[align], cls[weight]])}>{text}</p>}
+            {smallText && <p className={classNames('text-sm', {}, [className, cls[theme], cls[align], cls[weight]])}>{smallText}</p>}
         </div>
     );
 };

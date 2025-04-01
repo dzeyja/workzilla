@@ -12,6 +12,7 @@ import { Select, SelectOption } from "shared/ui/Select/Select";
 import { UserRole } from "entities/User";
 import { signUp } from "../../model/services/signUp/signUp";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const SignUpForm = () => {
     const dispatch = useAppDispatch()
@@ -66,14 +67,18 @@ export const SignUpForm = () => {
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
                 <div className="text-xxl">Зарегестрироватся</div>
                 <Input 
+                    layout="Имя пользователя *"
                     placeholder="Имя пользователя"
                     onChange={onChangeUsername}
                     value={username}
+                    className="w-full"
                 />
                 <Input 
+                    layout="Пароль *"
                     placeholder="Пароль"
                     onChange={onChangePassword}
                     value={password}
+                    className="w-full"
                 />
                 <Select<UserRole> 
                     label="Вы" 
@@ -84,6 +89,15 @@ export const SignUpForm = () => {
                 <Button onClick={onClick}>
                     Зарегестрироватся
                 </Button>
+                <div>
+                    Если у вас есть аккаунт то{' '}
+                    <Link 
+                        className="text-primary underline" 
+                        href={'/sign-up'}
+                    >
+                        войдите
+                    </Link>
+                </div>
             </div>
         </DynamicModuleLoader>
     );

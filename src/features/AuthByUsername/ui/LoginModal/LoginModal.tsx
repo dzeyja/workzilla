@@ -48,14 +48,18 @@ export const LoginModal = () => {
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
                 <div className="text-xxl">Войти</div>
                 <Input 
+                    layout="Имя пользователя *"
                     placeholder="Имя пользователя"
                     onChange={onUsernameChange}
                     value={username}
+                    className="w-full"
                 />
                 <Input 
+                    layout="Пароль *"
                     placeholder="Пароль"
                     onChange={onPasswordChange}
                     value={password}
+                    className="w-full"
                 />
                 <Button onClick={onClick}>
                     Войти
