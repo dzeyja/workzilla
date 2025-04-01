@@ -1,8 +1,7 @@
 "use client";
 
-import { Text, TextAlign, TextTheme, TextWeight } from "shared/ui/Text/Text";
+import { Text, TextWeight } from "shared/ui/Text/Text";
 import { Profile } from "../../model/types/ProfileSchema";
-import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
 import { User } from "entities/User";
@@ -55,45 +54,29 @@ export const ProfileCard = (props: ProfileCardProps) => {
     if(!readonly) {
         return (
             <>
-                <div className="w-200 mx-auto p-16 flex justify-between bg-gray rounded-lg">
-                    <div>
-                        <div className="flex gap-5">
-                            <Text title="Имя:" />
-                            <Input 
-                                placeholder="Введите имя" 
-                                onChange={onChangeFirstname}
-                                value={form?.first}
-                            />
+                <div className="w-200 mx-auto p-16 bg-gray rounded-lg">
+                    <div className="flex flex-col gap-6 w-full w-64">
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Имя:" />
+                            <Input className="w-64" placeholder="Введите имя" onChange={onChangeFirstname} value={form?.first} />
                         </div>
-                        <div className="flex gap-5">
-                            <Text title="Фамилия:"/>
-                            <Input 
-                                placeholder="Введите фамилию" 
-                                onChange={onChangeLastname} 
-                                value={form?.lastname}   
-                            />
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Фамилия:" />
+                            <Input className="w-64" placeholder="Введите фамилию" onChange={onChangeLastname} value={form?.lastname} />
                         </div>
-                        <div className="flex gap-5">
-                            <Text title="Возраст:"/>
-                            <Input 
-                                placeholder="Введите возраст" 
-                                onChange={onChangeAge}
-                                value={form?.age}
-                            />
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Возраст:" />
+                            <Input className="w-64" placeholder="Введите возраст" onChange={onChangeAge} value={form?.age} />
                         </div>
-                        <div className="flex gap-5">
-                            <Text title="Город:"/>
-                            <Input 
-                                placeholder="Введите город" 
-                                onChange={onChangeCity}    
-                                value={form?.city}
-                            />
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
+                            <Input className="w-64" placeholder="Введите город" onChange={onChangeCity} value={form?.city} />
                         </div>
                     </div>
                 </div>
                 <div className="w-200 mx-auto p-16 bg-gray rounded-lg mt-4">
                     <div className="flex gap-5">
-                        <Text title="Обо мне:"/>
+                        <Text weight={TextWeight.MEDIUM} title="Обо мне:"/>
                         <Input 
                             placeholder="Введите информацию о себе" 
                             onChange={onChangeBio}    
@@ -101,13 +84,13 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         />
                     </div>
                 </div>
-                <div className="w-200 mx-auto p-16 bg-gray rounded-lg mt-4">
+                <div className="w-200 mx-auto flex flex-col gap-2 p-16 bg-gray rounded-lg mt-4">
                     <div className="flex gap-5">
-                        <Text title="Специальность:"/>
+                        <Text weight={TextWeight.MEDIUM} title="Специальность:"/>
                         <SelectSpecialty value={form?.specialty} onChange={onChangeSpecialty} />
                     </div>
                     <div className="flex gap-5">
-                        <Text title="Опыт работы:"/>
+                        <Text weight={TextWeight.MEDIUM} title="Опыт работы:"/>
                         <SelectExperienceLvl value={form?.experience} onChange={onChangeExperience} />
                     </div>
                 </div>

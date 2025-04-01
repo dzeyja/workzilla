@@ -12,26 +12,34 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
 
     return (
             <div className="bg-gray w-200 mx-auto p-14 flex justify-between rounded-lg">
-                <div className="w-64">
-                    <div className="flex gap-5">
+                <div className="w-96 flex flex-col gap-2">
+                    <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Имя:" />
-                        <Text theme={TextTheme.PRIMARY} align={TextAlign.LEFT} title={data?.first} />
+                        <Text 
+                            theme={data?.first ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.first ? data?.first : 'Укажите имя'} 
+                        />
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Фамилия:"/>
-                        <Text theme={TextTheme.PRIMARY} title={data?.lastname} />
+                        <Text 
+                            theme={data?.lastname ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.lastname ? data?.lastname : 'Укажите фамилию'} 
+                        />
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Возраст:"/>
-                        {data?.age ? (
-                            <Text theme={TextTheme.PRIMARY} title={String(data?.age)} />
-                        ) : (
-                            <Text theme={TextTheme.BLACK} title={'Укажите возраст'} />
-                        )}
+                        <Text 
+                            theme={data?.age ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.age ? String(data?.age) : 'Укажите возраст'} 
+                        />
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Город:"/>
-                        <Text theme={TextTheme.PRIMARY} title={data?.city} />
+                        <Text 
+                            theme={data?.city ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.city ? data.city : 'Укажите город'} 
+                        />
                     </div>
                 </div>
                 <div>
