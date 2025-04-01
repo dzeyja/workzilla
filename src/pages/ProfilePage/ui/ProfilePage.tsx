@@ -17,6 +17,8 @@ import { Page } from "shared/ui/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { getUserAuthData } from "entities/User";
+import { Specialties } from "entities/Specialty";
+import { ExperienceLevel } from "entities/ExperienceLevel";
 
 export const ProfilePage = () => {
     const dispatch = useAppDispatch()
@@ -48,7 +50,17 @@ export const ProfilePage = () => {
         dispatch(profileActions.updateProfile({ city: value || '' }))
     }, [dispatch])
 
-    const onChangeBio = use
+    const onChangeBio = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ bio: value || '' }))
+    }, [dispatch])
+
+    const onChangeSpecialty = useCallback((value?: Specialties) => {
+        dispatch(profileActions.updateProfile({ specialty: value || Specialties.NULL }))
+    }, [dispatch])
+
+    const onChangeExperience = useCallback((value?: ExperienceLevel) => {
+        dispatch(profileActions.updateProfile({ experience: value || ExperienceLevel.NULL }))
+    }, [dispatch])
 
     return (
         <DynamicModuleLoader reducer={profileReducer} name='profile'>
@@ -64,6 +76,9 @@ export const ProfilePage = () => {
                     onChangeLastname={onChangeLastname}
                     onChangeAge={onChangeAge}
                     onChangeCity={onChangeCity}
+                    onChangeBio={onChangeBio}
+                    onChangeExperience={onChangeExperience}
+                    onChangeSpecialty={onChangeSpecialty}
                 />
             </Page>
         </DynamicModuleLoader>

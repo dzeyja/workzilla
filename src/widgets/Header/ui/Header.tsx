@@ -43,14 +43,38 @@ export const Header = () => {
         dispatch(userActions.logout())
     }, [dispatch])
 
+    const profileContent = (
+        <div className='flex gap-2'>
+            <Image 
+                src='/icons/profile-icon.png'
+                alt='hello'
+                width={24}
+                height={24}
+            />
+            <span>Профиль</span>
+        </div>
+    )
+
+    const logoutContent = (
+        <div className='flex gap-2'>
+            <Image 
+                src='/icons/logout-icon.png'
+                alt='hello'
+                width={24}
+                height={24}
+            />
+            <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>Выйти</Button>
+        </div>
+    )
+
     const dropdownItems = useMemo<DropItem[]>(() => {
         return [
             {
-            content: 'Профиль',
-            link: `/profile`
+                content: profileContent,
+                link: `/profile`
             },
             {
-                content: <Button theme={ButtonTheme.CLEAR} onClick={onLogout}>Выйти</Button>,
+                content: logoutContent,
             },
         ]
     }, [])

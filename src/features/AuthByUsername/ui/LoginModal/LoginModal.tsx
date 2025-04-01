@@ -61,7 +61,13 @@ export const LoginModal = () => {
                     Войти
                 </Button>
                 <div>
-                    Если у вас нет аккаунта то <Link href={'/sign-up'}>зарегестрируйтесь</Link>
+                    Если у вас нет аккаунта то{' '}
+                    <Link 
+                        className="text-primary underline" 
+                        href={'/sign-up'}
+                    >
+                        зарегестрируйтесь
+                    </Link>
                 </div>
             </div>
         </DynamicModuleLoader>

@@ -7,6 +7,12 @@ export enum TextTheme {
     BLACK = 'black'
 }
 
+export enum TextWeight {
+    BOLD = 'bold',
+    MEDIUM = 'medium',
+    NORMAL = 'normal'
+}
+
 export enum TextAlign {
     LEFT = 'left',
     RIGHT = 'right',
@@ -20,6 +26,7 @@ interface TextProps {
     className?: string
     theme?: TextTheme
     align?: TextAlign
+    weight?: TextWeight
 }
 
 export const Text = (props: TextProps) => {
@@ -29,14 +36,15 @@ export const Text = (props: TextProps) => {
         text, 
         className,
         align = TextAlign.LEFT,
-        theme = TextTheme.BLACK
+        theme = TextTheme.BLACK,
+        weight = TextWeight.NORMAL
     } = props
     
     return (
         <div>
-            {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme], cls[align]])}>{titleBig}</p>}
-            {title && <p className={classNames('text-xl', {}, [className, cls[theme], cls[align]])}>{title}</p>}
-            {text && <p className={classNames('text-lg', {}, [className, cls[theme], cls[align]])}>{text}</p>}
+            {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme], cls[align], cls[weight]])}>{titleBig}</p>}
+            {title && <p className={classNames('text-xl', {}, [className, cls[theme], cls[align], cls[weight]])}>{title}</p>}
+            {text && <p className={classNames('text-lg', {}, [className, cls[theme], cls[align], cls[weight]])}>{text}</p>}
         </div>
     );
 };

@@ -1,3 +1,5 @@
+import { ExperienceLevel } from "entities/ExperienceLevel";
+import { Specialties } from "entities/Specialty";
 import { UserRole } from "entities/User";
 
 export interface Profile {
@@ -8,8 +10,8 @@ export interface Profile {
     age?: number;
     city?: string;
     avatar?: string;
-    specialty?: string; 
-    experience?: number; 
+    specialty?: Specialties; 
+    experience?: ExperienceLevel; 
     portfolio?: string[]; 
     bio?: string; 
     role?: UserRole

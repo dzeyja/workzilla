@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Text, TextTheme } from "shared/ui/Text/Text";
+import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 
 interface ProfilePageHeaderProps {
     readonly?: boolean
@@ -31,7 +31,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         <div className="w-200 flex items-center justify-between p-4 mx-auto mb-6 rounded-lg bg-gray">
             {readonly ? (
                 <>
-                    <Text title="Профиль" theme={TextTheme.PRIMARY} />
+                    <Text title="Профиль" weight={TextWeight.MEDIUM} theme={TextTheme.PRIMARY} />
                     <Button onClick={onEdit}>
                         Редактировать
                     </Button>
