@@ -1,0 +1,1 @@
+export { default as VacancyDatails } from './ui/VacancyDetail/VacancyDatails'

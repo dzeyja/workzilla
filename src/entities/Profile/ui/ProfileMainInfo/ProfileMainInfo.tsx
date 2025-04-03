@@ -9,6 +9,7 @@ interface ProfileMainInfoProps {
 
 export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
     const { data } = props
+    const isExecutor = data?.role === 'executor'
 
     return (
             <div className="bg-gray w-200 mx-auto p-14 flex justify-between rounded-lg">
@@ -39,6 +40,13 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
                         <Text 
                             theme={data?.city ? TextTheme.PRIMARY : TextTheme.BLACK} 
                             text={data?.city ? data.city : 'Укажите город'} 
+                        />
+                    </div>
+                    <div className="flex gap-5 items-center">
+                        <Text weight={TextWeight.MEDIUM} title="Роль:"/>
+                        <Text 
+                            theme={data?.role ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={isExecutor ? 'Исполнитель' : 'Заказчик'} 
                         />
                     </div>
                 </div>

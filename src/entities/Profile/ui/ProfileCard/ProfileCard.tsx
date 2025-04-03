@@ -4,11 +4,13 @@ import { Text, TextWeight } from "shared/ui/Text/Text";
 import { Profile } from "../../model/types/ProfileSchema";
 import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
-import { User } from "entities/User";
+import { User, UserRole } from "entities/User";
 import { SelectSpecialty, Specialties } from "entities/Specialty";
 import { ExperienceLevel, SelectExperienceLvl } from "entities/ExperienceLevel";
 import { ProfileMainInfo } from "../ProfileMainInfo/ProfileMainInfo";
 import { ProfileExecutorInfo } from "../ProfileExecutorInfo/ProfileExecutorInfo";
+import { Select } from "shared/ui/Select/Select";
+import { ProfileSelectRole } from "../ProfileSelectRole/ProfileSelectRole";
 
 interface ProfileCardProps {
     data?: Profile
@@ -23,6 +25,7 @@ interface ProfileCardProps {
     onChangeSpecialty?: (value?: Specialties) => void
     onChangeBio?: (value?: string) => void
     onChangeExperience?: (value?: ExperienceLevel) => void
+    onChangeRole?: (value?: UserRole) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -38,7 +41,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeCity,
         onChangeSpecialty,
         onChangeBio,
-        onChangeExperience
+        onChangeExperience,
+        onChangeRole
     } = props
 
     const isExecutor = user?.role === 'executor'
@@ -71,6 +75,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         <div className="flex justify-between items-center w-full">
                             <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
                             <Input className="w-64" placeholder="Введите город" onChange={onChangeCity} value={form?.city} />
+                        </div>
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
+                            <ProfileSelectRole value={form?.role} onChange={onChangeRole} />
                         </div>
                     </div>
                 </div>

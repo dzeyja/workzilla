@@ -7,10 +7,7 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
 import { Input } from "shared/ui/Input/Input";
 
-interface VacanciesPageFiltersProps {
-}
-
-export const VacanciesPageFilters = (props: VacanciesPageFiltersProps) => {
+export const VacanciesPageFilters = () => {
     const dispatch = useAppDispatch()
     const search = useSelector(getVacancySearch)
 

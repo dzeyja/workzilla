@@ -44,7 +44,7 @@ export const Text = (props: TextProps) => {
     
     return (
         <div>
-            {titleBig && <p className={classNames('text-xxl font-bold', {}, [className, cls[theme], cls[align], cls[weight]])}>{titleBig}</p>}
+            {titleBig && <p className={classNames('text-xxl', {}, [className, cls[theme], cls[align], cls[weight]])}>{titleBig}</p>}
             {title && <p className={classNames('text-xl', {}, [className, cls[theme], cls[align], cls[weight]])}>{title}</p>}
             {text && <p className={classNames('text-lg', {}, [className, cls[theme], cls[align], cls[weight]])}>{text}</p>}
             {smallText && <p className={classNames('text-sm', {}, [className, cls[theme], cls[align], cls[weight]])}>{smallText}</p>}

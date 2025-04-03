@@ -5,15 +5,15 @@ import { getAuthByUsername, getAuthByUsernamePassword } from "../../model/select
 import { useSelector } from "react-redux";
 import { Button } from "shared/ui/Button/Button";
 import { authByUsernameActions, authByUsernameReducer } from "../../model/slice/authByUsernameSlice";
-import { authByUsername } from "../../model/services/authByUsername/authByUsername";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Input } from "shared/ui/Input/Input";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import Link from "next/link";
+import { authByUsernameClick } from "../../model/services/authByUsernameClick/authByUsernameClick";
+import { Text } from "shared/ui/Text/Text";
 
-export const LoginModal = () => {
+export const AuthByUsernameForm = () => {
     const username = useSelector(getAuthByUsername)
     const password = useSelector(getAuthByUsernamePassword)
     const router = useRouter()
@@ -27,26 +27,15 @@ export const LoginModal = () => {
         dispatch(authByUsernameActions.setPassword(value))
     }, [dispatch])
 
-    const onClick = useCallback( async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const onClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        try {
-            const result = await dispatch(authByUsername()).unwrap()
-
-            if (result) {
-                router.push('/')
-            }
-        } catch(e) {
-            console.log(e)
-        } finally {
-            dispatch(authByUsernameActions.setUsername(''))
-            dispatch(authByUsernameActions.setPassword(''))
-        }
-    }, [dispatch, redirect])
+        dispatch(authByUsernameClick(router))
+    }, [dispatch])
 
     return (
         <DynamicModuleLoader name='authByUsernameForm' reducer={authByUsernameReducer}>
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
-                <div className="text-xxl">Войти</div>
+                <Text titleBig="Войти"/>
                 <Input 
                     layout="Имя пользователя *"
                     placeholder="Имя пользователя"
@@ -64,8 +53,8 @@ export const LoginModal = () => {
                 <Button onClick={onClick}>
                     Войти
                 </Button>
-                <div>
-                    Если у вас нет аккаунта то{' '}
+                <div className="flex gap-1 items-center">
+                    <Text smallText="Если у вас нет аккаунта то "/>
                     <Link 
                         className="text-primary underline" 
                         href={'/sign-up'}

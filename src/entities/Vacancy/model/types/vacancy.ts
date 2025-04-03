@@ -14,7 +14,10 @@ export interface Vacancy {
     postedAt: string; 
     skills: string[]; 
     experienceLevel: ExperienceLevel
-    contactEmail: string; 
+    contactEmail: string;
+    responsibilities: string[]
+    requirements: string[]
+    conditions: string[] 
     isActive: boolean; 
 }
 
@@ -24,4 +27,5 @@ export interface VacancySchema {
     isLoading: boolean
     search?: string
     order?: OrderType
+    vacancy?: Vacancy
 }

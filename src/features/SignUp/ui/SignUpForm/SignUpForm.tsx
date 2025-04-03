@@ -10,9 +10,10 @@ import { getSignUpPassword, getSignUpRole, getSignUpUsername } from "../../model
 import { signUpActions, signUpReducer } from "../../model/slice/signUpSlice";
 import { Select, SelectOption } from "shared/ui/Select/Select";
 import { UserRole } from "entities/User";
-import { signUp } from "../../model/services/signUp/signUp";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signUpClick } from "../../model/services/signUpClick/signUpClick";
+import { Text } from "shared/ui/Text/Text";
 
 export const SignUpForm = () => {
     const dispatch = useAppDispatch()
@@ -22,21 +23,9 @@ export const SignUpForm = () => {
     const username = useSelector(getSignUpUsername)
     const role = useSelector(getSignUpRole)
 
-    const onClick = useCallback( async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const onClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-            try {
-                const result = await dispatch(signUp()).unwrap()
-    
-                if (result) {
-                    router.push('/profile')
-                }
-                
-            } catch(e) {
-                console.log(e)
-            } finally {
-                dispatch(signUpActions.setUsername(''))
-                dispatch(signUpActions.setPassword(''))
-            }
+        dispatch(signUpClick(router))
     }, [dispatch, router])
 
     const onChangeUsername = useCallback((value: string) => {
@@ -65,7 +54,7 @@ export const SignUpForm = () => {
     return (
         <DynamicModuleLoader name='signUpForm' reducer={signUpReducer}>
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
-                <div className="text-xxl">Зарегестрироватся</div>
+                <Text titleBig="Зарегестрироватся" />
                 <Input 
                     layout="Имя пользователя *"
                     placeholder="Имя пользователя"
@@ -89,11 +78,11 @@ export const SignUpForm = () => {
                 <Button onClick={onClick}>
                     Зарегестрироватся
                 </Button>
-                <div>
-                    Если у вас есть аккаунт то{' '}
+                <div className="flex items-center gap-1">
+                    <Text smallText="Если у вас есть аккаунт то "/>
                     <Link 
                         className="text-primary underline" 
-                        href={'/sign-up'}
+                        href={'/auth'}
                     >
                         войдите
                     </Link>

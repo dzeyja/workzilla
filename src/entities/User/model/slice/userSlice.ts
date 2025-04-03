@@ -22,6 +22,11 @@ const userSlice = createSlice({
     logout: (state) => {
       localStorage.removeItem(USER_LOCALSTORAGE_KEY)
       state.userData = undefined
+    },
+    setUserRole: (state, action: PayloadAction<UserRole>) => {
+      if(state.userData) {
+        state.userData.role = action.payload
+      }
     }
   },
 })

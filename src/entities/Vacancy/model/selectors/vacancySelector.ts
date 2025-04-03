@@ -5,3 +5,4 @@ export const getVacancyIsLoading = (state: StateSchema) => state.vacancy?.isLoad
 export const getVacancyError = (state: StateSchema) => state.vacancy?.error
 export const getVacancyOrder = (state: StateSchema) => state.vacancy?.order
 export const getVacancySearch = (state: StateSchema) => state.vacancy?.search
+export const getVacancy = (state: StateSchema) => state.vacancy?.vacancy
