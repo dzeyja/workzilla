@@ -25,36 +25,6 @@
       "username": "daulet",
       "password": "123",
       "role": "executor"
-    },
-    {
-      "id": "2",
-      "username": "letkod",
-      "password": "123",
-      "role": "executor"
-    },
-    {
-      "id": "3",
-      "username": "Aidyn",
-      "password": "123",
-      "role": "executor"
-    },
-    {
-      "id": "4",
-      "username": "daukebai",
-      "password": "123",
-      "role": "executor"
-    },
-    {
-      "id": "5",
-      "username": "aaidanino",
-      "password": "123",
-      "role": "executor"
-    },
-    {
-      "id": "6",
-      "username": "daaulet",
-      "password": "123",
-      "role": "executor"
     }
   ],
   "profile": [
@@ -70,77 +40,8 @@
       "experience": "Junior (0-1 год)",
       "portfolio": [],
       "bio": "",
-      "role": "executor"
-    },
-    {
-      "id": "2",
-      "userId": "2",
-      "first": "letkod",
-      "lastname": "zharylkas",
-      "age": 19,
-      "city": "Almaty",
-      "avatar": "",
-      "specialty": "",
-      "experience": 0,
-      "portfolio": [],
-      "bio": "",
-      "role": "executor"
-    },
-    {
-      "id": "3",
-      "userId": "3",
-      "first": "Aidyn",
-      "lastname": "Aidynov",
-      "age": 21,
-      "city": "Almary",
-      "avatar": "",
-      "specialty": "",
-      "experience": 5,
-      "portfolio": [],
-      "bio": "Я разработчик с 5 более лет",
-      "role": "executor"
-    },
-    {
-      "id": "4",
-      "userId": "4",
-      "first": "Daukebai",
-      "lastname": "Zharylkasynov",
-      "age": 20,
-      "city": "Almaty",
-      "avatar": "",
-      "specialty": "SEO Specialist",
-      "experience": "Middle (1-3 года)",
-      "portfolio": [],
-      "bio": "Im frontend developer with 5 years experience, i love coding with typescript and Next.js. And i love my girlfriend, her name is Aidana. She has beatiful eyes",
-      "role": "executor"
-    },
-    {
-      "id": "5",
-      "userId": "5",
-      "first": "aaidanino",
-      "lastname": "Zharylkasynova",
-      "age": 20,
-      "city": "Oskemen",
-      "avatar": "",
-      "specialty": "Product Manager",
-      "experience": "Без опыта",
-      "portfolio": [],
-      "bio": "jnjdnd",
-      "role": "executor"
-    },
-    {
-      "id": "6",
-      "userId": "6",
-      "first": "Daaulet",
-      "lastname": "Zharylkasynov",
-      "age": 25,
-      "city": "Almaty",
-      "avatar": "",
-      "specialty": "Frontend Developer",
-      "experience": "Middle (1-3 года)",
-      "portfolio": [],
-      "bio": "",
-      "role": "executor"
+      "role": "executor",
+      "email": ""
     }
   ],
   "vacancies": [
@@ -355,6 +256,257 @@
       "isActive": true,
       "category": "Маркетинг",
       "language": "Русский"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Разработать главную страницу",
+      "description": "Создать адаптивный макет для главной страницы с учетом UX/UI.",
+      "status": "in-progress",
+      "createdAt": "2025-04-01T10:00:00Z",
+      "deadline": "2025-04-05T23:59:59Z",
+      "category": "Frontend",
+      "assigneeId": "1",
+      "priority": "high",
+      "requirements": [
+        "Использовать Next.js и Tailwind CSS",
+        "Учесть доступность (a11y)",
+        "Реализовать адаптивную верстку (mobile-first)",
+        "Добавить анимации для элементов (использовать Framer Motion)"
+      ],
+      "expectedResult": "Главная страница корректно отображается на desktop, tablet, mobile. Время загрузки не превышает 2 сек. Код проходит проверку ESLint и Prettier.",
+      "technicalDetails": [
+        "Данные о продуктах загружаются из API /api/products",
+        "Использовать Lazy Loading для изображений"
+      ],
+      "relatedTasks": [
+        "6",
+        "7"
+      ],
+      "techStack": [
+        "React",
+        "Next.js",
+        "Tailwind",
+        "Framer Motion"
+      ],
+      "estimatedTime": "8-12 часов",
+      "notes": "Макет в Figma: [ссылка]",
+      "email": "zharylkasynov_d@mail.ru"
+    },
+    {
+      "id": "2",
+      "title": "Настроить CI/CD",
+      "description": "Добавить автоматические деплои и тесты в GitHub Actions.",
+      "status": "in-progress",
+      "createdAt": "2025-04-01T11:00:00Z",
+      "category": "DevOps",
+      "assigneeId": "1",
+      "priority": "medium",
+      "requirements": [
+        "Настроить CI/CD pipeline",
+        "Добавить автоматическое тестирование с Jest",
+        "Обеспечить деплой на Vercel"
+      ],
+      "expectedResult": "При коммите в main происходит автоматическое тестирование и деплой.",
+      "technicalDetails": [
+        "Pipeline должен включать lint, unit-тесты и деплой",
+        "Использовать GitHub Secrets для хранения токенов"
+      ],
+      "relatedTasks": [],
+      "techStack": [
+        "GitHub Actions",
+        "Jest",
+        "Vercel"
+      ],
+      "estimatedTime": "4-6 часов",
+      "notes": "Пример настроек в [репозитории примеров]",
+      "email": "guzel.torgaeva@mail.ru"
+    },
+    {
+      "id": "3",
+      "title": "Исправить баг в корзине",
+      "description": "Не сохраняются товары в корзине при обновлении страницы.",
+      "status": "in-progress",
+      "createdAt": "2025-04-02T09:30:00Z",
+      "deadline": "2025-04-03T18:00:00Z",
+      "category": "Backend",
+      "assigneeId": "1",
+      "priority": "high",
+      "requirements": [
+        "Использовать локальное хранилище или серверное кэширование",
+        "Обеспечить сохранение состояния при перезагрузке",
+        "Написать unit-тесты на логику сохранения корзины"
+      ],
+      "expectedResult": "При обновлении страницы товары в корзине не пропадают.",
+      "technicalDetails": [
+        "Корзина хранится в localStorage или Redis",
+        "Фронтенд обновляет данные при монтировании компонента"
+      ],
+      "relatedTasks": [],
+      "techStack": [
+        "React",
+        "Redux Toolkit",
+        "localStorage",
+        "Redis"
+      ],
+      "estimatedTime": "6-8 часов",
+      "notes": "Ошибка найдена в файле cartReducer.js",
+      "email": "zharylkasynov_d@mail.ru"
+    },
+    {
+      "id": "4",
+      "title": "Обновить документацию API",
+      "description": "Добавить описание новых эндпоинтов для работы с заказами.",
+      "status": "in-progress",
+      "createdAt": "2025-04-02T12:45:00Z",
+      "category": "Documentation",
+      "assigneeId": "1",
+      "priority": "low",
+      "requirements": [
+        "Обновить OpenAPI (Swagger) документацию",
+        "Добавить примеры запросов и ответов",
+        "Проверить соответствие документации текущему API"
+      ],
+      "expectedResult": "Документация API актуальна и доступна в Swagger UI.",
+      "technicalDetails": [
+        "Swagger-файл находится в /docs/api.yaml",
+        "Все изменения должны быть согласованы с backend-командой"
+      ],
+      "relatedTasks": [],
+      "techStack": [
+        "Swagger",
+        "Postman"
+      ],
+      "estimatedTime": "3-5 часов",
+      "notes": "Старую документацию можно найти в /docs/old_api.yaml",
+      "email": "zharylkasynov_d@mail.ru"
+    },
+    {
+      "id": "5",
+      "title": "Добавить тёмную тему",
+      "description": "Реализовать возможность переключения между светлой и тёмной темой.",
+      "status": "in-progress",
+      "createdAt": "2025-03-28T08:15:00Z",
+      "deadline": "2025-04-01T20:00:00Z",
+      "category": "Frontend",
+      "assigneeId": "1",
+      "priority": "medium",
+      "requirements": [
+        "Добавить переключатель темы",
+        "Сохранение выбора пользователя в localStorage",
+        "Настроить CSS-переменные для темизации"
+      ],
+      "expectedResult": "Пользователь может менять тему, выбор сохраняется после перезагрузки.",
+      "technicalDetails": [
+        "Темы переключаются через CSS-переменные",
+        "Использовать Context API или Redux Toolkit"
+      ],
+      "relatedTasks": [
+        "1"
+      ],
+      "techStack": [
+        "React",
+        "CSS Variables",
+        "Redux Toolkit"
+      ],
+      "estimatedTime": "4-6 часов",
+      "notes": "Дизайн в Figma: [ссылка]",
+      "email": "guzel.torgaeva@mail.ru"
+    },
+    {
+      "id": "6",
+      "title": "Реализовать поиск по товарам",
+      "description": "Добавить функционал поиска по ключевым словам и категориям.",
+      "status": "pending",
+      "createdAt": "2025-04-01T14:20:00Z",
+      "category": "Frontend",
+      "assigneeId": "",
+      "priority": "high",
+      "requirements": [
+        "Реализовать поиск с debounce",
+        "Фильтрация товаров по категориям",
+        "Выводить список популярных запросов"
+      ],
+      "expectedResult": "Пользователь может искать товары по названию и категориям.",
+      "technicalDetails": [
+        "Поиск осуществляется через API /api/search",
+        "Debounce на 300ms перед отправкой запроса"
+      ],
+      "relatedTasks": [
+        "1",
+        "7"
+      ],
+      "techStack": [
+        "React",
+        "Redux Toolkit",
+        "Debounce"
+      ],
+      "estimatedTime": "6-8 часов",
+      "notes": "Пример работы в [документации API]",
+      "email": "zharylkasynov_d@mail.ru"
+    },
+    {
+      "id": "7",
+      "title": "Оптимизировать загрузку изображений",
+      "description": "Настроить lazy loading и сжатие изображений.",
+      "status": "in-progress",
+      "createdAt": "2025-04-03T09:00:00Z",
+      "category": "Performance",
+      "assigneeId": "1",
+      "priority": "medium",
+      "requirements": [
+        "Настроить lazy loading для изображений",
+        "Использовать WebP формат",
+        "Добавить ресайз изображений на сервере"
+      ],
+      "expectedResult": "Изображения загружаются только при необходимости, размер файлов минимизирован.",
+      "technicalDetails": [
+        "Использовать Intersection Observer для lazy loading",
+        "Конвертация изображений в WebP при загрузке"
+      ],
+      "relatedTasks": [
+        "6"
+      ],
+      "techStack": [
+        "Next.js",
+        "Cloudinary",
+        "Intersection Observer"
+      ],
+      "estimatedTime": "5-7 часов",
+      "notes": "Исходные изображения хранятся в /uploads",
+      "email": "zharylkasynov_d@mail.ru"
+    },
+    {
+      "id": "8",
+      "title": "Настроить логику уведомлений",
+      "description": "Добавить отправку email и push-уведомлений пользователям.",
+      "status": "pending",
+      "createdAt": "2025-04-03T10:30:00Z",
+      "category": "Backend",
+      "assigneeId": "",
+      "priority": "high",
+      "requirements": [
+        "Реализовать email-уведомления",
+        "Настроить push-уведомления в браузере",
+        "Добавить возможность включать/выключать уведомления"
+      ],
+      "expectedResult": "Пользователь получает уведомления о событиях в системе.",
+      "technicalDetails": [
+        "Использовать Firebase Cloud Messaging для push-уведомлений",
+        "Email отправляются через Nodemailer"
+      ],
+      "relatedTasks": [
+        "3"
+      ],
+      "techStack": [
+        "Node.js",
+        "Firebase",
+        "Nodemailer"
+      ],
+      "estimatedTime": "8-10 часов",
+      "notes": "Настройки SMTP в .env файле",
+      "email": "zharylkasynov_d@mail.ru"
     }
   ]
 }

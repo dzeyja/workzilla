@@ -15,6 +15,7 @@ export interface Profile {
     portfolio?: string[]; 
     bio?: string; 
     role?: UserRole
+    email?: string
 }
 
 export interface ProfileSchema {

@@ -2,6 +2,9 @@ import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 import { Profile } from "../../model/types/ProfileSchema";
 import { Specialties } from "entities/Specialty";
 import { ExperienceLevel } from "entities/ExperienceLevel";
+import { useSelector } from "react-redux";
+import { getTaskMyTasks, Task } from "entities/Task";
+import Link from "next/link";
 
 interface ProfileExecutorInfoProps {
     data?: Profile
@@ -9,6 +12,18 @@ interface ProfileExecutorInfoProps {
 
 export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
     const { data } = props
+    const myTasks = useSelector(getTaskMyTasks)
+
+    const renderMyTasks = (task: Task) => (
+        <Link href={`/tasks/${task.id}`}>
+            <div className="p-4 border rounded-md cursor-pointer">
+                <div>
+                    <Text title={task.title}  theme={TextTheme.PRIMARY} />
+                </div>
+                <Text smallText={task.description} theme={TextTheme.SECONdARY} />
+            </div>
+        </Link>
+    )
 
     return (
         <>
@@ -36,6 +51,10 @@ export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
                         text={data?.experience ? data.experience : ExperienceLevel.NULL} 
                     />
                 </div>
+            </div>
+            <div className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4 flex flex-col gap-2">
+                <Text title="Мой задачи"/>
+                {myTasks?.map(renderMyTasks)}
             </div>
         </>
     );

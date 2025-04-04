@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 
 const CompletedTasks = () => {
@@ -75,15 +76,19 @@ const CompletedTasks = () => {
                 </div>
             </div>
             <div className="mt-16 flex items-center gap-8">
-                <Button size={ButtonSize.MD}>
-                    Начать зарабатывать
-                </Button>
-                <Button 
-                    size={ButtonSize.MD} 
-                    theme={ButtonTheme.OUTLINED}
-                >
-                    Смотреть все задания
-                </Button>
+                <Link href={'/tasks'}>
+                    <Button size={ButtonSize.MD}>
+                        Начать зарабатывать
+                    </Button>
+                </Link>
+                <Link href={'/tasks'}>
+                    <Button 
+                        size={ButtonSize.MD} 
+                        theme={ButtonTheme.OUTLINED}
+                    >
+                        Смотреть все задания
+                    </Button>
+                </Link>
             </div>
         </div>
     </div>

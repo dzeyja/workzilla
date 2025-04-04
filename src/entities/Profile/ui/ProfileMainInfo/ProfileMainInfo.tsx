@@ -49,6 +49,13 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
                             text={isExecutor ? 'Исполнитель' : 'Заказчик'} 
                         />
                     </div>
+                    <div className="flex gap-5 items-center">
+                        <Text weight={TextWeight.MEDIUM} title="Email:"/>
+                        <Text 
+                            theme={data?.email ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.email ? data.email : 'Не указан'} 
+                        />
+                    </div>
                 </div>
                 <div>
                     {data?.avatar ? (

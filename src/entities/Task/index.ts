@@ -1,0 +1,5 @@
+export type { TaskSchema, Task, TaskStatus, TaskPriority } from './model/types/task'
+export { taskReducer, taskActions } from './model/slice/taskSlice'
+export { TaskList } from './ui/TaskList/TaskList'
+export { fetchTaskById } from './model/services/fetchTaskById/fetchTaskById'
+export { getTask, getTaskIsLoading, getTaskMyTasks } from './model/selectors/taskSelectors'

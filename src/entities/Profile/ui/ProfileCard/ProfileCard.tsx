@@ -26,6 +26,7 @@ interface ProfileCardProps {
     onChangeBio?: (value?: string) => void
     onChangeExperience?: (value?: ExperienceLevel) => void
     onChangeRole?: (value?: UserRole) => void
+    onChangeEmail?: (value?: string) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -42,7 +43,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeSpecialty,
         onChangeBio,
         onChangeExperience,
-        onChangeRole
+        onChangeRole,
+        onChangeEmail
     } = props
 
     const isExecutor = user?.role === 'executor'
@@ -79,6 +81,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         <div className="flex justify-between items-center w-full">
                             <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
                             <ProfileSelectRole value={form?.role} onChange={onChangeRole} />
+                        </div>
+                        <div className="flex justify-between items-center w-full">
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
+                            <Input className="w-64" placeholder="Введите email" value={form?.email} onChange={onChangeEmail} />
                         </div>
                     </div>
                 </div>

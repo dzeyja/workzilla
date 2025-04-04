@@ -2,6 +2,7 @@
 
 import { getUserAuthData } from "entities/User";
 import Image from "next/image";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
  
@@ -22,18 +23,22 @@ const HeroSection = () => {
                     для каждого
                 </div>
                 <div className="flex flex-col gap-5 w-[407px]">
-                    <Button
-                        size={ButtonSize.MD}
-                        className="mt-16"
-                    >
-                        Начать зарабатывать
-                    </Button>
-                    <Button 
-                        theme={ButtonTheme.OUTLINED_WHITE}
-                        size={ButtonSize.MD}
-                    >
-                        Я - заказчик
-                    </Button>
+                    <Link href={'/tasks'}>
+                        <Button
+                            size={ButtonSize.MD}
+                            className="mt-16"
+                        >
+                            Начать зарабатывать
+                        </Button>
+                    </Link>
+                    <Link className="w-full" href={'/vacancies'}>
+                        <Button 
+                            theme={ButtonTheme.OUTLINED_WHITE}
+                            size={ButtonSize.MD}
+                        >
+                           К вакансиям
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <Image 

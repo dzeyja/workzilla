@@ -67,6 +67,10 @@ export const ProfilePage = () => {
         dispatch(userActions.setUserRole(value || 'null'))
     }, [dispatch])
 
+    const onChangeEmail = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ email: value || ''}))
+    }, [dispatch])
+
     return (
         <DynamicModuleLoader reducer={profileReducer} name='profile'>
             <Page>
@@ -85,6 +89,7 @@ export const ProfilePage = () => {
                     onChangeExperience={onChangeExperience}
                     onChangeSpecialty={onChangeSpecialty}
                     onChangeRole={onChangeRole}
+                    onChangeEmail={onChangeEmail}
                 />
             </Page>
         </DynamicModuleLoader>

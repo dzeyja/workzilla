@@ -11,9 +11,11 @@
     "start:dev": "concurrently \"npm run dev\" \"npm run start:server\""
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.2",
     "concurrently": "^9.1.2",
+    "emailjs": "^4.0.3",
     "i18next": "^24.2.3",
     "next": "15.2.0",
     "next-i18next": "^15.4.2",

@@ -101,8 +101,11 @@ export const Header = () => {
                         </div>
                     </div>
                 </Link>
-                <Link href='/vacancies'>
+                <Link className='text-white hover:underline' href='/vacancies'>
                     Вакансии
+                </Link>
+                <Link className='text-white hover:underline' href='/tasks'>
+                    Задачи
                 </Link>
             </div>
             <div className='flex gap-3 items-center text-white'>

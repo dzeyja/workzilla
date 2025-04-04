@@ -3,7 +3,7 @@
 import { fetchVacancyById, getVacancy, getVacancyIsLoading, vacancyReducer,  } from "entities/Vacancy";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -13,13 +13,14 @@ import { Page } from "shared/ui/Page/Page";
 import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 
 const VacancyDatails = () => {
+  const [isVisible, setIsVisible] = useState(false)
   const params = useParams()
   const dispatch = useAppDispatch()
   const vacancy = useSelector(getVacancy)
   const isLoading = useSelector(getVacancyIsLoading)
   
   const loading = (
-    <div className="bg-gray p-8 w-full rounded-lg h-screen flex items-center justicy-center">
+    <div className="bg-gray p-8 w-full rounded-lg h-screen flex items-center justify-center">
       <Loader />
     </div>
   )
@@ -39,10 +40,7 @@ const VacancyDatails = () => {
     <DynamicModuleLoader reducer={vacancyReducer} name='vacancy'>
       <Page>
         {isLoading && loading}
-        <div className="flex gap-8">
-          <div className="bg-gray w-[20%] p-16">
-            <Text title="Рекомндаций" />
-          </div>
+        <div className="">
           <div className="bg-gray p-8 w-full rounded-lg">
             <div className="flex justify-between items-center">
               <Text title={vacancy?.title} theme={TextTheme.PRIMARY} />
@@ -59,9 +57,14 @@ const VacancyDatails = () => {
               <Text text={vacancy?.location} />
             </div>
             <Text smallText={vacancy?.description} theme={TextTheme.SECONdARY} />
-            <Button className="mt-4">
-              Показать контакты
-            </Button>
+            <div className="flex gap-3 items-center">
+              <Button onClick={() => setIsVisible(!isVisible)} className="mt-4">
+                Показать контакты
+              </Button>
+              {isVisible && (
+                <Text text={vacancy?.contactEmail}/>
+              )}
+            </div>
             <Text text="Обязанности сотрудника" weight={TextWeight.MEDIUM} className="mt-4"/>
             {vacancy?.responsibilities.map(renderVacancyProps)}
             <Text text="Требования к кандидату" weight={TextWeight.MEDIUM} className="mt-4"/>

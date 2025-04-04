@@ -63,25 +63,24 @@ server.post('/register', (req, res) => {
 
         users.push(newUser);
 
-        if (role === 'executor') {
-            const newProfile = {
-                id: String(profile.length + 1),
-                userId: newUser.id,
-                first: newUser.username,
-                lastname: '',
-                age: null,
-                city: '',
-                avatar: '',
-                specialty: '',
-                experience: 0,
-                portfolio: [],
-                bio: '',
-                role: newUser.role
-            };
+        const newProfile = {
+            id: String(profile.length + 1),
+            userId: newUser.id,
+            first: newUser.username,
+            lastname: '',
+            age: null,
+            city: '',
+            avatar: '',
+            specialty: '',
+            experience: 0,
+            portfolio: [],
+            bio: '',
+            email: '',
+            role: newUser.role
+        };
 
-            profile.push(newProfile); // Записываем в "profile"
-            console.log('✅ Профиль создан:', newProfile);
-        }
+        profile.push(newProfile); // Записываем в "profile"
+        console.log('✅ Профиль создан:', newProfile);
 
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
         console.log('✅ Данные записаны в db.json');
