@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { AuthByUsernameSchema } from '../types/AuthByUsername'
+import { AuthByUsernameSchema, ValidateAuthErrors } from '../types/AuthByUsername'
 import { authByUsername } from '../services/authByUsername/authByUsername'
 
 const initialState: AuthByUsernameSchema = {
     username: '',
     password: '',
     isLoading: false,
+    error: []
 }
 
 const authByUsernameSlice = createSlice({
@@ -24,9 +25,13 @@ const authByUsernameSlice = createSlice({
     builder 
         .addCase(authByUsername.pending, (state) => {
             state.isLoading = true
+            state.error = []
         })
         .addCase(authByUsername.fulfilled, (state) => {
             state.isLoading = false
+        })
+        .addCase(authByUsername.rejected, (state, action) => {
+            state.error = action.payload as ValidateAuthErrors[]
         })
   }
 })

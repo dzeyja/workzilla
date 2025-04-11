@@ -4,3 +4,4 @@ export const getProfileData = (state: StateSchema) => state.profile?.data
 export const getProfileFormData = (state: StateSchema) => state.profile?.form
 export const getProfileReadonly = (state: StateSchema) => state.profile?.readonly
 export const getProfileIsLoading = (state: StateSchema) => state.profile?.isLoading
+export const getProfileValidateErrors= (state: StateSchema) => state.profile?.validateProfileErrors

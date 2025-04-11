@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/Providers/StoreProvider"
-import { Profile } from "../../types/ProfileSchema"
+import { Profile, ValidateProfileErrors } from "../../types/ProfileSchema"
 import { getProfileFormData } from "../../selectors/profile"
 import { getUserAuthData } from "entities/User"
+import { validateProfile } from "../validateProfile/validateProfile"
 
-export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileErrors[]>>(
     'profile/updateProfile',
     //@ts-ignore
     async (_, thunkAPI) => {
@@ -13,8 +14,10 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>
         const formData = getProfileFormData(getState())
         const user = getUserAuthData(getState())
 
-        if(!user?.id) {
-            return rejectWithValue('Пользователь не найден')
+        const errors = validateProfile(formData)
+
+        if (errors.length) {
+            return rejectWithValue(errors)
         }
 
         try {
@@ -26,7 +29,7 @@ export const updateProfile = createAsyncThunk<Profile, void, ThunkConfig<string>
 
             return response.data
         } catch(e) {
-           rejectWithValue('Ошибка обновления профиля') 
+           rejectWithValue([ValidateProfileErrors.SERVER_ERROR]) 
         }
     },
   )

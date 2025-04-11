@@ -4,7 +4,8 @@ import cls from './Text.module.scss'
 export enum TextTheme {
     PRIMARY = 'primary',
     SECONdARY = 'secondary',
-    BLACK = 'black'
+    BLACK = 'black',
+    ERROR = 'error'
 }
 
 export enum TextWeight {

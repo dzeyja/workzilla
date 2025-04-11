@@ -5,6 +5,7 @@ import { ExperienceLevel } from "entities/ExperienceLevel";
 import { useSelector } from "react-redux";
 import { getTaskMyTasks, Task } from "entities/Task";
 import Link from "next/link";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface ProfileExecutorInfoProps {
     data?: Profile
@@ -28,7 +29,7 @@ export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
     return (
         <>
             <div className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4">
-                <div className="">
+                <div>
                     <Text weight={TextWeight.MEDIUM} title="Обо мне *"/>
                     <Text 
                         theme={data?.bio ? TextTheme.PRIMARY : TextTheme.BLACK} 
@@ -36,26 +37,30 @@ export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
                     />
                 </div>
             </div>
-            <div className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4 flex flex-col gap-2">
-                <div className="flex gap-5 items-center">
+            <VStack gap="8" className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4">
+                <HStack align="center" gap='16'>
                     <Text weight={TextWeight.MEDIUM} title="Cпециальность:"/>
                     <Text 
                         theme={data?.specialty ? TextTheme.PRIMARY : TextTheme.BLACK} 
                         text={data?.specialty ? data.specialty : Specialties.NULL} 
                     />
-                </div>
-                <div className="flex gap-5 items-center">
+                </HStack>
+                <HStack align="center" gap="16">
                     <Text weight={TextWeight.MEDIUM} title="Опыт работы:"/>
                     <Text 
                         theme={data?.experience ? TextTheme.PRIMARY : TextTheme.BLACK} 
                         text={data?.experience ? data.experience : ExperienceLevel.NULL} 
                     />
-                </div>
-            </div>
-            <div className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4 flex flex-col gap-2">
+                </HStack>
+            </VStack>
+            <VStack gap="8" className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4">
                 <Text title="Мой задачи"/>
-                {myTasks?.map(renderMyTasks)}
-            </div>
+                {myTasks ? (
+                    myTasks?.map(renderMyTasks)
+                ) : (
+                    <Text theme={TextTheme.SECONdARY} title="У вас пока нету активных задач" />
+                )}
+            </VStack>
         </>
     );
 };

@@ -4,8 +4,10 @@ import axios from "axios"
 import { User, userActions } from "entities/User"
 import { USER_LOCALSTORAGE_KEY } from "shared/lib/const/localStorage"
 import { getSignUpPassword, getSignUpRole, getSignUpUsername } from "../../selectors/signUpSelectors"
+import { validateSignUp } from "../validationError/validationError"
+import { ValidateSignUpErrors } from "../../types/signUp"
 
-export const signUp = createAsyncThunk<User, void, ThunkConfig<string>>(
+export const signUp = createAsyncThunk<User, void, ThunkConfig<ValidateSignUpErrors[]>>(
     'signUp/signUp',
     //@ts-ignore
     async (_, thunkAPI) => {
@@ -14,7 +16,13 @@ export const signUp = createAsyncThunk<User, void, ThunkConfig<string>>(
         const username = getSignUpUsername(getState())
         const password = getSignUpPassword(getState())
         const role = getSignUpRole(getState())
+
+        const validateError = validateSignUp({username, password})
         
+        if (validateError.length) {
+            return rejectWithValue(validateError)
+        }
+
         try {
             const response = await axios.post<User>('http://localhost:8000/register', {
                 username,
@@ -31,7 +39,7 @@ export const signUp = createAsyncThunk<User, void, ThunkConfig<string>>(
             dispatch(userActions.setAuthData(response.data))
             return response.data
         } catch(e) {
-           rejectWithValue('error') 
+           rejectWithValue([ValidateSignUpErrors.SERVER_ERROR]) 
         }
     },
   )

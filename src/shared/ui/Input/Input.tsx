@@ -4,6 +4,7 @@ import { InputHTMLAttributes, useCallback } from 'react';
 import cls from './Input.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextTheme, TextWeight } from '../Text/Text';
+import { VStack } from '../Stack';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' >
 
@@ -29,13 +30,12 @@ export const Input = (props: InputProps) => {
     }
 
     return (
-        <div>
+        <VStack gap='4'>
             {layout && (
                 <Text 
                     theme={TextTheme.SECONdARY}
                     weight={TextWeight.MEDIUM}
                     smallText={layout}
-                    className='mb-2'
                 />
             )}
             <input 
@@ -45,6 +45,6 @@ export const Input = (props: InputProps) => {
                 type={type}
                 {...otherProps}
             />
-        </div>
+        </VStack>
     )
 };

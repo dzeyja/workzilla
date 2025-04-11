@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { SignUpSchema } from '../types/signUp'
+import { SignUpSchema, ValidateSignUpErrors } from '../types/signUp'
 import { UserRole } from 'entities/User'
 import { signUp } from '../services/signUp/signUp'
 
@@ -9,7 +9,8 @@ const initialState: SignUpSchema = {
     password: '',
     isLoading: false,
     role: 'executor',
-    id: ''
+    id: '',
+    error: []
 }
 
 const signUpSlice = createSlice({
@@ -30,9 +31,13 @@ const signUpSlice = createSlice({
     builder 
         .addCase(signUp.pending, (state) => {
             state.isLoading = true
+            state.error = []
         })
         .addCase(signUp.fulfilled, (state) => {
             state.isLoading = false
+        })
+        .addCase(signUp.rejected, (state, action) => {
+            state.error = action.payload as ValidateSignUpErrors[]
         })
     }
 })

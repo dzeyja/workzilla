@@ -6,6 +6,7 @@ import {
     getProfileFormData, 
     getProfileIsLoading, 
     getProfileReadonly, 
+    getProfileValidateErrors, 
     profileActions, 
     ProfileCard, 
     profileReducer
@@ -19,6 +20,7 @@ import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/D
 import { getUserAuthData, userActions, UserRole } from "entities/User";
 import { Specialties } from "entities/Specialty";
 import { ExperienceLevel } from "entities/ExperienceLevel";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 export const ProfilePage = () => {
     const dispatch = useAppDispatch()
@@ -27,6 +29,7 @@ export const ProfilePage = () => {
     const profileData = useSelector(getProfileData)
     const profileFormData = useSelector(getProfileFormData)
     const readonly = useSelector(getProfileReadonly)
+    const validateErrors = useSelector(getProfileValidateErrors)
 
     useEffect(() => {
         if (user?.id) {
@@ -75,6 +78,13 @@ export const ProfilePage = () => {
         <DynamicModuleLoader reducer={profileReducer} name='profile'>
             <Page>
                 <ProfilePageHeader />
+                <div className="w-200 mx-auto">
+                    {validateErrors && (
+                        validateErrors.map(error => (
+                            <Text className="mx-auto" theme={TextTheme.ERROR} title={error}/>
+                        ))
+                    )}
+                </div>
                 <ProfileCard 
                     isLoading={isLoading}
                     data={profileData} 

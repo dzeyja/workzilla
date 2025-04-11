@@ -24,4 +24,22 @@ export interface ProfileSchema {
     data?: Profile
     form?: Profile
     readonly?: boolean
+    validateProfileErrors: ValidateProfileErrors[]
+}
+
+export enum ValidateProfileErrors {
+    NO_DATA = 'Данные не указаны',
+    INCORRECT_USER_ID = 'Некорректный ID пользователя',
+    INCORRECT_FIRST_NAME = 'Имя указано неверно',
+    INCORRECT_LAST_NAME = 'Фамилия указана неверно',
+    INCORRECT_AGE = 'Некорректный возраст',
+    INCORRECT_CITY = 'Город указан неверно',
+    INCORRECT_AVATAR = 'Некорректная ссылка на аватар',
+    INCORRECT_SPECIALTY = 'Специальность не указана',
+    INCORRECT_EXPERIENCE = 'Опыт не указан',
+    INCORRECT_PORTFOLIO = 'Портфолио должно содержать корректные ссылки',
+    INCORRECT_BIO = 'Биография слишком короткая или отсутствует',
+    INCORRECT_ROLE = 'Роль указана неверно',
+    INCORRECT_EMAIL = 'Некорректный email',
+    SERVER_ERROR = 'Ошибка сервера при сохранении профиля',
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback } from "react";
-import { getAuthByUsername, getAuthByUsernamePassword } from "../../model/selectors/authByUsername";
+import { getAuthByUsername, getAuthByUsernamePassword, getAuthByValidationErrors } from "../../model/selectors/authByUsername";
 import { useSelector } from "react-redux";
 import { Button } from "shared/ui/Button/Button";
 import { authByUsernameActions, authByUsernameReducer } from "../../model/slice/authByUsernameSlice";
@@ -11,11 +11,12 @@ import { useRouter } from "next/navigation";
 import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import Link from "next/link";
 import { authByUsernameClick } from "../../model/services/authByUsernameClick/authByUsernameClick";
-import { Text } from "shared/ui/Text/Text";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 export const AuthByUsernameForm = () => {
     const username = useSelector(getAuthByUsername)
     const password = useSelector(getAuthByUsernamePassword)
+    const validErrors = useSelector(getAuthByValidationErrors)
     const router = useRouter()
     const dispatch = useAppDispatch()
 
@@ -36,6 +37,11 @@ export const AuthByUsernameForm = () => {
         <DynamicModuleLoader name='authByUsernameForm' reducer={authByUsernameReducer}>
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
                 <Text titleBig="Войти"/>
+                {validErrors && (
+                    validErrors.map(error => (
+                        <Text theme={TextTheme.ERROR} title={error} />
+                    ))
+                )}
                 <Input 
                     layout="Имя пользователя *"
                     placeholder="Имя пользователя"

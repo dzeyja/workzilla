@@ -1,5 +1,4 @@
 import { HTMLAttributes, ReactNode, useCallback } from "react";
-import { Card, CardTheme } from "../Card/Card";
 import { classNames } from "shared/lib/classNames/classNames";
 
 export interface TabItem<T extends string> {

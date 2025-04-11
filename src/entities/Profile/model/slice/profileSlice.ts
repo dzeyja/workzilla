@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { Profile, ProfileSchema } from '../types/ProfileSchema'
+import { Profile, ProfileSchema, ValidateProfileErrors } from '../types/ProfileSchema'
 import { fetchProfile } from '../services/fetchProfile/fetchProfile'
 import { updateProfile } from '../services/updateProfile/updateProfile'
 
@@ -9,7 +9,8 @@ const initialState: ProfileSchema = {
     error: undefined,
     readonly: true,
     data: {},
-    form: {}
+    form: {},
+    validateProfileErrors: []
 }
 
 const profileSlice = createSlice({
@@ -33,6 +34,7 @@ const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder
         .addCase(fetchProfile.pending, (state) => {
+            state.validateProfileErrors = []
             state.error = undefined
             state.isLoading = true
         })
@@ -47,7 +49,7 @@ const profileSlice = createSlice({
         })
         // update profile
         .addCase(updateProfile.pending, (state) => {
-            state.error = undefined
+            state.validateProfileErrors = []
             state.isLoading = true
         })
         .addCase(updateProfile.fulfilled, (state, action: PayloadAction<Profile>) => {
@@ -56,8 +58,9 @@ const profileSlice = createSlice({
             state.form = action.payload
             state.readonly = true
         })
-        .addCase(updateProfile.rejected, (state) => {
+        .addCase(updateProfile.rejected, (state, action) => {
             state.isLoading = false
+            state.validateProfileErrors = action.payload as ValidateProfileErrors[]
         })
   }
 })

@@ -16,7 +16,7 @@ export enum ButtonSize {
     XL = 'size_xl'
 }
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     className?: string
     theme?: ButtonTheme

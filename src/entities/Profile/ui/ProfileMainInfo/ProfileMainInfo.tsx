@@ -1,7 +1,8 @@
 import { Text, TextAlign, TextTheme, TextWeight } from "shared/ui/Text/Text";
-import { Profile } from "../../model/types/ProfileSchema";
+import { Profile, ValidateProfileErrors } from "../../model/types/ProfileSchema";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import Image from "next/image";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface ProfileMainInfoProps {
     data?: Profile
@@ -12,8 +13,8 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
     const isExecutor = data?.role === 'executor'
 
     return (
-            <div className="bg-gray w-200 mx-auto p-14 flex justify-between rounded-lg">
-                <div className="w-96 flex flex-col gap-2">
+            <HStack justify="between" className="bg-gray mx-auto w-200 p-14 rounded-lg">
+                <VStack gap="8" className="w-96">
                     <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Имя:" />
                         <Text 
@@ -56,7 +57,7 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
                             text={data?.email ? data.email : 'Не указан'} 
                         />
                     </div>
-                </div>
+                </VStack>
                 <div>
                     {data?.avatar ? (
                         <Avatar 
@@ -75,6 +76,6 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
                     ) 
                     }
                 </div>
-            </div>
+            </HStack>
     );
 };

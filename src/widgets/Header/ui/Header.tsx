@@ -12,6 +12,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
 import { usePathname } from 'next/navigation';
+import { HStack } from 'shared/ui/Stack';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -108,7 +109,7 @@ export const Header = () => {
                     Задачи
                 </Link>
             </div>
-            <div className='flex gap-3 items-center text-white'>
+            <HStack gap='4' className='text-white'>
                 {user?.id ? (
                     <Dropdown items={dropdownItems}>
                         {user.avatar ? (
@@ -137,7 +138,7 @@ export const Header = () => {
                 >
                     Дать задание
                 </Button>
-            </div>
+            </HStack>
         </div>
     </header>
   );
