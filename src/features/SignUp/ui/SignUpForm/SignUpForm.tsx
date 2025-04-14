@@ -4,7 +4,7 @@ import React, { useCallback, useMemo } from "react";
 import { Button } from "shared/ui/Button/Button";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Input } from "shared/ui/Input/Input";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useSelector } from "react-redux";
 import { getSignUpPassword, getSignUpRole, getSignUpUsername, getSignUpValidateError } from "../../model/selectors/signUpSelectors";
 import { signUpActions, signUpReducer } from "../../model/slice/signUpSlice";
@@ -14,6 +14,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signUpClick } from "../../model/services/signUpClick/signUpClick";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+
+const reducers: ReducersList = {
+    signUpForm: signUpReducer
+}
 
 export const SignUpForm = () => {
     const dispatch = useAppDispatch()
@@ -53,7 +57,7 @@ export const SignUpForm = () => {
     ], []) 
 
     return (
-        <DynamicModuleLoader name='signUpForm' reducer={signUpReducer}>
+        <DynamicModuleLoader reducers={reducers}>
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
                 <Text titleBig="Зарегестрироватся" />
                 {validateError && (

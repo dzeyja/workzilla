@@ -3,6 +3,7 @@
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { Task } from "../../model/types/task";
 import Link from "next/link";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface TaskListItemProps {
     task: Task
@@ -44,23 +45,23 @@ export const TaskListItem = (props: TaskListItemProps) => {
     }
 
     return (
-        <Link href={`/tasks/${task.id}`}>
+        <Link className="w-full" href={`/tasks/${task.id}`}>
             <div className='p-6 rounded-md bg-gray mb-2 w-full hover:scale-101 hover:shadow-md duration-300 cursor-pointer' key={task.id}>
-                <div className="flex justify-between">
+                <HStack justify="between">
                     <Text title={task.title} theme={TextTheme.PRIMARY} />
-                    <div className="flex gap-2">
+                    <HStack gap="4">
                         <Text smallText="Приоритет:" />
                         <Text smallText={priorityLvl} />
-                    </div>
-                </div>
+                    </HStack>
+                </HStack>
                 <Text className="mt-1" smallText={task.description} theme={TextTheme.SECONdARY} />
-                <div className="flex justify-between items-center mt-1">
-                    <div className="flex gap-1">
+                <HStack className="mt-1" justify="between" align="center">
+                    <HStack>
                         <Text smallText="Даты создания:" />
                         <Text smallText={new Date(task.createdAt).toLocaleDateString('ru-RU')}/>
-                    </div>
+                    </HStack>
                     <Text smallText={status} theme={TextTheme.SECONdARY}/>
-                </div>
+                </HStack>
             </div>      
         </Link>
     );

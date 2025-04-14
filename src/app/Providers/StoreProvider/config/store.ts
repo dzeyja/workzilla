@@ -4,7 +4,7 @@ import { userReducer } from "entities/User";
 import { $api } from "shared/api/api";
 import { createReducerManager } from "./reducerManager";
 
-export function createReduxStore(asyncReducers?: ReducersMapObject<StateSchema>) {
+export function createReduxStore(asyncReducers?: ReducersMapObject<StateSchema>, initialState?: StateSchema) {
     const rootState: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
@@ -18,6 +18,7 @@ export function createReduxStore(asyncReducers?: ReducersMapObject<StateSchema>)
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<StateSchema>,
+        preloadedState: initialState,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
                 extraArgument: extraArg,

@@ -16,11 +16,15 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Page } from "shared/ui/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { getUserAuthData, userActions, UserRole } from "entities/User";
 import { Specialties } from "entities/Specialty";
 import { ExperienceLevel } from "entities/ExperienceLevel";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+
+const reducers: ReducersList = {
+    profile: profileReducer
+}
 
 export const ProfilePage = () => {
     const dispatch = useAppDispatch()
@@ -75,7 +79,7 @@ export const ProfilePage = () => {
     }, [dispatch])
 
     return (
-        <DynamicModuleLoader reducer={profileReducer} name='profile'>
+        <DynamicModuleLoader reducers={reducers}>
             <Page>
                 <ProfilePageHeader />
                 <div className="w-200 mx-auto">

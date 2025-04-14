@@ -8,10 +8,14 @@ import { authByUsernameActions, authByUsernameReducer } from "../../model/slice/
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Input } from "shared/ui/Input/Input";
 import { useRouter } from "next/navigation";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import Link from "next/link";
 import { authByUsernameClick } from "../../model/services/authByUsernameClick/authByUsernameClick";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+
+const reducers: ReducersList = {
+    authByUsernameForm: authByUsernameReducer
+}
 
 export const AuthByUsernameForm = () => {
     const username = useSelector(getAuthByUsername)
@@ -34,7 +38,7 @@ export const AuthByUsernameForm = () => {
     }, [dispatch])
 
     return (
-        <DynamicModuleLoader name='authByUsernameForm' reducer={authByUsernameReducer}>
+        <DynamicModuleLoader reducers={reducers}>
             <div className="flex gap-4 flex-col p-10 bg-white rounded-btn w-128 justify-center">
                 <Text titleBig="Войти"/>
                 {validErrors && (

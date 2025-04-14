@@ -5,12 +5,18 @@ import { fetchVacancies } from "../../model/services/fetchVacancies/fetchVacanci
 import { vacancyReducer } from "../../model/slices/vacancySlice";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { VacancyListItem } from "../VacancyListItem/VacancyListItem";
 import { Vacancy } from "entities/Vacancy/model/types/vacancy";
 import { VacancyListItemSkeleton } from "../VacancyListItemSkeleton/VacancyListItemSkeleton";
 import { VStack } from "shared/ui/Stack";
+import { selectTypeReducer } from "features/SelectTypes";
+
+const reducers: ReducersList = {
+    vacancy: vacancyReducer,
+    selectType: selectTypeReducer
+}
 
 export const VacancyList = () => {
     const vacancies = useSelector(getVacancyData)
@@ -41,7 +47,7 @@ export const VacancyList = () => {
     )
 
     return (
-        <DynamicModuleLoader name='vacancy' reducer={vacancyReducer}>
+        <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
             <div className="w-5xl">
                 {isLoading && skeleton}
                 {vacancies?.map(renderVacancies)}

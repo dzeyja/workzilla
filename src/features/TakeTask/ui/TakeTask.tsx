@@ -7,8 +7,6 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button } from "shared/ui/Button/Button";
 import { takeTask } from "../model/services/takeTask/takeTask";
 import { Text } from "shared/ui/Text/Text";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { takeTaskReducer } from "../model/slice/takeTask";
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 
@@ -46,14 +44,14 @@ export const TakeTask = (props: TakeTaskProps) => {
     }, [dispactch, task?.id])
 
     return (
-        <DynamicModuleLoader name='takeTask' reducer={takeTaskReducer}>
+        <>
             {task?.assigneeId ? (
-                <Text title="Задание занято" />
+                <Text title={`Задание занято исполнителем ${user?.username}`} />
             ) : (
                 <Button onClick={onClick}>
                     Взять задание
                 </Button>
             )}
-        </DynamicModuleLoader>
+        </>
     );
 };

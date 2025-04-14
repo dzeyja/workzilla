@@ -6,32 +6,38 @@ import { ReactNode, useEffect } from "react";
 import { useStore } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
+export type ReducersList = {
+    [name in StateSchemaKey]?: Reducer
+}
+
 interface DynamicModuleLoaderProps {
     children: ReactNode
-    name: StateSchemaKey
-    reducer: Reducer
+    reducers: ReducersList
     removeAfterUnmount?: boolean
 }
 
 export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     const { 
         children,   
-        name,
-        reducer,
-        removeAfterUnmount = true
+        removeAfterUnmount = true,
+        reducers
     } = props
     
     const dispatch = useAppDispatch()
     const store = useStore() as ReduxStoreWithManager
-
+    
     useEffect(() => {
-        store.reducerManager.add(name, reducer)
-        dispatch({type: `@INIT ${name} reducer`})
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateSchemaKey, reducer)
+            dispatch({type: `@INIT ${name} reducer`})
+        })
 
         return () => {
             if(removeAfterUnmount) {
-                dispatch({type: `@DESTROY ${name} reducer`})
-                store.reducerManager.remove(name)
+                Object.entries(reducers).forEach(([name, reducer]) => {
+                    store.reducerManager.remove(name as StateSchemaKey)
+                    dispatch({type: `@DESTROY ${name} reducer`})
+                })
             }
         }
     }, [])

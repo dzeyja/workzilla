@@ -5,12 +5,16 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button } from "shared/ui/Button/Button";
 import { Loader } from "shared/ui/Loader/Loader";
 import { Page } from "shared/ui/Page/Page";
 import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
+
+const reducers: ReducersList = {
+  vacancy: vacancyReducer
+}
 
 const VacancyDatails = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -37,7 +41,7 @@ const VacancyDatails = () => {
 
   
   return (
-    <DynamicModuleLoader reducer={vacancyReducer} name='vacancy'>
+    <DynamicModuleLoader reducers={reducers}>
       <Page>
         {isLoading && loading}
         <div className="">

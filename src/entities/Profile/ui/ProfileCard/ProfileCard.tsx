@@ -9,7 +9,6 @@ import { SelectSpecialty, Specialties } from "entities/Specialty";
 import { ExperienceLevel, SelectExperienceLvl } from "entities/ExperienceLevel";
 import { ProfileMainInfo } from "../ProfileMainInfo/ProfileMainInfo";
 import { ProfileExecutorInfo } from "../ProfileExecutorInfo/ProfileExecutorInfo";
-import { Select } from "shared/ui/Select/Select";
 import { ProfileSelectRole } from "../ProfileSelectRole/ProfileSelectRole";
 
 interface ProfileCardProps {
@@ -48,6 +47,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
     } = props
 
     const isExecutor = user?.role === 'executor'
+
+    console.log(isExecutor)
 
     if(isLoading) {
         return (

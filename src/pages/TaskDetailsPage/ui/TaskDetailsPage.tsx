@@ -2,15 +2,19 @@
 
 import { fetchTaskById, getTask, getTaskIsLoading, taskReducer } from "entities/Task";
 import { getUserAuthData } from "entities/User";
-import { TakeTask } from "features/TakeTask";
+import { TakeTask, takeTaskReducer } from "features/TakeTask";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { DynamicModuleLoader } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button } from "shared/ui/Button/Button";
 import { Page } from "shared/ui/Page/Page";
 import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
+
+const reducers: ReducersList = {
+    task: taskReducer,
+    takeTask: takeTaskReducer,
+}
 
 const TaskDetailsPage = () => {
     const params = useParams()
@@ -31,7 +35,7 @@ const TaskDetailsPage = () => {
     const renderTeskProps = (props: string) => <Text smallText={props} theme={TextTheme.SECONdARY} className="ml-4" />
 
     return (
-        <DynamicModuleLoader name='task' removeAfterUnmount={false} reducer={taskReducer}>
+        <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
             <Page>
                 <div className="">
                     <div className="bg-gray p-8 rounded-xl w-full flex flex-col gap-2">

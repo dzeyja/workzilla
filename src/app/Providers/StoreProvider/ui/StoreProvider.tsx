@@ -9,6 +9,7 @@ import { StateSchema } from "../config/StateSchema"
 interface StoreProviderProps {
     children: ReactNode
     asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+    initialState?: DeepPartial<StateSchema>
 }
 
 export const StoreProvider = ({ children, asyncReducers }: StoreProviderProps) => {
