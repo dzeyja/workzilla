@@ -35,11 +35,12 @@ const VacancyDatails = () => {
     }
   }, [dispatch])
 
+  console.log(vacancy?.responsibilities)
+
   const renderVacancyProps = (props: string) => (
     <Text smallText={props} key={props} theme={TextTheme.SECONdARY} className="ml-4"/>
   )
 
-  
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page>
@@ -70,7 +71,7 @@ const VacancyDatails = () => {
               )}
             </div>
             <Text text="Обязанности сотрудника" weight={TextWeight.MEDIUM} className="mt-4"/>
-            {vacancy?.responsibilities.map(renderVacancyProps)}
+            {/* {vacancy?.responsibilities.map(renderVacancyProps)} */}
             <Text text="Требования к кандидату" weight={TextWeight.MEDIUM} className="mt-4"/>
             {vacancy?.requirements.map(renderVacancyProps)}
             <Text text="Условия работы" weight={TextWeight.MEDIUM} className="mt-4"/>

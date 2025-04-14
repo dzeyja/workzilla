@@ -1,3 +1,5 @@
+import { User } from "entities/User";
+
 export type TaskStatus = 'pending' | 'in-progress' | 'completed'
 
 export type TaskPriority = 'low' | 'medium' | 'high'
@@ -10,7 +12,7 @@ export interface Task {
     createdAt: string;
     deadline?: string;
     category?: string;
-    assigneeId?: string;
+    user?: User;
     priority?: TaskPriority;
     requirements?: string[]
     expectedResult?: string

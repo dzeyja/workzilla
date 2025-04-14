@@ -45,8 +45,8 @@ export const TakeTask = (props: TakeTaskProps) => {
 
     return (
         <>
-            {task?.assigneeId ? (
-                <Text title={`Задание занято исполнителем ${user?.username}`} />
+            {task?.user ? (
+                <Text title={`Задание занято исполнителем ${task?.user.username}`} />
             ) : (
                 <Button onClick={onClick}>
                     Взять задание

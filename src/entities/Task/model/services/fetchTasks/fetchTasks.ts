@@ -9,7 +9,11 @@ export const fetchTasks = createAsyncThunk<Task[], void, ThunkConfig<string>>(
         const { extra, rejectWithValue, getState } = thunkAPI
 
         try {
-            const response = await extra.api.get<Task[]>(`/tasks`)
+            const response = await extra.api.get<Task[]>(`/tasks`, {
+                params: {
+                    _expand: 'user'
+                }
+            })
             
             if (!response.data) {
                 throw new Error()
