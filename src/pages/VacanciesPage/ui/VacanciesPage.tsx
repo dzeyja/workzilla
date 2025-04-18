@@ -1,18 +1,21 @@
+"use client"
+
 import { VacancyList } from "entities/Vacancy";
-import { SelectTypes } from "features/SelectTypes";
 import { Page } from "shared/ui/Page/Page";
+import { HStack } from "shared/ui/Stack";
+import { VacanciesPageSearch } from "./VacanciesPageSearch/VacanciesPageSearch";
 import { VacanciesPageFilters } from "./VacanciesPageFilters/VacanciesPageFilters";
 
 export const VacanciesPage = () => {
   return (
     <Page>
-      <div className="flex gap-5">
-        <SelectTypes />
+      <HStack align="start" gap="8" max>
+        <VacanciesPageFilters />
         <div>
-          <VacanciesPageFilters />
+          <VacanciesPageSearch />
           <VacancyList />
         </div>
-      </div>
+      </HStack>
     </Page>
   );
 };

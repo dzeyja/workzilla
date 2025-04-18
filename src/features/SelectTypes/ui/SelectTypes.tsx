@@ -1,53 +1,41 @@
 "use client";
 
 import { useCallback, useMemo } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
-import { getSelectType } from "../model/selectors/selectTypes";
-import { selectTypeActions } from "../model/slice/selectTypeSlice";
-import { VacancyTypes } from "../model/types/selecTypes";
+import { Text } from "shared/ui/Text/Text";
 
-export const SelectTypes = () => {
-    const dispatch = useAppDispatch()
-    const type = useSelector(getSelectType)
-    
-    const tabs = useMemo<TabItem<VacancyTypes>[]>(() => [
-        {
-          content: 'Все',
-          value: VacancyTypes.ALL
-        },
-        {
-          content: 'Разработка',
-          value: VacancyTypes.DEVELOPMENT
-        },
-        {
-          content: 'Дизайн',
-          value: VacancyTypes.DESIGN
-        },
-        {
-            content: 'Аналитика',
-            value: VacancyTypes.ANALYTICS
-        },
-        {
-            content: 'Маркетинг',
-            value: VacancyTypes.MARKETING
-        },
-    ], [])
+export interface SelectTypesItem<T extends string> {
+    content: string;
+    value: T;
+}
+
+interface SelectTypesProps<T extends string> {
+    title?: string
+    className?: string;
+    value: T
+    items: SelectTypesItem<T>[],
+    onChange: (value: T) => void
+}
+
+export const SelectTypes = <T extends string>(props: SelectTypesProps<T>) => {
+    const {
+        title,
+        value,
+        items,
+        onChange
+    } = props
       
-    const onChangeType = useCallback((newTab: TabItem<VacancyTypes>) => {
-        dispatch(selectTypeActions.setType(newTab.value))
-    }, [dispatch])
+    const onChangeTab = useCallback((newTab: TabItem<T>) => {
+        onChange(newTab.value)
+    }, [onChange])
     
     return (
-        <div className="w-[20%]">
-            <div className="text-xl mb-4">
-                Категории
-            </div>
-            <Tabs<VacancyTypes> 
-                value={type ?? VacancyTypes.ALL} 
-                onTabClick={onChangeType} 
-                tabs={tabs}
+        <div className="w-full">
+            <Text title={title} className="mb-2" />
+            <Tabs<T> 
+                value={value} 
+                onTabClick={onChangeTab} 
+                tabs={items}
             />
         </div>
     );

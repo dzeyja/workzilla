@@ -6,3 +6,5 @@ export const getVacancyError = (state: StateSchema) => state.vacancy?.error
 export const getVacancyOrder = (state: StateSchema) => state.vacancy?.order
 export const getVacancySearch = (state: StateSchema) => state.vacancy?.search
 export const getVacancy = (state: StateSchema) => state.vacancy?.vacancy
+export const getVacancyType = (state: StateSchema) => state.vacancy?.type
+export const getVacancySort = (state: StateSchema) => state.vacancy?.sort

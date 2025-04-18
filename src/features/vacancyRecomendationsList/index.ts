@@ -1,0 +1,1 @@
+export { VacancyRecomdationsList } from './ui/VacancyRecomdationsList'

@@ -29,4 +29,32 @@ export interface TaskSchema {
     error?: string
     task?: Task
     myTasks?: Task[]
+    search?: string
+    types?: TaskTypes
+    sort?: TaskSortField
+}
+
+export enum TaskTypes {
+    ALL = 'Все',
+    Development = "Разработка",
+    Infrastructure = "Инфраструктура",
+    Documentation = "Документация",
+    Design = "Дизайн",
+    Testing = "Тестирование",
+    Analytics = "Аналитика",
+    Feedback = "Обратная связь",
+    ProjectManagement = "Управление проектом",
+    Content = "Контент",
+    Security = "Безопасность",
+    Education = "Обучение",
+    Support = "Поддержка"
+}
+
+export enum TaskSortField {
+    Title = "title",
+    CreatedAt = "createdAt",
+    Deadline = "deadline",
+    Priority = "priority",
+    Status = "status",
+    Category = "category"
 }

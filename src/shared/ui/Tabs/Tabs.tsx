@@ -26,7 +26,7 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
     }, [onTabClick])
   
     return (
-        <div className={classNames('flex gap-1 flex-wrap', {}, [className])}>
+        <div className={classNames('flex gap-1 flex-wrap w-full', {}, [className])}>
             {tabs.map((tab) => (
                 <div
                     onClick={clickHandle(tab)}

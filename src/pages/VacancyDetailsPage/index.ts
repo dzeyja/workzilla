@@ -1,1 +1,1 @@
-export { default as VacancyDatails } from './ui/VacancyDetail/VacancyDatails'
+export { default as VacancyDatails } from './ui/VacancyDatailsPage'

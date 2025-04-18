@@ -365,7 +365,7 @@
       "isActive": true,
       "category": "Маркетинг",
       "language": "Русский"
-    }    
+    }
   ],
   "tasks": [
     {
@@ -375,8 +375,8 @@
       "status": "in-progress",
       "createdAt": "2025-04-01T10:00:00Z",
       "deadline": "2025-04-05T23:59:59Z",
-      "category": "Frontend",
-      "userId": "1",
+      "category": "Разработка",
+      "userId": "2",
       "priority": "high",
       "requirements": [
         "Использовать Next.js и Tailwind CSS",
@@ -401,7 +401,8 @@
       ],
       "estimatedTime": "8-12 часов",
       "notes": "Макет в Figma: [ссылка]",
-      "email": "zharylkasynov_d@mail.ru"
+      "email": "zharylkasynov_d@mail.ru",
+      "assigneeId": "2"
     },
     {
       "id": "2",
@@ -409,8 +410,8 @@
       "description": "Добавить автоматические деплои и тесты в GitHub Actions.",
       "status": "in-progress",
       "createdAt": "2025-04-01T11:00:00Z",
-      "category": "DevOps",
-      "userId": "1",
+      "category": "Инфраструктура",
+      "userId": "2",
       "priority": "medium",
       "requirements": [
         "Настроить CI/CD pipeline",
@@ -439,8 +440,8 @@
       "status": "in-progress",
       "createdAt": "2025-04-02T09:30:00Z",
       "deadline": "2025-04-03T18:00:00Z",
-      "category": "Backend",
-      "userId": "1",
+      "category": "Разработка",
+      "userId": "2",
       "priority": "high",
       "requirements": [
         "Использовать локальное хранилище или серверное кэширование",
@@ -470,8 +471,8 @@
       "description": "Добавить описание новых эндпоинтов для работы с заказами.",
       "status": "in-progress",
       "createdAt": "2025-04-02T12:45:00Z",
-      "category": "Documentation",
-      "userId": "1",
+      "category": "Документация",
+      "userId": "2",
       "priority": "low",
       "requirements": [
         "Обновить OpenAPI (Swagger) документацию",
@@ -496,11 +497,11 @@
       "id": "5",
       "title": "Добавить тёмную тему",
       "description": "Реализовать возможность переключения между светлой и тёмной темой.",
-      "status": "in-progress",
+      "status": "pending",
       "createdAt": "2025-03-28T08:15:00Z",
       "deadline": "2025-04-01T20:00:00Z",
-      "category": "Frontend",
-      "userId": "1",
+      "category": "Разработка",
+      "userId": "",
       "priority": "medium",
       "requirements": [
         "Добавить переключатель темы",
@@ -528,10 +529,10 @@
       "id": "6",
       "title": "Реализовать поиск по товарам",
       "description": "Добавить функционал поиска по ключевым словам и категориям.",
-      "status": "in-progress",
+      "status": "pending",
       "createdAt": "2025-04-01T14:20:00Z",
-      "category": "Frontend",
-      "userId": "1",
+      "category": "Разработка",
+      "userId": "",
       "priority": "high",
       "requirements": [
         "Реализовать поиск с debounce",
@@ -562,7 +563,7 @@
       "description": "Настроить lazy loading и сжатие изображений.",
       "status": "in-progress",
       "createdAt": "2025-04-03T09:00:00Z",
-      "category": "Performance",
+      "category": "Разработка",
       "userId": "1",
       "priority": "medium",
       "requirements": [
@@ -593,7 +594,7 @@
       "description": "Добавить отправку email и push-уведомлений пользователям.",
       "status": "pending",
       "createdAt": "2025-04-03T10:30:00Z",
-      "category": "Backend",
+      "category": "Разработка",
       "userId": "2",
       "priority": "high",
       "requirements": [

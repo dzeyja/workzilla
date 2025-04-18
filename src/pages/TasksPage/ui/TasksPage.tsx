@@ -1,19 +1,21 @@
 "use client"
 
-import { TaskList, taskReducer } from "entities/Task";
-import { useState } from "react";
+import { TaskList } from "entities/Task";
 import { Page } from "shared/ui/Page/Page";
+import { TasksPageSearch } from "./TasksPageSearch/TasksPageSearch";
+import { HStack, VStack } from "shared/ui/Stack";
+import { TasksPageFilters } from "./TasksPageFilters/TasksPageFilters";
 
 const TasksPage = () => {
-    const [filters, setFilters] = useState([
-        { id: 1, name: "Только ожидающие" },
-        { id: 2, name: "В процессе" },
-        { id: 3, name: "Завершенные" }
-    ]);
-
     return (
         <Page>
-            <TaskList />
+            <HStack max align="start">
+                <TasksPageFilters />
+                <VStack max gap="16"> 
+                    <TasksPageSearch />
+                    <TaskList />
+                </VStack>
+            </HStack>
         </Page>
     );
 };

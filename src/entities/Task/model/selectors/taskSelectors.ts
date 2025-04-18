@@ -5,3 +5,6 @@ export const getTaskIsLoading = (state: StateSchema) => state.task?.isLoading
 export const getTaskError = (state: StateSchema) => state.task?.error
 export const getTask = (state: StateSchema) => state.task?.task
 export const getTaskMyTasks = (state: StateSchema) => state.task?.myTasks
+export const getTaskSearch = (state: StateSchema) => state.task?.search
+export const getTaskTypes = (state: StateSchema) => state.task?.types
+export const getTaskSort = (state: StateSchema) => state.task?.sort

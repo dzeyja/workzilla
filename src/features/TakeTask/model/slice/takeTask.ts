@@ -8,24 +8,24 @@ const initialState: TakeTaskSchema = {
 }
 
 const takeTaskSlice = createSlice({
-  name: 'signUp',
-  initialState,
-  reducers: {
-  },
-  extraReducers: (builder) => {
-    builder 
-        .addCase(takeTask.pending, (state) => {
-            state.isLoadin = true
-        })
-        .addCase(takeTask.fulfilled, (state) => {
-            state.isLoadin = false
-        })
-        //@ts-ignore
-        .addCase(takeTask.rejected, (state, action: PayloadAction<string>) => {
-            state.isLoadin = false
-            state.error = action.payload
-        })
-    }
+    name: 'takeTask',
+    initialState,
+    reducers: {
+    },
+    extraReducers: (builder) => {
+        builder 
+            .addCase(takeTask.pending, (state) => {
+                state.isLoadin = true
+            })
+            .addCase(takeTask.fulfilled, (state) => {
+                state.isLoadin = false
+            })
+            //@ts-ignore
+            .addCase(takeTask.rejected, (state, action: PayloadAction<string>) => {
+                state.isLoadin = false
+                state.error = action.payload
+            })
+        }
 })
 
 export const { reducer: takeTaskReducer } = takeTaskSlice

@@ -11,9 +11,13 @@ export const takeTask = createAsyncThunk<Task, string, ThunkConfig<string>>(
         
         const user = getUserAuthData(getState())
 
+        if (!user) {
+            return rejectWithValue('error')
+        }
+
         try {
             const response = await extra.api.patch<Task>(`/tasks/${taskId}`, {
-                assigneeId: user?.id,
+                userId: user.id,
                 status: 'in-progress'
             })
             
@@ -21,9 +25,7 @@ export const takeTask = createAsyncThunk<Task, string, ThunkConfig<string>>(
                 throw new Error()
             }
 
-            if (user?.id) {
-                dispatch(taskActions.updateTaskInArray(response.data))
-            }
+            dispatch(taskActions.updateTaskInArray(response.data))
             return response.data
         } catch(e) {
            rejectWithValue('error') 

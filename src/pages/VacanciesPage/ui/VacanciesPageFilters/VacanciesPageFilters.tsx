@@ -1,34 +1,74 @@
 "use client";
 
-import { fetchVacancies, getVacancySearch, vacancyActions } from "entities/Vacancy";
-import { useCallback } from "react";
+import { fetchVacancies, getVacancySort, getVacancyType, vacancyActions, VacancySort, VacancyTypes } from "entities/Vacancy";
+import { SelectTypes, SelectTypesItem } from "features/SelectTypes";
+import { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
-import { Input } from "shared/ui/Input/Input";
+import { Select, SelectOption } from "shared/ui/Select/Select";
 
 export const VacanciesPageFilters = () => {
     const dispatch = useAppDispatch()
-    const search = useSelector(getVacancySearch)
+    const type = useSelector(getVacancyType)
+    const sort = useSelector(getVacancySort)
 
-    const fetchVacancy = useCallback(() => {
+    const fetchData = () => {
         dispatch(fetchVacancies())
-    }, [dispatch])
+    }
 
-    const debouanceFetchVacencies = useDebounce(fetchVacancy, 500)
+    const tabs = useMemo<SelectTypesItem<VacancyTypes>[]>(() => [
+        {
+            content: 'Все',
+            value: VacancyTypes.ALL,
+        },
+        {
+            content: 'Разработка',
+            value: VacancyTypes.DEVELOPMENT
+        },
+        {
+            content: 'Дизайн',
+            value: VacancyTypes.DESIGN
+        },
+        {
+            content: 'Аналитика',
+            value: VacancyTypes.ANALYTICS
+        },
+        {
+            content: 'Маркетинг',
+            value: VacancyTypes.MARKETING
+        },
+    ], [])
 
-    const onChangeSearch = useCallback((value: string) => {
-        dispatch(vacancyActions.setSearch(value))
-        debouanceFetchVacencies()
-    }, [dispatch, debouanceFetchVacencies])
+    const options = useMemo<SelectOption<VacancySort>[]>(() => [
+        { value: VacancySort.DATE, content: 'По дате' },
+        { value: VacancySort.SALARY, content: 'По зарплате' },
+        { value: VacancySort.TITLE, content: 'По названию' },
+    ], [])
+
+    const sortChange = useCallback((value: VacancySort) => {
+        dispatch(vacancyActions.setSort(value))
+        fetchData()
+    }, [])
+
+    const typeChange = useCallback((value: VacancyTypes) => {
+        dispatch(vacancyActions.setType(value))
+        fetchData()
+    }, [dispatch, fetchData])
 
     return (
-        <div className="mb-8">
-            <Input 
-                className="w-full"
-                placeholder="Поиск..."
-                value={search ?? ''}
-                onChange={onChangeSearch}
+        <div>
+            <SelectTypes<VacancyTypes> 
+                title="Категории"
+                value={type ?? VacancyTypes.ALL} 
+                items={tabs} 
+                onChange={typeChange}  
+            />
+            <Select<VacancySort> 
+                className='mt-2'
+                label="Сортировать по"
+                onChange={sortChange}
+                value={sort ?? VacancySort.DATE}
+                options={options}
             />
         </div>
     );

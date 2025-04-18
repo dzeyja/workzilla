@@ -28,4 +28,20 @@ export interface VacancySchema {
     search?: string
     order?: OrderType
     vacancy?: Vacancy
+    type?: VacancyTypes
+    sort?: VacancySort
+}
+
+export enum VacancySort {
+    TITLE = 'title',
+    SALARY = 'salary',
+    DATE = 'date'
+}
+
+export enum VacancyTypes {
+    ALL = 'all',
+    DEVELOPMENT = 'Разработка',
+    MARKETING = 'Маркетинг',
+    DESIGN = 'Дизайн',
+    ANALYTICS = 'Аналитика'
 }

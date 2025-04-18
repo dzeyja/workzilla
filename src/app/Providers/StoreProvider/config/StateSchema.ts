@@ -9,9 +9,11 @@ import { CreateTaskSchema } from "features/CreateTask";
 import { SelectTypesSchema } from "features/SelectTypes";
 import { SignUpSchema } from "features/SignUp";
 import { TakeTaskSchema } from "features/TakeTask";
+import { rtkApi } from "shared/api/rtkApi";
 
 export interface StateSchema {
     user: UserSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Асинхронные редуссеры
     authByUsernameForm?: AuthByUsernameSchema

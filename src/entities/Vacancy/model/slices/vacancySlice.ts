@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { VacancySchema } from '../types/vacancy'
+import { createSlice, PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
+import { VacancySchema, VacancySort, VacancyTypes } from '../types/vacancy'
 import { fetchVacancies } from '../services/fetchVacancies/fetchVacancies'
 import { OrderType } from 'shared/types'
 import { fetchVacancyById } from '../services/fetchVacancyById/fetchVacancyById'
@@ -9,7 +9,9 @@ const initialState: VacancySchema = {
     error: undefined,
     isLoading: false,
     search: '',
-    order: 'asc'
+    order: 'asc',
+    type: VacancyTypes.ALL,
+    sort: VacancySort.DATE
 }
 
 const vacancySlice = createSlice({
@@ -21,7 +23,13 @@ const vacancySlice = createSlice({
         },
         setOrder: (state, action: PayloadAction<OrderType>) => {
             state.order = action.payload
-        }
+        },
+        setType: (state, action: PayloadAction<VacancyTypes>) => {
+            state.type = action.payload
+        },
+        setSort: (state, action: PayloadAction<VacancySort>) => {
+            state.sort = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder

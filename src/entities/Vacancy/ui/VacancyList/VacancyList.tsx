@@ -11,11 +11,9 @@ import { VacancyListItem } from "../VacancyListItem/VacancyListItem";
 import { Vacancy } from "entities/Vacancy/model/types/vacancy";
 import { VacancyListItemSkeleton } from "../VacancyListItemSkeleton/VacancyListItemSkeleton";
 import { VStack } from "shared/ui/Stack";
-import { selectTypeReducer } from "features/SelectTypes";
 
 const reducers: ReducersList = {
     vacancy: vacancyReducer,
-    selectType: selectTypeReducer
 }
 
 export const VacancyList = () => {

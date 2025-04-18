@@ -1,22 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { ThunkConfig } from "app/Providers/StoreProvider"
-import { Vacancy } from "../../types/vacancy"
-import { getVacancyOrder, getVacancySearch } from "../../selectors/vacancySelector"
+import { Vacancy, VacancySort, VacancyTypes } from "../../types/vacancy"
+import { getVacancyOrder, getVacancySearch, getVacancySort, getVacancyType } from "../../selectors/vacancySelector"
 
-export const fetchVacancies = createAsyncThunk<Vacancy[], void, ThunkConfig<string>>(
+export const fetchVacancies = createAsyncThunk<Vacancy[], number | undefined, ThunkConfig<string>>(
     'vacancy/fetchVacancy',
     //@ts-ignore
-    async (_, thunkAPI) => {
+    async (limit, thunkAPI) => {
         const { extra, rejectWithValue, getState } = thunkAPI
 
         const search = getVacancySearch(getState())
         const order = getVacancyOrder(getState())
+        const category = getVacancyType(getState())
+        const sort = getVacancySort(getState())
 
         try {
             const response = await extra.api.get(`/vacancies`, {
                 params: {
                     _order: order,
-                    _q: search,
+                    category: category === VacancyTypes.ALL ? undefined : category,
+                    _sort: sort,
+                    ...(search && { title_like: search }),
+                    ...(limit && {_limit: limit})
                 }
             })
             
@@ -26,7 +31,7 @@ export const fetchVacancies = createAsyncThunk<Vacancy[], void, ThunkConfig<stri
 
             return response.data
         } catch(e) {
-           rejectWithValue('error') 
+           return rejectWithValue('error') 
         }
     },
   )
