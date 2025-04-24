@@ -92,7 +92,6 @@ export const ProfilePage = () => {
                 <ProfileCard 
                     isLoading={isLoading}
                     data={profileData} 
-                    user={user}
                     form={profileFormData}
                     readonly={readonly}
                     onChangeFirstname={onChangeFirstname}

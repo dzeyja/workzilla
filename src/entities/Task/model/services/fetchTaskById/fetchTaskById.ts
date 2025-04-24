@@ -11,7 +11,7 @@ export const fetchTaskById = createAsyncThunk<Task, string, ThunkConfig<string>>
         try {
             const response = await extra.api.get<Task>(`/tasks/${taskId}`, {
                 params: {
-                    _expand: 'user'
+                    _expand: 'user',
                 }
             })
             

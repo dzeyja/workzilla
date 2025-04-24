@@ -136,6 +136,99 @@ server.put('/profile/:userId', (req, res) => {
     }
 });
 
+server.post('/response', (req, res) => {
+    try {
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const { responses = [] } = db;
+
+        const { vacancyId, userId, message } = req.body;
+
+        if (!vacancyId || !userId || !message) {
+            return res.status(400).json({ message: 'Missing fields' });
+        }
+
+        const newResponse = {
+            id: String(responses.length + 1),
+            vacancyId,
+            userId,
+            message,
+            status: 'pending' // ⬅️ статус по умолчанию
+        };
+
+        responses.push(newResponse);
+        db.responses = responses;
+
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+        console.log('✅ Новый отклик сохранён:', newResponse);
+
+        return res.status(201).json(newResponse);
+    } catch (e) {
+        console.error('❌ Ошибка при отклике:', e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+server.get('/responses', (req, res) => {
+    try {
+        const { vacancyId } = req.query;
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+        const { responses = [] } = db;
+
+        const filtered = vacancyId
+            ? responses.filter(r => r.vacancyId === vacancyId)
+            : responses;
+
+        return res.json(filtered);
+    } catch (e) {
+        console.error('❌ Ошибка при получении откликов:', e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+server.get('/my-vacancies/:userId', (req, res) => {
+    const { userId } = req.params; // Извлекаем userId из URL
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+    const vacancies = db.vacancies.filter(vacancy => vacancy.userId === userId); // Фильтруем вакансии по userId
+    
+    if (!vacancies.length) {
+        return res.status(404).json({ message: 'No vacancies found for this user' });
+    }
+    
+    return res.json(vacancies);
+});
+
+server.patch('/response/:id', (req, res) => {
+    try {
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const { responses = [] } = db;
+        const responseId = req.params.id;
+        const { status } = req.body;
+
+        const index = responses.findIndex(r => r.id === responseId);
+
+        if (index === -1) {
+            return res.status(404).json({ message: 'Response not found' });
+        }
+
+        responses[index] = {
+            ...responses[index],
+            status: status || responses[index].status,
+        };
+
+        db.responses = responses;
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+        console.log(`✅ Статус отклика ${responseId} обновлен:`, responses[index]);
+
+        return res.json(responses[index]);
+    } catch (e) {
+        console.error('❌ Ошибка при обновлении отклика:', e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+
 
 // Проверяем авторизацию
 server.use((req, res, next) => {

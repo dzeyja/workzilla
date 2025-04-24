@@ -6,7 +6,6 @@ import { UserSchema } from "entities/User";
 import { VacancySchema } from "entities/Vacancy";
 import { AuthByUsernameSchema } from "features/AuthByUsername";
 import { CreateTaskSchema } from "features/CreateTask";
-import { SelectTypesSchema } from "features/SelectTypes";
 import { SignUpSchema } from "features/SignUp";
 import { TakeTaskSchema } from "features/TakeTask";
 import { rtkApi } from "shared/api/rtkApi";
@@ -19,7 +18,6 @@ export interface StateSchema {
     authByUsernameForm?: AuthByUsernameSchema
     profile?: ProfileSchema
     vacancy?: VacancySchema
-    selectType?: SelectTypesSchema
     signUpForm?: SignUpSchema
     task?: TaskSchema
     takeTask?: TakeTaskSchema

@@ -5,7 +5,8 @@ export enum TextTheme {
     PRIMARY = 'primary',
     SECONdARY = 'secondary',
     BLACK = 'black',
-    ERROR = 'error'
+    ERROR = 'error',
+    SUCCESS = 'success'
 }
 
 export enum TextWeight {

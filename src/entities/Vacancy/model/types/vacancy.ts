@@ -27,7 +27,6 @@ export interface VacancySchema {
     isLoading: boolean
     search?: string
     order?: OrderType
-    vacancy?: Vacancy
     type?: VacancyTypes
     sort?: VacancySort
 }

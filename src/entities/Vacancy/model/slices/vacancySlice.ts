@@ -2,7 +2,6 @@ import { createSlice, PayloadAction, createEntityAdapter } from '@reduxjs/toolki
 import { VacancySchema, VacancySort, VacancyTypes } from '../types/vacancy'
 import { fetchVacancies } from '../services/fetchVacancies/fetchVacancies'
 import { OrderType } from 'shared/types'
-import { fetchVacancyById } from '../services/fetchVacancyById/fetchVacancyById'
 
 const initialState: VacancySchema = {
     data: [],
@@ -45,17 +44,6 @@ const vacancySlice = createSlice({
             .addCase(fetchVacancies.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
-            })
-            // fetchVacancyById
-            .addCase(fetchVacancyById.pending, (state) => {
-                state.isLoading = true
-                state.error = undefined
-            })
-            .addCase(fetchVacancyById.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.vacancy = action.payload
-            }).addCase(fetchVacancyById.rejected, (state, action) => {
-                state.isLoading = false
             })
     }
 })

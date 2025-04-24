@@ -31,6 +31,12 @@
       "username": "dauke",
       "password": "Alihan2018*",
       "role": "executor"
+    },
+    {
+      "id": "3",
+      "username": "aadmin",
+      "password": "Alihan2018*",
+      "role": "executor"
     }
   ],
   "profile": [
@@ -46,7 +52,7 @@
       "experience": "Не указан",
       "portfolio": [],
       "bio": "snsnsnkjnjk kj j kjds khsb skdh js ks lj sd ks jsdsjd ",
-      "role": "executor",
+      "role": "customer",
       "email": "bhbd@sds.ds"
     },
     {
@@ -63,6 +69,21 @@
       "bio": "jadbf;iubsdfbsdfhbsdhf",
       "email": "hsbdsd@ias.cs",
       "role": "executor"
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "first": "Dauletik",
+      "lastname": "Zharylkasynov",
+      "age": 20,
+      "city": "Almaty",
+      "avatar": "",
+      "specialty": "Web Designer",
+      "experience": "Junior (0-1 год)",
+      "portfolio": [],
+      "bio": "hbdkf",
+      "email": "zharylkasynov_d@mail.ru",
+      "role": "executor"
     }
   ],
   "vacancies": [
@@ -70,6 +91,7 @@
       "id": "1",
       "title": "Frontend Developer",
       "description": "Разработка пользовательского интерфейса на React. Работа предполагает создание адаптивных и кросс-браузерных компонентов, оптимизацию производительности и тесное взаимодействие с командой дизайнеров и бэкенд-разработчиков.",
+      "userId": "1",
       "responsibilities": [
         "Разработка интерфейсов на React",
         "Создание адаптивных и кросс-браузерных компонентов",
@@ -107,6 +129,7 @@
     {
       "id": "2",
       "title": "Backend Developer",
+      "userId": "1",
       "description": "Создание REST API на Node.js. Основные задачи включают проектирование, разработку и поддержку микросервисной архитектуры, а также интеграцию с внешними системами и базами данных.",
       "responsibilities": [
         "Разработка и поддержка микросервисной архитектуры",
@@ -144,6 +167,7 @@
     {
       "id": "3",
       "title": "UI/UX Designer",
+      "userId": "1",
       "description": "Создание интерфейсов и прототипов. Разработка пользовательских сценариев, проектирование визуальной составляющей и проведение пользовательских тестирований для повышения удобства использования.",
       "responsibilities": [
         "Разработка прототипов и макетов в Figma и Adobe XD",
@@ -181,6 +205,7 @@
     {
       "id": "4",
       "title": "DevOps Engineer",
+      "userId": "1",
       "description": "Настройка CI/CD и инфраструктуры. Автоматизация процессов развертывания, мониторинг и оптимизация производительности систем, а также управление облачными ресурсами.",
       "responsibilities": [
         "Настройка CI/CD процессов",
@@ -218,6 +243,7 @@
     {
       "id": "5",
       "title": "QA Engineer",
+      "userId": "1",
       "description": "Тестирование веб-приложений. Разработка и выполнение тест-кейсов, автоматизация тестирования и анализ результатов для обеспечения качества продукта.",
       "responsibilities": [
         "Разработка тест-кейсов",
@@ -255,6 +281,7 @@
     {
       "id": "6",
       "title": "Product Manager",
+      "userId": "1",
       "description": "Управление разработкой продукта. Формирование стратегии продукта, взаимодействие с командами разработки и маркетинга, анализ рынка и потребностей пользователей.",
       "responsibilities": [
         "Определение стратегии и целей продукта",
@@ -293,6 +320,7 @@
     {
       "id": "7",
       "title": "Data Scientist",
+      "userId": "1",
       "description": "Анализ данных и разработка моделей. Построение и внедрение моделей машинного обучения, работа с большими данными и оптимизация аналитических процессов.",
       "responsibilities": [
         "Разработка моделей машинного обучения",
@@ -331,6 +359,7 @@
     {
       "id": "8",
       "title": "Marketing Specialist",
+      "userId": "1",
       "description": "Создание и реализация маркетинговых стратегий. Проведение исследований рынка, разработка рекламных кампаний и анализ их эффективности.",
       "responsibilities": [
         "Разработка маркетинговых стратегий",
@@ -497,11 +526,11 @@
       "id": "5",
       "title": "Добавить тёмную тему",
       "description": "Реализовать возможность переключения между светлой и тёмной темой.",
-      "status": "pending",
+      "status": "in-progress",
       "createdAt": "2025-03-28T08:15:00Z",
       "deadline": "2025-04-01T20:00:00Z",
       "category": "Разработка",
-      "userId": "",
+      "userId": "1",
       "priority": "medium",
       "requirements": [
         "Добавить переключатель темы",
@@ -592,10 +621,10 @@
       "id": "8",
       "title": "Настроить логику уведомлений",
       "description": "Добавить отправку email и push-уведомлений пользователям.",
-      "status": "pending",
+      "status": "in-progress",
       "createdAt": "2025-04-03T10:30:00Z",
       "category": "Разработка",
-      "userId": "2",
+      "userId": "1",
       "priority": "high",
       "requirements": [
         "Реализовать email-уведомления",
@@ -618,6 +647,64 @@
       "estimatedTime": "8-10 часов",
       "notes": "Настройки SMTP в .env файле",
       "email": "zharylkasynov_d@mail.ru"
+    }
+  ],
+  "responses": [
+    {
+      "id": "1",
+      "userId": "1",
+      "vacancyId": "1",
+      "status": "rejected",
+      "message": "Здравствуйте! Я заинтересован в данной вакансии и хотел бы обсудить детали.",
+      "cvlink": "https://tailwindcss.com/docs/text-decoration-thickness"
+    },
+    {
+      "message": "ojsdnfuisbnfuisnfuinsufs",
+      "cvlink": "kjndsflhsbdhfbsdfbsdhbfjsdbfklsdnf",
+      "userId": "1",
+      "vacancyId": "1",
+      "status": "accepted",
+      "id": "-7u_CRi"
+    },
+    {
+      "message": "Я очень заинтересован этой вакансией и у меня большой коммерческий опыт отвечаю и примите пожалуйста",
+      "cvlink": "https://tailwindcss.com/docs/scroll-behavior",
+      "userId": "2",
+      "vacancyId": "2",
+      "status": "rejected",
+      "id": "8EmsOFr"
+    },
+    {
+      "message": "шрвышаригшыщиовшаывшаишоырвиашрывиафлвршагщжыргаиыова",
+      "cvlink": "import { Avatar } from \"shared/ui/Avatar/Avatar\";",
+      "userId": "1",
+      "vacancyId": "3",
+      "status": "accepted",
+      "id": "KQ_hjNR"
+    },
+    {
+      "message": "Хочу раобать у вас очень понравилось ваша вакансия",
+      "cvlink": "https://music.yandex.kz/",
+      "userId": "1",
+      "vacancyId": "2",
+      "status": "accepted",
+      "id": "5sIIEgw"
+    },
+    {
+      "message": "т выирадьывваы",
+      "cvlink": "ы вирлаывьфызвщыва",
+      "userId": "1",
+      "vacancyId": "4",
+      "status": "pending",
+      "id": "5n8Wwhj"
+    },
+    {
+      "message": "jnd;fsnfpsd,oao'f",
+      "cvlink": "jsdnfonsdfamspdo'maf",
+      "userId": "1",
+      "vacancyId": "5",
+      "status": "pending",
+      "id": "cFYi5xw"
     }
   ]
 }

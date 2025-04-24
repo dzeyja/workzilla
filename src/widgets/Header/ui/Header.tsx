@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import Link from 'next/link';
 import cls from './Header.module.scss'
@@ -13,12 +13,16 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
 import { usePathname } from 'next/navigation';
 import { HStack } from 'shared/ui/Stack';
+import { Text } from 'shared/ui/Text/Text';
+import { getProfileData } from 'entities/Profile';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const user = useSelector(getUserAuthData)
+    const profile = useSelector(getProfileData)
     const pathname = usePathname()
     const dispatch = useAppDispatch()
+    const isExecutor = profile?.role === 'executor'
 
     useEffect(() => {
         if (pathname !== '/') {
@@ -77,8 +81,15 @@ export const Header = () => {
             {
                 content: logoutContent,
             },
-        ]
-    }, [])
+            {
+                content: (<Text smallText={`${isExecutor ? 'Мои отклики' : 'Мои вакансии'}`}/>),
+                link: '/my-vacancies'
+            },
+            {
+                content: (<Text smallText='Мои задачи'/>)
+            }
+        ]   
+    }, [isExecutor])
 
     const mods: Mods = {
         [cls.scrolled]: scrolled,

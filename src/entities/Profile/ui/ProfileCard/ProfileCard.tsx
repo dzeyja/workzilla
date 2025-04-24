@@ -4,7 +4,7 @@ import { Text, TextWeight } from "shared/ui/Text/Text";
 import { Profile } from "../../model/types/ProfileSchema";
 import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
-import { User, UserRole } from "entities/User";
+import { UserRole } from "entities/User";
 import { SelectSpecialty, Specialties } from "entities/Specialty";
 import { ExperienceLevel, SelectExperienceLvl } from "entities/ExperienceLevel";
 import { ProfileMainInfo } from "../ProfileMainInfo/ProfileMainInfo";
@@ -14,7 +14,6 @@ import { ProfileSelectRole } from "../ProfileSelectRole/ProfileSelectRole";
 interface ProfileCardProps {
     data?: Profile
     form?: Profile
-    user?: User
     readonly?: boolean
     isLoading?: boolean
     onChangeFirstname?: (value?: string) => void
@@ -32,7 +31,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const { 
         data, 
         form,
-        user,
         readonly, 
         isLoading,
         onChangeFirstname,
@@ -46,7 +44,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeEmail
     } = props
 
-    const isExecutor = user?.role === 'executor'
+    const isExecutor = data?.role === 'executor'
 
     console.log(isExecutor)
 

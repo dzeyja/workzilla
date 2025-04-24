@@ -1,0 +1,1 @@
+export { default as MyVacanciesListPage } from './ui/MyVacanciesListPage';
