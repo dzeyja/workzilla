@@ -1,17 +1,18 @@
 "use client";
 
 import { getUserAuthData } from "entities/User";
-import { useSendVacancyResponse } from "entities/VacancyResponses/api/vacancyResponsesApi";
+import { useSendVacancyResponse } from "../../api/vacancyResponsesApi";
 import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { Modal } from "shared/ui/Modal/Modal";
-import { HStack, VStack } from "shared/ui/Stack";
+import { VStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
+import { Vacancy } from "entities/Vacancy";
 
 interface VacancyResponseFormProps {
-    vacancyId?: string
+    vacancy?: Vacancy
     isOpen: boolean
     onClose: () => void
     onSuccess?: () => void
@@ -19,7 +20,7 @@ interface VacancyResponseFormProps {
 
 export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
     const {
-        vacancyId,
+        vacancy,
         isOpen,
         onClose,
         onSuccess
@@ -41,7 +42,7 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
     const onSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if(!user || !vacancyId) {
+        if(!user || !vacancy?.id) {
             return 
         }
 
@@ -50,7 +51,8 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
                 message,
                 cvlink: cvLink,
                 userId: user?.id,
-                vacancyId,
+                vacancyId: vacancy?.id,
+                vacancyTitle: vacancy.title,
                 status: 'pending',
             })
             setMessage('')
@@ -61,7 +63,7 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
         } catch (error) {
             console.log(error)
         }
-    }, [message, cvLink, user?.id, vacancyId])  
+    }, [message, cvLink, user?.id, vacancy?.id])  
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>

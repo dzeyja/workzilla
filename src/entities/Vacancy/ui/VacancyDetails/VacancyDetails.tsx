@@ -43,7 +43,7 @@ export const VacancyDetails = (props: VacancyDetailsProps) => {
                 <Text text={`Телефон: 8 705 357 47 81`} />
             </Modal>
             <VacancyResponseForm 
-                vacancyId={vacancy?.id} 
+                vacancy={vacancy} 
                 isOpen={isOpenVacRes} 
                 onClose={() => setIsOpenVacRes(false)} 
                 onSuccess={() => refetch()}

@@ -7,6 +7,7 @@ export interface VacancyResponse {
     id?: string;
     vacancyId: string;
     userId: string;
+    vacancyTitle?: string
     status: VacancyResponseStatus;
     message: string
     cvlink: string

@@ -1,0 +1,1 @@
+export { default as MyResponsesPage } from './ui/MyResponsesPage'

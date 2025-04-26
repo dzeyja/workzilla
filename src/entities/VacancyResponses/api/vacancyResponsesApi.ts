@@ -19,6 +19,19 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                     ]
                 : [{ type: 'Responses', id: vacancyId }],
         }),
+
+        getMyVacancyResponses: build.query<VacancyResponse[], string>({
+            query: (userId) => ({
+                url: '/responses',
+                params: {
+                    userId: userId,
+                    expand: 'vacancy'
+                }
+            }),
+            providesTags: (result, error, userId) => [
+                { type: 'MyResponses', id: userId }
+            ],
+        }),
         
         sendVacancyResponse: build.mutation<void, VacancyResponse>({
             query: (response) => ({
@@ -26,8 +39,9 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                 method: 'POST',
                 body: response,
             }),
-            invalidatesTags: (result, error, { vacancyId }) => [
-                { type: 'Responses', id: vacancyId }
+            invalidatesTags: (result, error, { vacancyId, userId }) => [
+                { type: 'Responses', id: vacancyId },
+                { type: 'MyResponses', id: userId}
             ],
         }),
         
@@ -45,3 +59,4 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
 export const useGetVacancyResponses = vacancyResponsesApi.useGetVacancyResponsesQuery
 export const useSendVacancyResponse = vacancyResponsesApi.useSendVacancyResponseMutation
 export const useUpdateVacancyResposeStatus = vacancyResponsesApi.useUpdateVacancyResponseStatusMutation
+export const useGetMyVacancyResponses = vacancyResponsesApi.useGetMyVacancyResponsesQuery

@@ -52,7 +52,7 @@
       "experience": "Не указан",
       "portfolio": [],
       "bio": "snsnsnkjnjk kj j kjds khsb skdh js ks lj sd ks jsdsjd ",
-      "role": "customer",
+      "role": "executor",
       "email": "bhbd@sds.ds"
     },
     {
@@ -653,58 +653,20 @@
     {
       "id": "1",
       "userId": "1",
+      "vacancyTitle": "Frontend Developer",
       "vacancyId": "1",
-      "status": "rejected",
+      "status": "pending",
       "message": "Здравствуйте! Я заинтересован в данной вакансии и хотел бы обсудить детали.",
       "cvlink": "https://tailwindcss.com/docs/text-decoration-thickness"
     },
     {
-      "message": "ojsdnfuisbnfuisnfuinsufs",
-      "cvlink": "kjndsflhsbdhfbsdfbsdhbfjsdbfklsdnf",
+      "message": "Я так хочу на эту позицию ",
+      "cvlink": "http://localhost:3000/vacancies/2",
       "userId": "1",
-      "vacancyId": "1",
-      "status": "accepted",
-      "id": "-7u_CRi"
-    },
-    {
-      "message": "Я очень заинтересован этой вакансией и у меня большой коммерческий опыт отвечаю и примите пожалуйста",
-      "cvlink": "https://tailwindcss.com/docs/scroll-behavior",
-      "userId": "2",
       "vacancyId": "2",
+      "vacancyTitle": "Backend Developer",
       "status": "rejected",
-      "id": "8EmsOFr"
-    },
-    {
-      "message": "шрвышаригшыщиовшаывшаишоырвиашрывиафлвршагщжыргаиыова",
-      "cvlink": "import { Avatar } from \"shared/ui/Avatar/Avatar\";",
-      "userId": "1",
-      "vacancyId": "3",
-      "status": "accepted",
-      "id": "KQ_hjNR"
-    },
-    {
-      "message": "Хочу раобать у вас очень понравилось ваша вакансия",
-      "cvlink": "https://music.yandex.kz/",
-      "userId": "1",
-      "vacancyId": "2",
-      "status": "accepted",
-      "id": "5sIIEgw"
-    },
-    {
-      "message": "т выирадьывваы",
-      "cvlink": "ы вирлаывьфызвщыва",
-      "userId": "1",
-      "vacancyId": "4",
-      "status": "pending",
-      "id": "5n8Wwhj"
-    },
-    {
-      "message": "jnd;fsnfpsd,oao'f",
-      "cvlink": "jsdnfonsdfamspdo'maf",
-      "userId": "1",
-      "vacancyId": "5",
-      "status": "pending",
-      "id": "cFYi5xw"
+      "id": "2KzQeaI"
     }
   ]
 }

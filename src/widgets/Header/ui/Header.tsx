@@ -83,7 +83,7 @@ export const Header = () => {
             },
             {
                 content: (<Text smallText={`${isExecutor ? 'Мои отклики' : 'Мои вакансии'}`}/>),
-                link: '/my-vacancies'
+                link: `${isExecutor ? '/my-responses' : '/my-vacancies'}`
             },
             {
                 content: (<Text smallText='Мои задачи'/>)
