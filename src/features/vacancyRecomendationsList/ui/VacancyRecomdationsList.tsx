@@ -11,7 +11,7 @@ export const VacancyRecomdationsList = () => {
     const { data: vacancies, isLoading, error } = useGetVacancyRecomendationsList(4)
     
     const renderVacancyRecomendations = (vacancy: Vacancy) => (
-        <Link target="_blank" href={`/vacancies/${vacancy.id}`} key={vacancy.id} >
+        <Link className="w-full" target="_blank" href={`/vacancies/${vacancy.id}`} key={vacancy.id} >
             <Card className="w-full cursor-pointer">
                 <Text text={vacancy.title} theme={TextTheme.PRIMARY} />
                 <Text text={vacancy.salary} />

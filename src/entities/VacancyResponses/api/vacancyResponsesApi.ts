@@ -20,15 +20,15 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                 : [{ type: 'Responses', id: vacancyId }],
         }),
 
-        getMyVacancyResponses: build.query<VacancyResponse[], string>({
-            query: (userId) => ({
+        getMyVacancyResponses: build.query<VacancyResponse[], { userId: string; status?: VacancyResponseStatus }>({
+            query: ({userId, status}) => ({
                 url: '/responses',
                 params: {
                     userId: userId,
-                    expand: 'vacancy'
+                    ...(status ? { status: status } : {}),
                 }
             }),
-            providesTags: (result, error, userId) => [
+            providesTags: (result, error, { userId }) => [
                 { type: 'MyResponses', id: userId }
             ],
         }),

@@ -1,7 +1,7 @@
-import { User } from "entities/User";
-import { Vacancy } from "entities/Vacancy";
+import { ExperienceLevel } from "entities/ExperienceLevel";
+import { Specialties } from "entities/Specialty";
 
-export type VacancyResponseStatus = 'pending' | 'accepted' | 'rejected';
+export type VacancyResponseStatus = 'pending' | 'accepted' | 'rejected' | 'all';
 
 export interface VacancyResponse {
     id?: string;
@@ -11,4 +11,6 @@ export interface VacancyResponse {
     status: VacancyResponseStatus;
     message: string
     cvlink: string
+    specialty: Specialties
+    experience: ExperienceLevel
 }

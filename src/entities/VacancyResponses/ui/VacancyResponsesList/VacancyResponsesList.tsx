@@ -14,12 +14,8 @@ interface VacancyResponsesListProps {
 
 export const VacancyResponsesList = (props: VacancyResponsesListProps) => {
     const { vacancyId } = props;
-
-    if (!vacancyId) return null;
-
-    const { data: vacancyResponses, isLoading, refetch } = useGetVacancyResponses(vacancyId);
+    const { data: vacancyResponses, isLoading, refetch } = useGetVacancyResponses(vacancyId || '');
     const [updateResponse] = useUpdateVacancyResposeStatus()
-
 
     const onAccept = useCallback(async (id: string) => {
         try {
@@ -74,6 +70,14 @@ export const VacancyResponsesList = (props: VacancyResponsesListProps) => {
                                 {response.cvlink}
                             </Link>
                         </HStack>
+                        <VStack>
+                            <Text text="Специальность" />
+                            <Text smallText={response.specialty} />
+                        </VStack>
+                        <VStack>
+                            <Text text="Опыт работы" />
+                            <Text smallText={response.experience} />
+                        </VStack>
                         <HStack gap="8">
                             {response.status === 'pending' && (
                                 <>

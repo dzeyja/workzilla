@@ -2,7 +2,6 @@
 
 import { getTask, getTaskIsLoading } from "../../model/selectors/taskSelectors";
 import { taskReducer } from "../../model/slice/taskSlice";
-import { getUserAuthData } from "entities/User";
 import { TakeTask, takeTaskReducer } from "features/TakeTask";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -12,6 +11,8 @@ import { Loader } from "shared/ui/Loader/Loader";
 import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 import { fetchTaskById } from "../../model/services/fetchTaskById/fetchTaskById";
+import { getProfileData } from "entities/Profile";
+import { getUserAuthData } from "entities/User";
 
 const reducers: ReducersList = {
     task: taskReducer,
@@ -27,7 +28,7 @@ export const TaskDetails = ({ paramsId }: TaskDetailsProps) => {
     const task = useSelector(getTask)
     const user = useSelector(getUserAuthData)
     const isLoading = useSelector(getTaskIsLoading)
-    const isExecutor = user?.role === 'executor'
+    const isExecutor = user?.role === "executor"
 
     const errorRender = (
         <VStack justify="center" className="py-48" max align="center">

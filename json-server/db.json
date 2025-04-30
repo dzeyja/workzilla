@@ -24,7 +24,7 @@
       "id": "1",
       "username": "daulet",
       "password": "123",
-      "role": "executor"
+      "role": "customer"
     },
     {
       "id": "2",
@@ -651,22 +651,26 @@
   ],
   "responses": [
     {
-      "id": "1",
-      "userId": "1",
-      "vacancyTitle": "Frontend Developer",
-      "vacancyId": "1",
-      "status": "pending",
-      "message": "Здравствуйте! Я заинтересован в данной вакансии и хотел бы обсудить детали.",
-      "cvlink": "https://tailwindcss.com/docs/text-decoration-thickness"
-    },
-    {
-      "message": "Я так хочу на эту позицию ",
+      "message": "Я так хочу у вас работать незнаю почему ",
       "cvlink": "http://localhost:3000/vacancies/2",
-      "userId": "1",
+      "userId": "2",
       "vacancyId": "2",
       "vacancyTitle": "Backend Developer",
       "status": "rejected",
-      "id": "2KzQeaI"
+      "specialty": "Не указан",
+      "experience": "Не указан",
+      "id": 1
+    },
+    {
+      "message": "jdf ;nsnfknsdjfnosjdf nsd;nfma ka njnalsjdn a",
+      "cvlink": "http://localhost:3000/vacancies/3",
+      "userId": "2",
+      "vacancyId": "3",
+      "vacancyTitle": "UI/UX Designer",
+      "status": "accepted",
+      "specialty": "Не указан",
+      "experience": "Не указан",
+      "id": 2
     }
   ]
 }

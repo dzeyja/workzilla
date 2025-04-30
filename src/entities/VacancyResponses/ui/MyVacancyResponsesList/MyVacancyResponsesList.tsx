@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export const MyVacancyResponsesList = () => {
     const user = useSelector(getUserAuthData)
-    const { data: myResponses, isLoading, error } = useGetMyVacancyResponses(user?.id)
+    const { data: myResponses, isLoading, error } = useGetMyVacancyResponses({ userId:'1', status: "rejected" }, { skip: !user?.id });
 
     return (
         <>

@@ -15,9 +15,12 @@ import { useCallback, useState } from "react";
 
 const MyVacanciesListPage = () => {
     const user = useSelector(getUserAuthData)
+    console.log(user)
     const [selectVacancyId, setSelectVacancyId] = useState('')
     const [isOpen, setIsOpen] = useState(false)
-    const { data: vacancies, isLoading, error} = useGetMyVacanciesList(user?.id || '');
+    const { data: vacancies, isLoading, error} = useGetMyVacanciesList(user?.id || '', {
+        skip: !user?.id,
+    });
     
     if (error) {
         return (
@@ -28,7 +31,6 @@ const MyVacanciesListPage = () => {
     }
 
     const onOpenClick = useCallback((vacancyId: string) => {
-        
         setSelectVacancyId(vacancyId)
         setIsOpen(true)
     }, [selectVacancyId, isOpen])
