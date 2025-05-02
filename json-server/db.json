@@ -30,7 +30,7 @@
       "id": "2",
       "username": "dauke",
       "password": "Alihan2018*",
-      "role": "executor"
+      "role": "customer"
     },
     {
       "id": "3",
@@ -68,7 +68,7 @@
       "portfolio": [],
       "bio": "jadbf;iubsdfbsdfhbsdhf",
       "email": "hsbdsd@ias.cs",
-      "role": "executor"
+      "role": "customer"
     },
     {
       "id": "3",
@@ -394,6 +394,39 @@
       "isActive": true,
       "category": "Маркетинг",
       "language": "Русский"
+    },
+    {
+      "title": "Frontend-разработчик",
+      "description": "Ищем талантливого Frontend-разработчика для работы над современным веб-приложением.",
+      "company": "TechSolution",
+      "location": "Almaty",
+      "contactEmail": "zharylkasynov_d@mail.ru",
+      "salary": "$450 000",
+      "responsibilities": [
+        "Разработка",
+        "Тестирование",
+        "Рефакторинг и хард скилы",
+        "Работа с REST API"
+      ],
+      "skills": [
+        "React",
+        "Redux RTK Query",
+        "Tailwind css",
+        "Sass",
+        "TypeScript"
+      ],
+      "requirements": [
+        "Уверенное знание React и RTK Query"
+      ],
+      "conditions": [
+        "Хорошо",
+        "Идеально",
+        "Прекрасно"
+      ],
+      "employmentType": "internship",
+      "experienceLevel": "Middle (1-3 года)",
+      "userId": "1",
+      "id": "fDC3zck"
     }
   ],
   "tasks": [

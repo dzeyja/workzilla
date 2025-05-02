@@ -10,6 +10,9 @@ import { Modal } from "shared/ui/Modal/Modal";
 import { VStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
 import { Vacancy } from "entities/Vacancy";
+import { getProfileData } from "entities/Profile";
+import { Specialties } from "entities/Specialty";
+import { ExperienceLevel } from "entities/ExperienceLevel";
 
 interface VacancyResponseFormProps {
     vacancy?: Vacancy
@@ -29,6 +32,7 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
     const [message, setMessage] = useState('')
     const [cvLink, setCvLink] = useState('')
     const user = useSelector(getUserAuthData)
+    const profileData = useSelector(getProfileData)
     const [sendResponse] = useSendVacancyResponse()
 
     const onChangeMessage = useCallback((value: string) => {
@@ -54,6 +58,8 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
                 vacancyId: vacancy?.id,
                 vacancyTitle: vacancy.title,
                 status: 'pending',
+                specialty: profileData?.specialty ?? Specialties.NULL,
+                experience: profileData?.experience ?? ExperienceLevel.NULL,
             })
             setMessage('')
             setCvLink('')
@@ -67,25 +73,25 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
-            <form onSubmit={onSubmit} className="w-full">
+            <form onSubmit={onSubmit} >
                 <VStack gap="16" max>
                     <Text title="Отклик на вакансию" />
                     <Input
-                        className="w-full"
+                        className="w-md"
                         placeholder="Соправодительное письмо"
                         value={message}
                         onChange={onChangeMessage}
                         layout="Соправодительное письмо"
                     />
                     <Input 
-                        className="w-full"
+                        className="w-md"
                         placeholder="Ссылка на резюме"
                         value={cvLink}
                         onChange={onChangeCVLink}
-                        lang="Ссылка на резюме"
+                        layout="Ссылка на резюме"
                     />
                     {/*@ts-ignore*/}
-                    <Button type='submit' >
+                    <Button type='submit' className="w-full" >
                         Откликнутся
                     </Button>
                 </VStack>

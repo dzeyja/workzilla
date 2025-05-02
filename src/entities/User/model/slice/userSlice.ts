@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { User, UserRole, UserSchema } from '../types/UserSchema'
 import { USER_LOCALSTORAGE_KEY } from 'shared/lib/const/localStorage'
+import { updateUserRole } from '../services/updateUserRole/updateUserRole'
 
 const initialState: UserSchema = {
 }
@@ -29,6 +30,21 @@ const userSlice = createSlice({
       }
     }
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateUserRole.pending, (state) => {
+          state.isLoading = true
+          state.error = undefined
+      })
+      .addCase(updateUserRole.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.userData = action.payload
+      })
+      .addCase(updateUserRole.rejected, (state, action) => {
+          state.isLoading = false
+          // state.error = action.payload ?? 'error'
+      })
+  }
 })
 
 export const { actions: userActions} = userSlice

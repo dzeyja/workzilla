@@ -9,4 +9,6 @@ export interface User {
 
 export interface UserSchema {
     userData?: User
+    isLoading?: boolean
+    error?: string
 }

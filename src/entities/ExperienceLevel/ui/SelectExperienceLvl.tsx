@@ -6,13 +6,15 @@ import { useCallback, useMemo } from "react";
 
 interface SelectExperienceLvlProps {
     value?: ExperienceLevel
+    label?: string
     onChange?: (value: ExperienceLevel) => void
 }
 
 export const SelectExperienceLvl = (props: SelectExperienceLvlProps) => {
     const {
         value,
-        onChange
+        onChange,
+        label
     } = props
 
     const selectOptions = useMemo<SelectOption<ExperienceLevel>[]>(() => 
@@ -30,5 +32,6 @@ export const SelectExperienceLvl = (props: SelectExperienceLvlProps) => {
                 options={selectOptions}
                 value={value}
                 onChange={onChangeHandler}
+                label={label}
             />
 };

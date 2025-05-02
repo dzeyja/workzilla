@@ -17,7 +17,7 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Page } from "shared/ui/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 import { DynamicModuleLoader, ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { getUserAuthData, userActions, UserRole } from "entities/User";
+import { getUserAuthData, updateUserRole, userActions, UserRole } from "entities/User";
 import { Specialties } from "entities/Specialty";
 import { ExperienceLevel } from "entities/ExperienceLevel";
 import { Text, TextTheme } from "shared/ui/Text/Text";
@@ -71,7 +71,7 @@ export const ProfilePage = () => {
 
     const onChangeRole = useCallback((value?: UserRole) => {
         dispatch(profileActions.updateProfile({role: value || 'null'}))
-        dispatch(userActions.setUserRole(value || 'null'))
+        dispatch(updateUserRole(value ?? 'null'))
     }, [dispatch])
 
     const onChangeEmail = useCallback((value?: string) => {

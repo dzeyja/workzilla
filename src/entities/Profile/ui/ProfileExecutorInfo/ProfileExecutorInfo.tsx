@@ -13,18 +13,6 @@ interface ProfileExecutorInfoProps {
 
 export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
     const { data } = props
-    const myTasks = useSelector(getTaskMyTasks)
-
-    const renderMyTasks = (task: Task) => (
-        <Link href={`/tasks/${task.id}`}>
-            <div className="p-4 border rounded-md cursor-pointer">
-                <div>
-                    <Text title={task.title}  theme={TextTheme.PRIMARY} />
-                </div>
-                <Text smallText={task.description} theme={TextTheme.SECONdARY} />
-            </div>
-        </Link>
-    )
 
     return (
         <>
@@ -52,14 +40,6 @@ export const ProfileExecutorInfo = (props: ProfileExecutorInfoProps) => {
                         text={data?.experience ? data.experience : ExperienceLevel.NULL} 
                     />
                 </HStack>
-            </VStack>
-            <VStack gap="8" className="bg-gray w-200 mx-auto p-14 rounded-lg mt-4">
-                <Text title="Мой задачи"/>
-                {myTasks ? (
-                    myTasks?.map(renderMyTasks)
-                ) : (
-                    <Text theme={TextTheme.SECONdARY} title="У вас пока нету активных задач" />
-                )}
             </VStack>
         </>
     );

@@ -38,7 +38,7 @@ const MyVacanciesListPage = () => {
     const closeResponsesModal = useCallback(() => {
         setSelectVacancyId('')
         setIsOpen(false)
-    }, []);
+    }, [isOpen]);
 
     const renderMyVacancy = (vacancy: Vacancy) => (
             <HStack justify="between" align="center" max key={vacancy.id} className="p-4 border-b border-gray-400 hover:bg-gray-300 cursor-pointer">
@@ -48,7 +48,7 @@ const MyVacanciesListPage = () => {
                         <Text smallText={vacancy.salary} theme={TextTheme.SECONdARY} />
                     </div>
                 </Link>
-                <Button onClick={() => onOpenClick(vacancy.id)} theme={ButtonTheme.OUTLINED}>
+                <Button onClick={() => onOpenClick(vacancy?.id)} theme={ButtonTheme.OUTLINED}>
                     Отклики
                 </Button>
             </HStack>
@@ -61,9 +61,15 @@ const MyVacanciesListPage = () => {
                 <VStack className="h-116" justify="center" align="center" max>
                     <Loader />
                 </VStack>
+            ) : vacancies?.length ? (
+                vacancies.map(renderMyVacancy)
             ) : (
-                vacancies?.map(renderMyVacancy)
+                <VStack className="h-116" justify="center" align="center" max>
+                    <Text text="У вас пока нет созданных вакансий" />
+                    <Link className="underline" href='/my-vacancies/create'>Создайте вакансию</Link>
+                </VStack>
             )}
+
             <VacancuResponseModal onClose={closeResponsesModal} vacancyId={selectVacancyId} isOpen={isOpen}/>
         </>
     );

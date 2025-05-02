@@ -191,10 +191,6 @@ server.get('/my-vacancies/:userId', (req, res) => {
     const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
     const vacancies = db.vacancies.filter(vacancy => vacancy.userId === userId); // Фильтруем вакансии по userId
     
-    if (!vacancies.length) {
-        return res.status(404).json({ message: 'No vacancies found for this user' });
-    }
-    
     return res.json(vacancies);
 });
 

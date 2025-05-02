@@ -19,10 +19,9 @@ import { getProfileData } from 'entities/Profile';
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const user = useSelector(getUserAuthData)
-    const profile = useSelector(getProfileData)
     const pathname = usePathname()
     const dispatch = useAppDispatch()
-    const isExecutor = profile?.role === 'executor'
+    const isExecutor = user?.role === 'executor'
 
     useEffect(() => {
         if (pathname !== '/') {
@@ -98,10 +97,10 @@ export const Header = () => {
 
   return (
     <header className={classNames('fixed w-full h-18 z-50', mods, [])}>
-        <div className='max-w-7xl mx-auto flex justify-between py-2'>
+        <HStack justify='between' className='max-w-7xl mx-auto py-2'>
             <div className='flex gap-4 items-center'>
                 <Link href='/'>
-                    <div className="flex items-center gap-2">
+                    <HStack align='center' gap="8">
                         <Image 
                             src='icons/logo.svg'
                             alt='logo'
@@ -111,7 +110,7 @@ export const Header = () => {
                         <div className='text-xl text-white'>
                             workKing
                         </div>
-                    </div>
+                    </HStack>
                 </Link>
                 <Link className='text-white hover:underline' href='/vacancies'>
                     Вакансии
@@ -150,7 +149,7 @@ export const Header = () => {
                     Дать задание
                 </Button>
             </HStack>
-        </div>
+        </HStack>
     </header>
   );
 };

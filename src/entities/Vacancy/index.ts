@@ -1,4 +1,4 @@
-export type { VacancySchema, Vacancy } from './model/types/vacancy'
+export type { VacancySchema, Vacancy, EmploymentType } from './model/types/vacancy'
 export { vacancyReducer, vacancyActions } from './model/slices/vacancySlice'
 export { fetchVacancies } from './model/services/fetchVacancies/fetchVacancies'
 export { VacancyList } from './ui/VacancyList/VacancyList'

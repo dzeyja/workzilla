@@ -6,6 +6,7 @@ import { UserSchema } from "entities/User";
 import { VacancySchema } from "entities/Vacancy";
 import { AuthByUsernameSchema } from "features/AuthByUsername";
 import { CreateTaskSchema } from "features/CreateTask";
+import { CreateVacancyFormSchema } from "features/CreateVacancyForm";
 import { SignUpSchema } from "features/SignUp";
 import { TakeTaskSchema } from "features/TakeTask";
 import { rtkApi } from "shared/api/rtkApi";
@@ -22,6 +23,7 @@ export interface StateSchema {
     task?: TaskSchema
     takeTask?: TakeTaskSchema
     createTasl?: CreateTaskSchema
+    createVacancy?: CreateVacancyFormSchema
 }
 
 export interface ThunkExtraArg {

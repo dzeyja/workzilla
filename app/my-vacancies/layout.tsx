@@ -8,7 +8,7 @@ export default function MyVacanciesLayout({ children }: { children: React.ReactN
         <Page>
             <HStack gap="16" >
                 <Link className="underline" href='/my-vacancies'>Список вакансии</Link>
-                <Link className="underline" href='/my-vacancies/create'>Отклики</Link>
+                <Link className="underline" href='/my-vacancies/create'>Создать вакансию</Link>
             </HStack>
             {children}
         </Page>

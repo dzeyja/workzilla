@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ChangeEvent, useMemo } from 'react';
 import { VStack } from '../Stack';
+import { Text, TextTheme, TextWeight } from '../Text/Text';
 
 export interface SelectOption<T extends string> {
     value: T;
@@ -38,9 +39,11 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     return (
         <VStack role='div' gap='4' className={classNames("", {}, [className])}>
             {label && (
-                <span className="text-sm font-medium">
-                    {label}
-                </span>
+                <Text 
+                    smallText={label} 
+                    theme={TextTheme.SECONdARY}  
+                    weight={TextWeight.MEDIUM}
+                />
             )}
             <select
                 disabled={readonly}

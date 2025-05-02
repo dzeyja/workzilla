@@ -1,5 +1,7 @@
+import { CreatePage } from "pages/CreatePage";
+
 const Create = () => {
-    return <h1>Создать вакансию страницы</h1>
+    return <CreatePage />
 };
 
 export default Create;
