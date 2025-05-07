@@ -6,7 +6,7 @@ export const rtkApi = createApi({
     baseQuery: fetchBaseQuery({ 
         baseUrl: 'http://localhost:8000',
         prepareHeaders: (headers) => {
-            const token = typeof window !== undefined 
+            const token = typeof window !== "undefined" 
                 ? localStorage.getItem(USER_LOCALSTORAGE_KEY)
                 : ''
                 
@@ -16,6 +16,6 @@ export const rtkApi = createApi({
             return headers
         }   
     }),
-    tagTypes: ['Responses', 'MyResponses'],
+    tagTypes: ['Responses', 'MyResponses', 'TaskResponses', 'Tasks', 'MyTaskResponses'],
     endpoints: (build) => ({}),
 })

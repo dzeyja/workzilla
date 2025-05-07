@@ -8,3 +8,4 @@ export const getTaskMyTasks = (state: StateSchema) => state.task?.myTasks
 export const getTaskSearch = (state: StateSchema) => state.task?.search
 export const getTaskTypes = (state: StateSchema) => state.task?.types
 export const getTaskSort = (state: StateSchema) => state.task?.sort
+export const getTaskStatus = (state: StateSchema) => state.task?.status

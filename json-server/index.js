@@ -194,6 +194,21 @@ server.get('/my-vacancies/:userId', (req, res) => {
     return res.json(vacancies);
 });
 
+server.get('/tasks-with-users', (req, res) => {
+    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'utf-8'));
+  
+    const usersMap = Object.fromEntries(db.users.map(user => [user.id, user]));
+  
+    const tasksWithUsers = db.tasks.map(task => ({
+      ...task,
+      user: usersMap[task.userId] || null,         // автор задачи
+      assignee: usersMap[task.assigneeId] || null, // исполнитель задачи
+    }));
+  
+    return res.json(tasksWithUsers);
+  });
+  
+
 server.patch('/response/:id', (req, res) => {
     try {
         const dbPath = path.resolve(__dirname, 'db.json');
@@ -220,6 +235,43 @@ server.patch('/response/:id', (req, res) => {
         return res.json(responses[index]);
     } catch (e) {
         console.error('❌ Ошибка при обновлении отклика:', e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+server.post('/task-response', (req, res) => {
+    try {
+        const dbPath = path.resolve(__dirname, 'db.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+        const { taskResponses = [] } = db;
+
+        const { taskId, userId, message, proposedPrice, estimatedTime, portfolio } = req.body;
+
+        if (!taskId || !userId || !message) {
+            return res.status(400).json({ message: 'Обязательные поля: taskId, userId, message' });
+        }
+
+        const newResponse = {
+            id: String(taskResponses.length + 1),
+            taskId,
+            userId,
+            message,
+            proposedPrice: proposedPrice || null,
+            estimatedTime: estimatedTime || null,
+            portfolio: portfolio || null,
+            status: 'pending',
+            createdAt: new Date().toISOString()
+        };
+
+        taskResponses.push(newResponse);
+        db.taskResponses = taskResponses;
+
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+        console.log('✅ Новый отклик на задачу сохранён:', newResponse);
+
+        return res.status(201).json(newResponse);
+    } catch (e) {
+        console.error('❌ Ошибка при создании отклика на задачу:', e);
         return res.status(500).json({ message: e.message });
     }
 });

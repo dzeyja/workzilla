@@ -1,6 +1,14 @@
 import { User } from "entities/User";
 
-export type TaskStatus = 'pending' | 'in-progress' | 'completed'
+export enum TaskStatus {
+    All = 'all',
+    Pending = 'pending',
+    InProgress = 'in-progress',
+    Completed = 'completed',
+    Cancelled = 'cancelled',
+    Accepted = 'accepted',
+    Rejected = 'rejected'
+}
 
 export type TaskPriority = 'low' | 'medium' | 'high'
 
@@ -21,6 +29,7 @@ export interface Task {
     estimatedTime?: string
     notes?: string
     email?: string
+    assigneeId?: User
 }
 
 export interface TaskSchema {
@@ -32,6 +41,7 @@ export interface TaskSchema {
     search?: string
     types?: TaskTypes
     sort?: TaskSortField
+    status?: TaskStatus
 }
 
 export enum TaskTypes {

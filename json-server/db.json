@@ -30,7 +30,7 @@
       "id": "2",
       "username": "dauke",
       "password": "Alihan2018*",
-      "role": "customer"
+      "role": "executor"
     },
     {
       "id": "3",
@@ -68,7 +68,7 @@
       "portfolio": [],
       "bio": "jadbf;iubsdfbsdfhbsdhf",
       "email": "hsbdsd@ias.cs",
-      "role": "customer"
+      "role": "executor"
     },
     {
       "id": "3",
@@ -474,6 +474,7 @@
       "createdAt": "2025-04-01T11:00:00Z",
       "category": "Инфраструктура",
       "userId": "2",
+      "assigneeId": "1",
       "priority": "medium",
       "requirements": [
         "Настроить CI/CD pipeline",
@@ -504,6 +505,7 @@
       "deadline": "2025-04-03T18:00:00Z",
       "category": "Разработка",
       "userId": "2",
+      "assigneeId": "1",
       "priority": "high",
       "requirements": [
         "Использовать локальное хранилище или серверное кэширование",
@@ -524,8 +526,7 @@
       ],
       "estimatedTime": "6-8 часов",
       "notes": "Ошибка найдена в файле cartReducer.js",
-      "email": "zharylkasynov_d@mail.ru",
-      "assigneeId": "2"
+      "email": "zharylkasynov_d@mail.ru"
     },
     {
       "id": "4",
@@ -553,7 +554,8 @@
       ],
       "estimatedTime": "3-5 часов",
       "notes": "Старую документацию можно найти в /docs/old_api.yaml",
-      "email": "zharylkasynov_d@mail.ru"
+      "email": "zharylkasynov_d@mail.ru",
+      "assigneeId": "1"
     },
     {
       "id": "5",
@@ -564,6 +566,7 @@
       "deadline": "2025-04-01T20:00:00Z",
       "category": "Разработка",
       "userId": "1",
+      "assigneeId": "2",
       "priority": "medium",
       "requirements": [
         "Добавить переключатель темы",
@@ -594,7 +597,8 @@
       "status": "pending",
       "createdAt": "2025-04-01T14:20:00Z",
       "category": "Разработка",
-      "userId": "",
+      "userId": "1",
+      "assigneeId": "2",
       "priority": "high",
       "requirements": [
         "Реализовать поиск с debounce",
@@ -627,6 +631,7 @@
       "createdAt": "2025-04-03T09:00:00Z",
       "category": "Разработка",
       "userId": "1",
+      "assigneeId": "2",
       "priority": "medium",
       "requirements": [
         "Настроить lazy loading для изображений",
@@ -658,6 +663,7 @@
       "createdAt": "2025-04-03T10:30:00Z",
       "category": "Разработка",
       "userId": "1",
+      "assigneeId": "2",
       "priority": "high",
       "requirements": [
         "Реализовать email-уведомления",
@@ -704,6 +710,30 @@
       "specialty": "Не указан",
       "experience": "Не указан",
       "id": 2
+    }
+  ],
+  "taskResponses": [
+    {
+      "id": "1",
+      "taskId": "5",
+      "userId": "2",
+      "message": "dksdnfksdnfn'ksnfag",
+      "proposedPrice": "kandsfasdf",
+      "estimatedTime": "pdamfpnasdf",
+      "portfolio": "josadnfoasgp'asdg",
+      "status": "pending",
+      "createdAt": "2025-05-03T20:39:48.488Z"
+    },
+    {
+      "id": "2",
+      "taskId": "5",
+      "userId": "2",
+      "message": "Привет как дела ч напишу тебе потом ",
+      "proposedPrice": "5000 тг",
+      "estimatedTime": "5 часов",
+      "portfolio": "https://www.youtube.com/",
+      "status": "pending",
+      "createdAt": "2025-05-04T20:24:16.903Z"
     }
   ]
 }

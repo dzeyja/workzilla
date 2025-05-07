@@ -46,21 +46,35 @@ export const TaskListItem = (props: TaskListItemProps) => {
 
     return (
         <Link className="w-full" href={`/tasks/${task.id}`}>
-            <div className='p-6 rounded-md bg-gray mb-2 w-full hover:scale-101 hover:shadow-md duration-300 cursor-pointer' key={task.id}>
-                <HStack justify="between">
-                    <Text title={task.title} theme={TextTheme.PRIMARY} />
-                    <HStack gap="4">
-                        <Text smallText="Приоритет:" />
-                        <Text smallText={priorityLvl} />
+            <div className='p-6 rounded-xl bg-white shadow-sm hover:shadow-lg hover:scale-[1.02] duration-300 cursor-pointer transition-all mb-4' key={task.id}>
+                <HStack justify="between" className="border-b pb-3">
+                    <Text title={task.title} theme={TextTheme.PRIMARY} className="text-xl font-medium" />
+                    <HStack gap="4" className="bg-gray-50 px-3 py-1 rounded-lg">
+                        <Text smallText="Приоритет:" className="text-gray-600" />
+                        <Text 
+                            smallText={priorityLvl} 
+                            className={`${
+                                task.priority === 'high' ? 'text-red-600' : 
+                                task.priority === 'medium' ? 'text-yellow-600' : 
+                                'text-green-600'
+                            } font-medium`} 
+                        />
                     </HStack>
                 </HStack>
-                <Text className="mt-1" smallText={task.description} theme={TextTheme.SECONdARY} />
-                <HStack className="mt-1" justify="between" align="center">
-                    <HStack>
-                        <Text smallText="Даты создания:" />
-                        <Text smallText={new Date(task.createdAt).toLocaleDateString('ru-RU')}/>
+                <Text className="mt-3 text-gray-600" smallText={task.description} theme={TextTheme.SECONdARY} />
+                <HStack className="mt-4" justify="between" align="center">
+                    <HStack className="bg-gray-50 px-3 py-1 rounded-lg">
+                        <Text smallText="📅 Создано:" className="text-gray-600" />
+                        <Text smallText={new Date(task.createdAt).toLocaleDateString('ru-RU')} className="font-medium"/>
                     </HStack>
-                    <Text smallText={status} theme={TextTheme.SECONdARY}/>
+                    <Text 
+                        smallText={status} 
+                        className={`${
+                            task.status === 'pending' ? 'text-yellow-600' : 
+                            task.status === 'in-progress' ? 'text-blue-600' : 
+                            'text-green-600'
+                        } font-medium bg-gray-50 px-3 py-1 rounded-lg`}
+                    />
                 </HStack>
             </div>      
         </Link>

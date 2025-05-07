@@ -14,7 +14,6 @@ import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
 import { usePathname } from 'next/navigation';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
-import { getProfileData } from 'entities/Profile';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -85,7 +84,8 @@ export const Header = () => {
                 link: `${isExecutor ? '/my-responses' : '/my-vacancies'}`
             },
             {
-                content: (<Text smallText='Мои задачи'/>)
+                content: (<Text smallText='Мои задачи'/>),
+                link: '/my-tasks'
             }
         ]   
     }, [isExecutor])

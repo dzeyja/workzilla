@@ -19,8 +19,10 @@ export const Modal = (props: ModalProps) => {
     return (
         <Dialog open={isOpen} onClose={onClose} className="relative z-50">
             <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-                <DialogPanel className="max-w-[700px] max-h-[500px] space-y-4 shadow-lg bg-white rounded-btn p-8">
-                    {children}
+                <DialogPanel className="max-w-[700px] max-h-[90vh] space-y-4 shadow-lg bg-white rounded-btn p-8">
+                    <div className='overflow-y-auto flex-1'>
+                        {children}
+                    </div>
                 </DialogPanel>
             </div>
         </Dialog>
