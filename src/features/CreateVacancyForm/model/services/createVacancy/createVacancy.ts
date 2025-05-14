@@ -35,6 +35,7 @@ export const createVacancy = createAsyncThunk<Vacancy, void, ThunkConfig<Validat
                 throw new Error()
             }
 
+            alert('Вы успешно создали вакансию')
             return response.data
         } catch(e) {
            rejectWithValue([ValidateVacancyError.SERVER_ERROR]) 

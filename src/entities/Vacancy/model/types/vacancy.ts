@@ -1,7 +1,7 @@
 import { ExperienceLevel } from "entities/ExperienceLevel";
 import { OrderType } from "shared/types";
 
-export type EmploymentType = 'full-time' | 'part-time' | 'contract' | 'internship'
+export type EmploymentType = 'full-time' | 'part-time' | 'contract' | 'internship' | 'not_selected'
 
 export interface Vacancy {
     id?: string 
@@ -30,6 +30,8 @@ export interface VacancySchema {
     order?: OrderType
     type?: VacancyTypes
     sort?: VacancySort
+    employmentType?: EmploymentType
+    experienceLevel?: ExperienceLevel
 }
 
 export enum VacancySort {

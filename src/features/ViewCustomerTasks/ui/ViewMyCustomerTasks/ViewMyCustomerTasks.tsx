@@ -60,7 +60,7 @@ export const ViewMyCustomerTasks = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <VStack max gap="4">
+            <VStack max gap="4" className="mt-4">
                 <SelectTypes 
                     items={statusTabs} 
                     value={status || TaskStatus.All} 

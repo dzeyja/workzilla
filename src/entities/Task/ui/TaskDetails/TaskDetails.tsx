@@ -13,7 +13,7 @@ import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 import { fetchTaskById } from "../../model/services/fetchTaskById/fetchTaskById";
 import { getUserAuthData } from "entities/User";
 import { Button } from "shared/ui/Button/Button";
-import { TaskResponseForm } from "entities/TaskResponses";
+import { TaskResponseForm, useGetMyTaskResponses } from "entities/TaskResponses";
 
 const reducers: ReducersList = {
     task: taskReducer,
@@ -29,8 +29,12 @@ export const TaskDetails = ({ paramsId }: TaskDetailsProps) => {
     const [isOpen, setIsOpen] = useState(false)
     const task = useSelector(getTask)
     const user = useSelector(getUserAuthData)
+    const { data: myTaskResponses } = useGetMyTaskResponses({ userId: user?.id! })
     const isLoading = useSelector(getTaskIsLoading)
     const isExecutor = user?.role === "executor"
+
+    const hasResponded = myTaskResponses?.some(response => response.taskId === task?.id)
+    const myResponse = myTaskResponses?.find(response => response.taskId === task?.id)
 
     const errorRender = (
         <VStack justify="center" className="py-48" max align="center">
@@ -44,7 +48,7 @@ export const TaskDetails = ({ paramsId }: TaskDetailsProps) => {
         }
     }, [dispatch])
     
-    const renderTaskProps = (props: string) => <Text smallText={props} theme={TextTheme.SECONdARY} className="ml-4" />
+    const renderTaskProps = (props: string) => <Text smallText={props} key={props} theme={TextTheme.SECONdARY} className="ml-4" />
 
     return (
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
@@ -86,13 +90,28 @@ export const TaskDetails = ({ paramsId }: TaskDetailsProps) => {
                                 {task?.technicalDetails?.map(renderTaskProps)}
                             </div>
                         </div>
-                        {/* <TakeTask task={task} /> */}
-                        <Button 
-                            onClick={() => setIsOpen(true)}
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors"
-                        >
-                            Оставить отклик
-                        </Button>
+                        {isExecutor && (
+                            hasResponded ? (
+                                <div className="bg-gray-50 px-4 py-2 rounded-lg">
+                                    {myResponse?.status === 'accepted' && (
+                                        <Text text="✅ Вы приглашены" theme={TextTheme.SUCCESS} className="font-medium" />
+                                    )}
+                                    {myResponse?.status === 'rejected' && (
+                                        <Text text="❌ Вам отказали" theme={TextTheme.ERROR} className="font-medium" />
+                                    )}
+                                    {myResponse?.status === 'pending' && (
+                                        <Text text="⏳ Ваш отклик на рассмотрении" theme={TextTheme.PRIMARY} className="font-medium" />
+                                    )}
+                                </div>
+                            ) : (
+                                <Button 
+                                    onClick={() => setIsOpen(true)}
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors"
+                                >
+                                    Оставить отклик
+                                </Button>
+                            )
+                        )}
                         <TaskResponseForm task={task} isOpen={isOpen} onClose={() => setIsOpen(false)} />
                     </>
                 )}

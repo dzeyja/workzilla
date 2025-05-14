@@ -24,12 +24,12 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
             query: ({userId, status}) => ({
                 url: '/responses',
                 params: {
-                    userId: userId,
-                    ...(status ? { status: status } : {}),
+                    userId,
+                    status: status && status !== 'all' ? status : undefined
                 }
             }),
-            providesTags: (result, error, { userId }) => [
-                { type: 'MyResponses', id: userId }
+            providesTags: (result, error, { userId, status }) => [
+                { type: 'MyResponses', id: `${userId}-${status || 'all'}` }
             ],
         }),
         
@@ -39,9 +39,9 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                 method: 'POST',
                 body: response,
             }),
-            invalidatesTags: (result, error, { vacancyId, userId }) => [
-                { type: 'Responses', id: vacancyId },
-                { type: 'MyResponses', id: userId}
+            invalidatesTags: (result, error, { userId }) => [
+                { type: 'MyResponses', id: `${userId}-all` },
+                { type: 'MyResponses', id: `${userId}-pending` }
             ],
         }),
         
@@ -51,7 +51,10 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                 method: 'PATCH',
                 body: {status},
             }),
-            invalidatesTags: (result, error, { id }) => [{ type: 'Responses', id }]
+            invalidatesTags: (result, error, { id, status }) => [
+                { type: 'Responses', id },
+                { type: 'MyResponses', id: `*` }
+            ]
         })
     }),
 })

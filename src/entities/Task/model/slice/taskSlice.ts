@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Task, TaskTypes, TaskSchema, TaskSortField, TaskStatus } from '../types/task'
+import { Task, TaskTypes, TaskSchema, TaskSortField, TaskStatus, TaskPriority } from '../types/task'
 import { fetchTasks } from '../services/fetchTasks/fetchTasks'
 import { fetchTaskById } from '../services/fetchTaskById/fetchTaskById'
+import { OrderType } from 'shared/types'
 
 const initialState: TaskSchema = {
     isLoading: false,
@@ -12,7 +13,9 @@ const initialState: TaskSchema = {
     search: '',
     types: TaskTypes.ALL,
     sort: TaskSortField.Title,
-    status: TaskStatus.All
+    status: TaskStatus.All,
+    priority: 'not_selected',
+    order: 'asc'
 }
 
 const taskSlice = createSlice({
@@ -40,6 +43,12 @@ const taskSlice = createSlice({
         },
         setStatus: (state, action: PayloadAction<TaskStatus>) => {
             state.status = action.payload
+        },
+        setPriority: (state, action: PayloadAction<TaskPriority>) => {
+            state.priority = action.payload
+        },
+        setOrder: (state, action: PayloadAction<OrderType>) => {
+            state.order = action.payload
         }
     },
     extraReducers(builder) {

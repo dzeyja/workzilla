@@ -14,12 +14,14 @@ import { Dropdown, DropItem } from 'shared/ui/Dropdown/Dropdown';
 import { usePathname } from 'next/navigation';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
+import { useRouter } from 'next/navigation';
 
 export const Header = () => {
     const [scrolled, setScrolled] = useState(false)
     const user = useSelector(getUserAuthData)
     const pathname = usePathname()
     const dispatch = useAppDispatch()
+    const router = useRouter()
     const isExecutor = user?.role === 'executor'
 
     useEffect(() => {
@@ -45,6 +47,15 @@ export const Header = () => {
     const onLogout = useCallback(() => {
         dispatch(userActions.logout())
     }, [dispatch])
+
+    const onGiveTask = useCallback(() => {
+        if (isExecutor) {
+            alert('Вы не можете создать задачу, для этого поменяйте роль на "Заказчик"')
+            return router.push('/profile')
+        }
+
+        router.push('/my-tasks/create')
+    }, [router, isExecutor])
 
     const profileContent = (
         <div className='flex gap-2'>
@@ -85,7 +96,7 @@ export const Header = () => {
             },
             {
                 content: (<Text smallText='Мои задачи'/>),
-                link: '/my-tasks'
+                link: `${isExecutor ? '/my-taskresponses' : '/my-tasks'}`
             }
         ]   
     }, [isExecutor])
@@ -145,6 +156,7 @@ export const Header = () => {
                 <Button 
                     theme={ButtonTheme.OUTLINED_WHITE}
                     size={ButtonSize.M}
+                    onClick={onGiveTask}
                 >
                     Дать задание
                 </Button>

@@ -1,4 +1,5 @@
 import { User } from "entities/User";
+import { OrderType } from "shared/types";
 
 export enum TaskStatus {
     All = 'all',
@@ -10,16 +11,16 @@ export enum TaskStatus {
     Rejected = 'rejected'
 }
 
-export type TaskPriority = 'low' | 'medium' | 'high'
+export type TaskPriority = 'low' | 'medium' | 'high' | 'not_selected'
 
 export interface Task {
-    id: string;
-    title: string;
-    description: string;
-    status: TaskStatus;
-    createdAt: string;
+    id?: string;
+    title?: string;
+    description?: string;
+    status?: TaskStatus;
+    createdAt?: string;
     deadline?: string;
-    category?: string;
+    category?: TaskTypes;
     user?: User;
     priority?: TaskPriority;
     requirements?: string[]
@@ -42,6 +43,8 @@ export interface TaskSchema {
     types?: TaskTypes
     sort?: TaskSortField
     status?: TaskStatus
+    priority?: TaskPriority
+    order?: OrderType
 }
 
 export enum TaskTypes {

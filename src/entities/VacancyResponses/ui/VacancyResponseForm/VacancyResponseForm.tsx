@@ -32,6 +32,8 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
 
     const [message, setMessage] = useState('')
     const [cvLink, setCvLink] = useState('')
+    const [salary, setSalary] = useState('')
+
     const user = useSelector(getUserAuthData)
     const profileData = useSelector(getProfileData)
     const [sendResponse] = useSendVacancyResponse()
@@ -44,6 +46,10 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
         setCvLink(value)
     }, [cvLink])
 
+    const onChangeSalary = useCallback((value: string) => {
+        setSalary(value)
+    }, [salary])
+
     const onSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -55,15 +61,18 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
             sendResponse({
                 message,
                 cvlink: cvLink,
-                userId: user?.id,
-                vacancyId: vacancy?.id,
-                vacancyTitle: vacancy.title,
+                userId: user?.id || '',
+                vacancyId: vacancy?.id || '',
+                vacancyTitle: vacancy?.title || '',
                 status: 'pending',
                 specialty: profileData?.specialty ?? Specialties.NULL,
                 experience: profileData?.experience ?? ExperienceLevel.NULL,
+                createdAt: new Date().toISOString(),
+                salary: salary || 'Не указано',
             })
             setMessage('')
             setCvLink('')
+            setSalary('')
             onSuccess?.()
             onClose()
             alert('Отклик отправлен')
@@ -90,6 +99,13 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
                         value={cvLink}
                         onChange={onChangeCVLink}
                         layout="Ссылка на резюме"
+                    />
+                    <Input 
+                        className="w-md"
+                        placeholder="Ожидаемая запрлата"
+                        value={salary}
+                        onChange={onChangeSalary}
+                        layout="Ожидаемая зарплата"
                     />
                     {/*@ts-ignore*/}
                     <Button type='submit' className="w-full" >

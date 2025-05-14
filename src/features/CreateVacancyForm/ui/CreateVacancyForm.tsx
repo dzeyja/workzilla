@@ -16,8 +16,6 @@ import { DynamicModuleLoader, ReducersList } from "shared/lib/components/Dynamic
 import { ArrayInputField } from "shared/ui/ArrayInputField/ArrayInputField"
 import { TextArea } from "shared/ui/Textarea/Textarea"
 import { createVacancy } from "../model/services/createVacancy/createVacancy"
-import { errorToJSON } from "next/dist/server/render"
-import { SelectTypes, SelectTypesItem } from "features/SelectTypes"
 
 const reducers: ReducersList = {
     createVacancy: createVacancyReducer

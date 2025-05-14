@@ -24,7 +24,7 @@
       "id": "1",
       "username": "daulet",
       "password": "123",
-      "role": "customer"
+      "role": "executor"
     },
     {
       "id": "2",
@@ -45,7 +45,7 @@
       "userId": "1",
       "first": "Daulet",
       "lastname": "Zharylkasynov",
-      "age": 100,
+      "age": 35,
       "city": "Ala",
       "avatar": "",
       "specialty": "Project Manager",
@@ -68,7 +68,7 @@
       "portfolio": [],
       "bio": "jadbf;iubsdfbsdfhbsdhf",
       "email": "hsbdsd@ias.cs",
-      "role": "executor"
+      "role": "customer"
     },
     {
       "id": "3",
@@ -427,6 +427,32 @@
       "experienceLevel": "Middle (1-3 года)",
       "userId": "1",
       "id": "fDC3zck"
+    },
+    {
+      "title": "Backend Developer",
+      "description": "Backend Developer is a very difficult profession. You will work with node.js, express.js, mongoDb, vsCode, next.js, Vue, React",
+      "company": "DauletComp",
+      "location": "Almaty",
+      "contactEmail": "zharylkasynov_d@mail.ru",
+      "experienceLevel": "Senior (3-5 лет)",
+      "category": "Разработка",
+      "salary": "500 000ТГ",
+      "responsibilities": [
+        "Работа",
+        "Работать"
+      ],
+      "requirements": [
+        "Работа"
+      ],
+      "conditions": [
+        "Работа"
+      ],
+      "skills": [
+        "Работа"
+      ],
+      "employmentType": "part-time",
+      "userId": "1",
+      "id": "xdlu1Bz"
     }
   ],
   "tasks": [
@@ -692,7 +718,7 @@
     {
       "message": "Я так хочу у вас работать незнаю почему ",
       "cvlink": "http://localhost:3000/vacancies/2",
-      "userId": "2",
+      "userId": "1",
       "vacancyId": "2",
       "vacancyTitle": "Backend Developer",
       "status": "rejected",
@@ -703,37 +729,52 @@
     {
       "message": "jdf ;nsnfknsdjfnosjdf nsd;nfma ka njnalsjdn a",
       "cvlink": "http://localhost:3000/vacancies/3",
-      "userId": "2",
+      "userId": "1",
       "vacancyId": "3",
       "vacancyTitle": "UI/UX Designer",
       "status": "accepted",
       "specialty": "Не указан",
       "experience": "Не указан",
       "id": 2
+    },
+    {
+      "message": "Я хочу поработать у вас очень, пожалуйста примите меня ",
+      "cvlink": "http://localhost:3000/vacancies/1",
+      "userId": "2",
+      "vacancyId": "1",
+      "vacancyTitle": "Frontend Developer",
+      "status": "accepted",
+      "specialty": "Product Designer",
+      "experience": "Junior (0-1 год)",
+      "id": 3
     }
   ],
   "taskResponses": [
     {
-      "id": "1",
-      "taskId": "5",
+      "message": "Привет я очень заинтересован вашей задаче и хочу взятся за нее ",
       "userId": "2",
-      "message": "dksdnfksdnfn'ksnfag",
-      "proposedPrice": "kandsfasdf",
-      "estimatedTime": "pdamfpnasdf",
-      "portfolio": "josadnfoasgp'asdg",
+      "taskId": "3",
+      "taskTitle": "Исправить баг в корзине",
+      "portfolio": "https://music.yandex.kz/",
+      "proposedPrice": "50 000ТГ",
+      "estimatedTime": "5-6 часов",
       "status": "pending",
-      "createdAt": "2025-05-03T20:39:48.488Z"
+      "specialty": "Не указан",
+      "experience": "Не указан",
+      "id": 1
     },
     {
-      "id": "2",
-      "taskId": "5",
-      "userId": "2",
-      "message": "Привет как дела ч напишу тебе потом ",
-      "proposedPrice": "5000 тг",
-      "estimatedTime": "5 часов",
-      "portfolio": "https://www.youtube.com/",
-      "status": "pending",
-      "createdAt": "2025-05-04T20:24:16.903Z"
+      "message": "Сильно хочу у вас работать ",
+      "userId": "1",
+      "taskId": "6",
+      "taskTitle": "Реализовать поиск по товарам",
+      "portfolio": "http://localhost:3000/tasks/6",
+      "proposedPrice": "50 000 тг",
+      "estimatedTime": "4 часа",
+      "status": "accepted",
+      "specialty": "Project Manager",
+      "experience": "Не указан",
+      "id": 2
     }
   ]
 }

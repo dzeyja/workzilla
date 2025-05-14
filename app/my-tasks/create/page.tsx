@@ -1,9 +1,7 @@
+import { CreateTaskPage } from "pages/CreateTaskPage"
+
 const MyTasksCreatePage = () => {
-    return (
-        <div>
-            Task создать страница
-        </div>
-    )
+    return <CreateTaskPage />
 }
 
 export default MyTasksCreatePage

@@ -1,11 +1,15 @@
 import { Text } from "shared/ui/Text/Text"
 import { Task } from "entities/Task"
+import { Button } from "shared/ui/Button/Button"
+import { useState } from "react"
+import { TaskResponseModal } from "entities/TaskResponses"
 
 interface ViewMyCustomerTaskItemProps {
     task: Task
 }
 
 export const ViewMyCustomerTasksItem = ({ task }: ViewMyCustomerTaskItemProps) => {
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <div 
@@ -36,6 +40,13 @@ export const ViewMyCustomerTasksItem = ({ task }: ViewMyCustomerTaskItemProps) =
                         '🟢 Низкий'}
                     </div>
                 </div>
+                <Button
+                    className="mt-4"
+                    onClick={() => setIsOpen(true)}
+                >
+                    Посмотреть отклики
+                </Button>
+                <TaskResponseModal taskId={task.id} isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
     )
 }

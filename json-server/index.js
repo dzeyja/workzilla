@@ -243,12 +243,22 @@ server.post('/task-response', (req, res) => {
     try {
         const dbPath = path.resolve(__dirname, 'db.json');
         const db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
-        const { taskResponses = [] } = db;
+        const { taskResponses = [], tasks = [] } = db;
 
         const { taskId, userId, message, proposedPrice, estimatedTime, portfolio } = req.body;
 
         if (!taskId || !userId || !message) {
             return res.status(400).json({ message: 'Обязательные поля: taskId, userId, message' });
+        }
+
+        // Находим задачу и меняем её статус
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+        if (taskIndex !== -1) {
+            tasks[taskIndex] = {
+                ...tasks[taskIndex],
+                status: 'in-progress'
+            };
+            db.tasks = tasks;
         }
 
         const newResponse = {
@@ -268,6 +278,7 @@ server.post('/task-response', (req, res) => {
 
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
         console.log('✅ Новый отклик на задачу сохранён:', newResponse);
+        console.log('✅ Статус задачи обновлен на in-progress');
 
         return res.status(201).json(newResponse);
     } catch (e) {

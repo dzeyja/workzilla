@@ -48,7 +48,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
             <select
                 disabled={readonly}
                 className={classNames(
-                    "px-4 py-2 border rounded-lg text-sm"
+                    "px-4 py-2 border rounded-lg text-sm outline-none"
                 )}
                 value={value}
                 onChange={onChangeHandler}

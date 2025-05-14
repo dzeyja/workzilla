@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
-import { VacancySchema, VacancySort, VacancyTypes } from '../types/vacancy'
+import { EmploymentType, VacancySchema, VacancySort, VacancyTypes } from '../types/vacancy'
 import { fetchVacancies } from '../services/fetchVacancies/fetchVacancies'
 import { OrderType } from 'shared/types'
+import { ExperienceLevel } from 'entities/ExperienceLevel'
 
 const initialState: VacancySchema = {
     data: [],
@@ -10,7 +11,9 @@ const initialState: VacancySchema = {
     search: '',
     order: 'asc',
     type: VacancyTypes.ALL,
-    sort: VacancySort.DATE
+    sort: VacancySort.DATE,
+    employmentType: 'not_selected',
+    experienceLevel: ExperienceLevel.NULL
 }
 
 const vacancySlice = createSlice({
@@ -29,6 +32,12 @@ const vacancySlice = createSlice({
         setSort: (state, action: PayloadAction<VacancySort>) => {
             state.sort = action.payload
         },
+        setEmploymentType: (state, action: PayloadAction<EmploymentType>) => {
+            state.employmentType = action.payload
+        },
+        setExperienceLevel: (state, action: PayloadAction<ExperienceLevel>) => {
+            state.experienceLevel = action.payload
+        }
     },
     extraReducers: (builder) => {
         builder

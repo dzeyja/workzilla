@@ -11,6 +11,7 @@ import { VacancyListItem } from "../VacancyListItem/VacancyListItem";
 import { Vacancy } from "entities/Vacancy/model/types/vacancy";
 import { VacancyListItemSkeleton } from "../VacancyListItemSkeleton/VacancyListItemSkeleton";
 import { VStack } from "shared/ui/Stack";
+import { Text } from "shared/ui/Text/Text";
 
 const reducers: ReducersList = {
     vacancy: vacancyReducer,
@@ -48,7 +49,13 @@ export const VacancyList = () => {
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
             <div className="w-5xl">
                 {isLoading && skeleton}
-                {vacancies?.map(renderVacancies)}
+                {vacancies?.length ? (
+                    vacancies?.map(renderVacancies)
+                ) : (
+                    <div className="flex justify-center items-center h-[300px]">
+                        <Text titleBig="Ничего не найдено" />
+                    </div>
+                )}
             </div>
         </DynamicModuleLoader>
     );

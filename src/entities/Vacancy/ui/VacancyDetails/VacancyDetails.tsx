@@ -30,6 +30,7 @@ export const VacancyDetails = (props: VacancyDetailsProps) => {
 
     const hasResponded = responses?.some(response => response.userId === user?.id)
     const myResponse = responses?.find(response => response.userId === user?.id)
+    const isEmployer = user?.role === "customer"
 
     const renderVacancyProps = (props: string) => (
         <Text smallText={props} key={props} theme={TextTheme.SECONdARY} className="ml-4"/>
@@ -98,7 +99,11 @@ export const VacancyDetails = (props: VacancyDetailsProps) => {
                                 {vacancy?.conditions?.map(renderVacancyProps)}
                             </div>
                         </VStack>
-                        {hasResponded ? (
+                        {isEmployer ? (
+                            <div className="bg-blue-50 px-4 py-2 rounded-lg">
+                                <Text text="✨ Вы заказчик и вы не можете откликнуться на вакансию" theme={TextTheme.PRIMARY} className="font-medium" />
+                            </div>
+                        ) : hasResponded ? (
                             <div className="bg-gray-50 px-4 py-2 rounded-lg">
                                 {myResponse?.status === 'accepted' && (
                                     <Text text="✅ Вы приглашены" theme={TextTheme.SUCCESS} className="font-medium" />

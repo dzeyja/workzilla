@@ -13,4 +13,6 @@ export interface VacancyResponse {
     cvlink: string
     specialty: Specialties
     experience: ExperienceLevel
+    createdAt: string
+    salary: string
 }

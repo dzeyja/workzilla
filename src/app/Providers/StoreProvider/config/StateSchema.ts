@@ -5,7 +5,7 @@ import { TaskSchema } from "entities/Task";
 import { UserSchema } from "entities/User";
 import { VacancySchema } from "entities/Vacancy";
 import { AuthByUsernameSchema } from "features/AuthByUsername";
-import { CreateTaskSchema } from "features/CreateTask";
+import { CreateTaskFormSchema } from "features/CreateTaskForm";
 import { CreateVacancyFormSchema } from "features/CreateVacancyForm";
 import { SignUpSchema } from "features/SignUp";
 import { TakeTaskSchema } from "features/TakeTask";
@@ -13,17 +13,17 @@ import { rtkApi } from "shared/api/rtkApi";
 
 export interface StateSchema {
     user: UserSchema
+    profile: ProfileSchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Асинхронные редуссеры
     authByUsernameForm?: AuthByUsernameSchema
-    profile?: ProfileSchema
     vacancy?: VacancySchema
     signUpForm?: SignUpSchema
     task?: TaskSchema
     takeTask?: TakeTaskSchema
-    createTasl?: CreateTaskSchema
     createVacancy?: CreateVacancyFormSchema
+    createTaskForm?: CreateTaskFormSchema
 }
 
 export interface ThunkExtraArg {

@@ -1,2 +1,5 @@
 export { TaskResponseForm } from './ui/TaskResponseForm/TaskResponseForm'
 export type { TaskResponse, TaskResponseStatus } from './model/types/TaskResponses'
+export { MyTaskResponseList } from './ui/MyTaskResponseList/MyTaskResponseList'
+export { useGetMyTaskResponses } from './api/taskResponseApi'
+export { TaskResponseModal } from './ui/TaskResponseModal/TaskResponseModal'
