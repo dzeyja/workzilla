@@ -34,6 +34,8 @@ export const fetchVacancies = createAsyncThunk<Vacancy[], number | undefined, Th
                 throw new Error()
             }
 
+            console.log(response.data)
+
             return response.data
         } catch(e) {
            return rejectWithValue('error') 

@@ -3,7 +3,7 @@ import { Profile, ValidateProfileErrors } from "../../types/ProfileSchema";
 export function validateProfile(data?: Profile) {
     const errors: ValidateProfileErrors[] = []
     
-    if (!data?.first) {
+    if (!data?.firstname) {
         errors.push(ValidateProfileErrors.INCORRECT_FIRST_NAME)
     }
 

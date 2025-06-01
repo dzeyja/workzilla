@@ -6,7 +6,8 @@ export type VacancyResponseStatus = 'pending' | 'accepted' | 'rejected' | 'all';
 export interface VacancyResponse {
     id?: string;
     vacancyId: string;
-    userId: string;
+    user_id: string;
+    username?: string;
     vacancyTitle?: string
     status: VacancyResponseStatus;
     message: string
@@ -15,4 +16,5 @@ export interface VacancyResponse {
     experience: ExperienceLevel
     createdAt: string
     salary: string
+    answer?: string
 }

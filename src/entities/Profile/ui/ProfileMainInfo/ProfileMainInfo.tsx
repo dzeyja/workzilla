@@ -18,8 +18,8 @@ export const ProfileMainInfo = (props: ProfileMainInfoProps) => {
                     <div className="flex gap-5 items-center">
                         <Text weight={TextWeight.MEDIUM} title="Имя:" />
                         <Text 
-                            theme={data?.first ? TextTheme.PRIMARY : TextTheme.BLACK} 
-                            text={data?.first ? data?.first : 'Укажите имя'} 
+                            theme={data?.firstname ? TextTheme.PRIMARY : TextTheme.BLACK} 
+                            text={data?.firstname ? data?.firstname : 'Укажите имя'} 
                         />
                     </div>
                     <div className="flex gap-5 items-center">

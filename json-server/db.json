@@ -24,7 +24,7 @@
       "id": "1",
       "username": "daulet",
       "password": "123",
-      "role": "executor"
+      "role": "customer"
     },
     {
       "id": "2",
@@ -52,7 +52,7 @@
       "experience": "Не указан",
       "portfolio": [],
       "bio": "snsnsnkjnjk kj j kjds khsb skdh js ks lj sd ks jsdsjd ",
-      "role": "executor",
+      "role": "customer",
       "email": "bhbd@sds.ds"
     },
     {

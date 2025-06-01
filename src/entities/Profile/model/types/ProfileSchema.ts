@@ -5,7 +5,7 @@ import { UserRole } from "entities/User";
 export interface Profile {
     id?: string;
     userId?: string; 
-    first?: string;
+    firstname?: string;
     lastname?: string;
     age?: number;
     city?: string;

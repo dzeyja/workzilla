@@ -6,6 +6,7 @@ import { VacancyResponseStatus } from "../../model/types/vacancyResponses";
 import { SelectTypes, SelectTypesItem } from "features/SelectTypes";
 import { useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 export const MyVacancyResponsesList = () => {
     const user = useSelector(getUserAuthData)
@@ -18,6 +19,8 @@ export const MyVacancyResponsesList = () => {
         skip: !user?.id,
         refetchOnMountOrArgChange: true 
     });
+
+    // console.log(myResponses)
     
     const onChangeStatus = useCallback((newStatus: VacancyResponseStatus) => {
         setStatus(newStatus)
@@ -91,6 +94,11 @@ export const MyVacancyResponsesList = () => {
                                  response.status === 'rejected' ? 'Отклонено' : 
                                  'В рассмотрении'}
                             </div>
+                                <div>
+                                    <div>
+                                        Создатель - <Link className="underline font-bold" href={`/profile/${response.user_id}`}>{response.username}</Link>
+                                    </div>
+                                </div>
 
                             <h2 className="text-xl font-semibold text-gray-900 mb-4 line-clamp-2">
                                 {response.vacancyTitle}
@@ -102,7 +110,7 @@ export const MyVacancyResponsesList = () => {
                                 <div className="flex flex-col gap-2 text-sm">
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Желаемая зарплата:</span>
-                                        <span className="font-medium text-gray-900">{response.salary}</span>
+                                        <span className="font-medium text-gray-900">{response.salary ? response.salary : 'Не указано'}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Дата отклика:</span>

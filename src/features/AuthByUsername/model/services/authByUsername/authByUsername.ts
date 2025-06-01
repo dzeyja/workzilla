@@ -11,7 +11,12 @@ export const authByUsername = createAsyncThunk<User, void, ThunkConfig<ValidateA
     'authByUsername/authByUsername',
     //@ts-ignore
     async (_, thunkAPI) => {
-        const { getState, rejectWithValue, dispatch } = thunkAPI
+        const { 
+            getState, 
+            rejectWithValue, 
+            dispatch,
+            extra
+        } = thunkAPI
         
         const username = getAuthByUsername(getState())
         const password = getAuthByUsernamePassword(getState())
@@ -23,7 +28,7 @@ export const authByUsername = createAsyncThunk<User, void, ThunkConfig<ValidateA
         }
         
         try {
-            const response = await axios.post<User>('http://localhost:8000/login', {
+            const response = await extra.api.post<User>('/login', {
                 username,
                 password
             })

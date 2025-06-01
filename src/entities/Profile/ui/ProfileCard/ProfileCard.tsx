@@ -63,7 +63,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     <div className="flex flex-col gap-6 w-full w-64">
                         <div className="flex justify-between items-center w-full">
                             <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Имя:" />
-                            <Input className="w-64" placeholder="Введите имя" onChange={onChangeFirstname} value={form?.first} />
+                            <Input className="w-64" placeholder="Введите имя" onChange={onChangeFirstname} value={form?.firstname} />
                         </div>
                         <div className="flex justify-between items-center w-full">
                             <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Фамилия:" />

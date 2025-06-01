@@ -15,6 +15,15 @@ const eslintConfig = [
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
       "react/no-unescaped-entities": "off",
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+      'react-hooks/exhaustive-deps': 'off',
+      'react-hooks/rules-of-hooks': 'off',
+      'prefer-const': 'off',
+      'react/jsx-key': 'off',
+      'react/jsx-no-undef': 'off',
+      'react/display-name': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ];

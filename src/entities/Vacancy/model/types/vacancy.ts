@@ -10,10 +10,10 @@ export interface Vacancy {
     company?: string; 
     location?: string; 
     salary?: string; 
-    employmentType?: EmploymentType 
-    postedAt?: string; 
+    employment_type?: EmploymentType 
+    posted_at?: string; 
     skills?: string[]; 
-    experienceLevel?: ExperienceLevel
+    experience_level?: ExperienceLevel
     contactEmail?: string;
     responsibilities?: string[]
     requirements?: string[]
@@ -37,7 +37,8 @@ export interface VacancySchema {
 export enum VacancySort {
     TITLE = 'title',
     SALARY = 'salary',
-    DATE = 'date'
+    DATE = 'posted_at',
+    EMPOYMENT_TYPE = 'employment_type'
 }
 
 export enum VacancyTypes {

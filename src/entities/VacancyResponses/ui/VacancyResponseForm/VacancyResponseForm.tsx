@@ -61,7 +61,7 @@ export const VacancyResponseForm = (props: VacancyResponseFormProps) => {
             sendResponse({
                 message,
                 cvlink: cvLink,
-                userId: user?.id || '',
+                user_id: user?.id || '',
                 vacancyId: vacancy?.id || '',
                 vacancyTitle: vacancy?.title || '',
                 status: 'pending',

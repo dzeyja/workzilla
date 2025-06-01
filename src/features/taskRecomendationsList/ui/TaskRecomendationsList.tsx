@@ -14,22 +14,40 @@ export const TaskRecomdationsList = () => {
 
     if (isLoading) {
         return (
-            <HStack justify="center" align="center" role="div" className="w-[20%] h-full" >
+            <HStack 
+                justify="center" 
+                align="center" 
+                role="div" 
+                className="w-[20%] h-full" 
+            >
                 <Loader />
             </HStack>
         )
     }
     
     const renderTaskRecomendations = (task: Task) => (
-        <Link target="_blank" className="w-full" href={`/tasks/${task.id}`} key={task.id} >
+        <Link 
+            target="_blank" 
+            className="w-full cursor-pointer hover:shadow-lg transition-shadow duration-300 border border-gray-100" 
+            href={`/tasks/${task.id}`} 
+            key={task.id} 
+        >
             <Card className="w-full cursor-pointer">
                 <Text text={task.title} theme={TextTheme.PRIMARY} />
+                <Text 
+                    smallText={task.description} 
+                    className=" max-w-full overflow-hidden line-clamp-2" 
+                />
             </Card>
         </Link>
     )
 
     return (
-        <VStack gap="8" role="div" className="w-[20%]" >
+        <VStack 
+            gap="8" 
+            role="div" 
+            className="w-[20%]"
+        >
             <Text weight={TextWeight.MEDIUM} title="Рекомендаций" />
             {tasks?.map(renderTaskRecomendations)}
         </VStack>

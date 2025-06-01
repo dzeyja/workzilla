@@ -79,7 +79,7 @@ export const TaskListItem = (props: TaskListItemProps) => {
                 <HStack className="mt-8" justify="between" align="center">
                     <HStack className="bg-gradient-to-r from-gray-50/80 to-gray-100/80 backdrop-blur-xl px-5 py-2.5 rounded-2xl shadow-sm">
                         <Text smallText="📅 Создано:" className="text-gray-500" />
-                        <Text smallText={new Date(task.createdAt).toLocaleDateString('ru-RU')} className="font-semibold text-gray-800"/>
+                        <Text smallText={new Date(task?.createdAt || '').toLocaleDateString('ru-RU')} className="font-semibold text-gray-800"/>
                     </HStack>
                     <Text 
                         smallText={status} 

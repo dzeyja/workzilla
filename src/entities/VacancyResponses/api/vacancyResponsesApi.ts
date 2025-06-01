@@ -39,9 +39,9 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
                 method: 'POST',
                 body: response,
             }),
-            invalidatesTags: (result, error, { userId }) => [
-                { type: 'MyResponses', id: `${userId}-all` },
-                { type: 'MyResponses', id: `${userId}-pending` }
+            invalidatesTags: (result, error, { user_id }) => [
+                { type: 'MyResponses', id: `${user_id}-all` },
+                { type: 'MyResponses', id: `${user_id}-pending` }
             ],
         }),
         

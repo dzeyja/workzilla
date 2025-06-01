@@ -15,10 +15,10 @@ interface VacancyListItemProps {
 
 export const VacancyListItem = ({ vacancy }: VacancyListItemProps) => {
     const user = useSelector(getUserAuthData)
-    const { data: responses } = useGetVacancyResponses(vacancy.id)
+    const { data: responses } = useGetVacancyResponses(vacancy?.id || '')
 
-    const hasResponded = responses?.some(response => response.userId === user?.id)
-    const myResponse = responses?.find(response => response.userId === user?.id)
+    const hasResponded = responses?.some(response => response.user_id === user?.id)
+    const myResponse = responses?.find(response => response.user_id === user?.id)
 
     return (
         <Link href={`/vacancies/${vacancy.id}`}>

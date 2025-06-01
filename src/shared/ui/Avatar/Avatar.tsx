@@ -20,7 +20,7 @@ export const Avatar = (props: AvatarProps) => {
     }
 
     return <Image 
-                src={src}
+                src={"/icons/profile.png"}
                 alt={src}
                 width={size}
                 height={size}

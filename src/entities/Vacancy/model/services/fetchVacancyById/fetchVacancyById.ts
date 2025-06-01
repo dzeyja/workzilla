@@ -9,7 +9,7 @@ export const fetchVacancyById = createAsyncThunk<Vacancy, string, ThunkConfig<st
         const { extra, rejectWithValue } = thunkAPI
 
         try {
-            const response = await extra.api.get<Vacancy>(`/vacancies/${vacancyId}`)
+            const response = await extra.api.get<Vacancy>(`/vacancies/_${vacancyId}`)
             
             if (!response.data) {
                 throw new Error()
