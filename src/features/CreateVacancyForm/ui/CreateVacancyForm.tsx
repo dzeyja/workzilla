@@ -47,11 +47,11 @@ export const CreateVacancyForm = () => {
     }, [dispatch])
 
     const onChangeEmployment = useCallback((value?: EmploymentType) => {
-        dispatch(createVacancyActions.setFormData({ employmentType: value || "internship" }))
+        dispatch(createVacancyActions.setFormData({ employment_type: value || "internship" }))
     }, [dispatch])
 
     const onChangeExperience = useCallback((value?: ExperienceLevel) => {
-        dispatch(createVacancyActions.setFormData({ experienceLevel: value || ExperienceLevel.NULL }))
+        dispatch(createVacancyActions.setFormData({ experience_level: value || ExperienceLevel.NULL }))
     }, [dispatch])
 
     const onChangeSalary = useCallback((value?: string) => {
@@ -160,12 +160,12 @@ export const CreateVacancyForm = () => {
                     <HStack gap="32" max>
                         <Select<EmploymentType>
                             options={employmentOptions}
-                            value={formData?.employmentType}
+                            value={formData?.employment_type}
                             onChange={onChangeEmployment}
                             label="Работа"
                         />
                         <SelectExperienceLvl 
-                            value={formData?.experienceLevel}
+                            value={formData?.experience_level}
                             onChange={onChangeExperience}
                             label="Уровень опыта"
                         />

@@ -1,4 +1,4 @@
-import { MyTaskResponsePage } from "pages/MyTaskResponses"
+import { MyTaskResponsePage } from "views/MyTaskResponses"
 
 const MyTaskResponse = () => {
     return <MyTaskResponsePage />

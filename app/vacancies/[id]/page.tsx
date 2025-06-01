@@ -1,4 +1,4 @@
-import { VacancyDatails } from "pages/VacancyDetailsPage";
+import { VacancyDatails } from "views/VacancyDetailsPage";
 
 const VacancyDetailsPage = () => {
   return <VacancyDatails />

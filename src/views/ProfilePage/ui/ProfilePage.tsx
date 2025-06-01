@@ -37,7 +37,7 @@ export const ProfilePage = () => {
     }, [dispatch, user?.id])
 
     const onChangeFirstname = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ first: value || '' }))
+        dispatch(profileActions.updateProfile({ firstname: value || '' }))
     }, [dispatch])
 
     const onChangeLastname = useCallback((value?: string) => {

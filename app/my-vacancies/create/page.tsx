@@ -1,4 +1,4 @@
-import { CreatePage } from "pages/CreatePage";
+import { CreatePage } from "views/CreatePage";
 
 const Create = () => {
     return <CreatePage />

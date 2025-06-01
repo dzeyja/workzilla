@@ -1,4 +1,4 @@
-import { MyVacanciesListPage } from "pages/MyVacanciesPage";
+import { MyVacanciesListPage } from "views/MyVacanciesPage";
 
 const MyVacancies = () => {
     return <MyVacanciesListPage />

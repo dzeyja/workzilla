@@ -1,4 +1,4 @@
-import { TaskDetailsPage } from "pages/TaskDetailsPage";
+import { TaskDetailsPage } from "views/TaskDetailsPage";
 
 const Task = () => {
   return <TaskDetailsPage />

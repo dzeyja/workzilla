@@ -46,7 +46,7 @@ export const ViewMyCustomerTasksItem = ({ task }: ViewMyCustomerTaskItemProps) =
                 >
                     Посмотреть отклики
                 </Button>
-                <TaskResponseModal taskId={task.id} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+                <TaskResponseModal taskId={task?.id || ''} isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
     )
 }

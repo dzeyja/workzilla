@@ -1,4 +1,5 @@
-import { AuthPage } from "pages/AuthPage";
+import { AuthPage } from "views/AuthPage";
+
 
 const Auth = () => {
   return <AuthPage />

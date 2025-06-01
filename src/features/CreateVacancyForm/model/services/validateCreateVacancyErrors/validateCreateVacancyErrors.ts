@@ -17,8 +17,8 @@ export function validateVacancy(data?: Vacancy): ValidateVacancyError[] {
         errors.push(ValidateVacancyError.INCORRECT_EMAIL);
     }
 
-    if (!data.employmentType) errors.push(ValidateVacancyError.INCORRECT_EMPLOYMENT_TYPE);
-    if (!data.experienceLevel) errors.push(ValidateVacancyError.INCORRECT_EXPERIENCE_LEVEL);
+    if (!data.employment_type) errors.push(ValidateVacancyError.INCORRECT_EMPLOYMENT_TYPE);
+    if (!data.experience_level) errors.push(ValidateVacancyError.INCORRECT_EXPERIENCE_LEVEL);
     if (!data.salary?.trim()) errors.push(ValidateVacancyError.INCORRECT_SALARY);
 
     if (!data.responsibilities || data.responsibilities.length === 0 || data.responsibilities.some(res => !res.trim())) {
