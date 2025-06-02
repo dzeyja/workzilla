@@ -11,7 +11,7 @@ export const signUp = createAsyncThunk<User, void, ThunkConfig<ValidateSignUpErr
     'signUp/signUp',
     //@ts-ignore
     async (_, thunkAPI) => {
-        const { getState, rejectWithValue, dispatch } = thunkAPI
+        const { getState, rejectWithValue, dispatch, extra } = thunkAPI
         
         const username = getSignUpUsername(getState())
         const password = getSignUpPassword(getState())
@@ -24,7 +24,7 @@ export const signUp = createAsyncThunk<User, void, ThunkConfig<ValidateSignUpErr
         }
 
         try {
-            const response = await axios.post<User>('http://localhost:8000/register', {
+            const response = await extra.api.post<User>('/register', {
                 username,
                 password,
                 role
