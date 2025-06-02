@@ -1,6 +1,7 @@
 "use client";
 
 import { getProfileReadonly, profileActions, updateProfile } from "entities/Profile";
+import { getUserAuthData } from "entities/User";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -9,10 +10,17 @@ import { Text, TextTheme, TextWeight } from "shared/ui/Text/Text";
 
 interface ProfilePageHeaderProps {
     readonly?: boolean
+    paramsId?: string
 }
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
+    const {
+        paramsId
+    } = props
+
+    
     const dispatch = useAppDispatch()
+    const user = useSelector(getUserAuthData)
     const readonly = useSelector(getProfileReadonly)
     
     const onEdit = useCallback(() => {
@@ -27,11 +35,13 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         dispatch(updateProfile())
     }, [dispatch])
 
+    const isMyProfile = String(user?.id) === String(paramsId)
+
     return (
         <div className="w-200 flex items-center justify-between p-4 mx-auto mb-6 rounded-lg bg-gray">
-            {readonly ? (
+            <Text title={`${isMyProfile ? 'Мой профиль' : 'Профиль'}`} weight={TextWeight.MEDIUM} theme={TextTheme.PRIMARY} />
+            {isMyProfile && ( readonly ? (
                 <>
-                    <Text title="Профиль" weight={TextWeight.MEDIUM} theme={TextTheme.PRIMARY} />
                     <Button onClick={onEdit}>
                         Редактировать
                     </Button>
@@ -45,7 +55,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                         Сохранить
                     </Button>
                 </>
-            )}
+            ))}
         </div>
   );
 };

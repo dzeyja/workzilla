@@ -24,6 +24,8 @@ export const Header = () => {
     const router = useRouter()
     const isExecutor = user?.role === 'executor'
 
+    console.log(user?.id)
+
     useEffect(() => {
         if (pathname !== '/') {
             setScrolled(true)
@@ -85,7 +87,7 @@ export const Header = () => {
         return [
             {
                 content: profileContent,
-                link: `/profile`
+                link: `/profile/${user?.id}`
             },
             {
                 content: logoutContent,

@@ -28,8 +28,8 @@ export const VacancyDetails = (props: VacancyDetailsProps) => {
     const { data: vacancy } = useGetVacancyDetails(paramsId)
     const { data: responses, refetch } = useGetVacancyResponses(paramsId)
 
-    const hasResponded = responses?.some(response => response.user_id === user?.id)
-    const myResponse = responses?.find(response => response.user_id === user?.id)
+    const hasResponded = responses?.some(response => response.userid === user?.id)
+    const myResponse = responses?.find(response => response.userid === user?.id)
     const isEmployer = user?.role === "customer"
 
     const renderVacancyProps = (props: string) => (

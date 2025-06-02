@@ -6,7 +6,7 @@ const taskResponsesApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getTaskResponses: build.query<TaskResponse[], string>({
             query: (taskId) => ({
-                url: '/taskResponses',
+                url: `/taskResponses/${taskId}`,
                 params: {
                     taskId: taskId, 
                     _expand: 'user',
@@ -23,9 +23,8 @@ const taskResponsesApi = rtkApi.injectEndpoints({
 
         getMyTaskResponses: build.query<TaskResponse[], { userId: string; status?: TaskResponseStatus }>({
             query: ({userId, status}) => ({
-                url: '/taskResponses',
+                url: `/taskResponses/${userId}`,
                 params: {
-                    userId: userId,
                     ...(status ? { status } : {}),
                     _expand: 'task',
                 }

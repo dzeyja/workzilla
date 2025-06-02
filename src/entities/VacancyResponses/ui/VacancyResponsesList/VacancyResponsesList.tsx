@@ -55,10 +55,12 @@ export const VacancyResponsesList = (props: VacancyResponsesListProps) => {
                 responses.map(response => (
                     <div
                         key={response.id}
-                        className="p-6 border-b border-gray-100 bg-gray-100 transition-colors duration-200 space-y-6"
+                        className="p-6 border-b border-gray-100 bg-gray-100 transition-colors duration-200 space-y-6 mb-4 rounded-xl"
                     >
                         <div className="flex justify-between items-center">
-                            <Text text={'User name'} className="text-lg font-medium text-gray-900" />
+                            <Link href={`/profile/${response.userid}`}>
+                                Исполнитель - <span className="underline">{response.username}</span>
+                            </Link>
                             <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusStyles(response.status)}`}>
                                 {getStatusText(response.status)}
                             </span>

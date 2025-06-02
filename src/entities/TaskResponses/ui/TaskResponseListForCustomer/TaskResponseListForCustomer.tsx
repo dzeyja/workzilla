@@ -96,11 +96,11 @@ export const TaskResponseListForCustomer = ({ taskId }: TaskResponseListForCusto
                                 <div className="flex flex-col gap-2 text-sm">
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Предложенная цена:</span>
-                                        <span className="font-medium text-gray-900">{response.proposedPrice}</span>
+                                        <span className="font-medium text-gray-900">{response.proposed_price}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Срок выполнения:</span>
-                                        <span className="font-medium text-gray-900">{response.estimatedTime}</span>
+                                        <span className="font-medium text-gray-900">{response.estimated_time}</span>
                                     </div>
                                 </div>
 

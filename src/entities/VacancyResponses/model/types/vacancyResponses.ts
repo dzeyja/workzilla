@@ -6,7 +6,7 @@ export type VacancyResponseStatus = 'pending' | 'accepted' | 'rejected' | 'all';
 export interface VacancyResponse {
     id?: string;
     vacancyId: string;
-    user_id: string;
+    userid: string;
     username?: string;
     vacancyTitle?: string
     status: VacancyResponseStatus;

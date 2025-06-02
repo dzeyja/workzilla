@@ -79,50 +79,53 @@ export const MyVacancyResponsesList = () => {
             )}
 
             <div className="grid gap-6 mt-4 md:grid-cols-2 lg:grid-cols-3">
-                {myResponses?.map(response => (
-                    <div 
-                        key={response.id} 
-                        className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden"
-                    >
-                        <div className="p-6">
-                            <div className={`text-sm font-medium rounded-full px-3 py-1 inline-block mb-4 ${
-                                response.status === 'accepted' ? 'bg-green-100 text-green-700' :
-                                response.status === 'rejected' ? 'bg-red-100 text-red-700' :
-                                'bg-yellow-100 text-yellow-700'
-                            }`}>
-                                {response.status === 'accepted' ? 'Принято' :
-                                 response.status === 'rejected' ? 'Отклонено' : 
-                                 'В рассмотрении'}
-                            </div>
-                                <div>
+                {myResponses?.map(response => {
+                    console.log(response.userid)
+
+                    return (<div 
+                            key={response.id} 
+                            className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden"
+                        >
+                            <div className="p-6">
+                                <div className={`text-sm font-medium rounded-full px-3 py-1 inline-block mb-4 ${
+                                    response.status === 'accepted' ? 'bg-green-100 text-green-700' :
+                                    response.status === 'rejected' ? 'bg-red-100 text-red-700' :
+                                    'bg-yellow-100 text-yellow-700'
+                                }`}>
+                                    {response.status === 'accepted' ? 'Принято' :
+                                    response.status === 'rejected' ? 'Отклонено' : 
+                                    'В рассмотрении'}
+                                </div>
                                     <div>
-                                        Создатель - <Link className="underline font-bold" href={`/profile/${response.user_id}`}>{response.username}</Link>
+                                        <div>
+                                            Создатель - <Link className="underline font-bold" href={`/profile/${response.userid}`}>{response.username}</Link>
+                                        </div>
                                     </div>
-                                </div>
 
-                            <h2 className="text-xl font-semibold text-gray-900 mb-4 line-clamp-2">
-                                {response.vacancyTitle}
-                            </h2>
+                                <h2 className="text-xl font-semibold text-gray-900 mb-4 line-clamp-2">
+                                    {response.vacancyTitle}
+                                </h2>
 
-                            <div className="space-y-4">
-                                <p className="text-gray-600 line-clamp-3">{response.message}</p>
-                                
-                                <div className="flex flex-col gap-2 text-sm">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-gray-500">Желаемая зарплата:</span>
-                                        <span className="font-medium text-gray-900">{response.salary ? response.salary : 'Не указано'}</span>
-                                    </div>
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-gray-500">Дата отклика:</span>
-                                        <span className="font-medium text-gray-900">
-                                            {new Date(response.createdAt).toLocaleDateString('ru-RU')}
-                                        </span>
+                                <div className="space-y-4">
+                                    <p className="text-gray-600 line-clamp-3">{response.message}</p>
+                                    
+                                    <div className="flex flex-col gap-2 text-sm">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-gray-500">Желаемая зарплата:</span>
+                                            <span className="font-medium text-gray-900">{response.salary ? response.salary : 'Не указано'}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-gray-500">Дата отклика:</span>
+                                            <span className="font-medium text-gray-900">
+                                                {new Date(response.createdAt).toLocaleDateString('ru-RU')}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
+                        </div>)
+                }
+                )}
             </div>
         </div>
     );

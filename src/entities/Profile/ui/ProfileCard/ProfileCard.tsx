@@ -78,11 +78,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
                             <Input className="w-64" placeholder="Введите город" onChange={onChangeCity} value={form?.city} />
                         </div>
                         <div className="flex justify-between items-center w-full">
-                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Роль:" />
                             <ProfileSelectRole value={form?.role} onChange={onChangeRole} />
                         </div>
                         <div className="flex justify-between items-center w-full">
-                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Город:" />
+                            <Text className="min-w-[100px]" weight={TextWeight.MEDIUM} title="Email:" />
                             <Input className="w-64" placeholder="Введите email" value={form?.email} onChange={onChangeEmail} />
                         </div>
                     </div>

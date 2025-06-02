@@ -3,20 +3,20 @@ import { ThunkConfig } from "app/Providers/StoreProvider"
 import { Profile } from "../../types/ProfileSchema"
 import { getUserAuthData } from "entities/User"
 
-export const fetchProfile = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfile = createAsyncThunk<Profile, number, ThunkConfig<string>>(
     'profile/fetchProfile',
     //@ts-ignore
-    async (_, thunkAPI) => {
+    async (paramsId, thunkAPI) => {
         const { extra, rejectWithValue, getState } = thunkAPI
 
         const user = getUserAuthData(getState())
 
-        if(!user?.id) {
+        if(!paramsId) {
             return rejectWithValue('Пользователь не найден')
         }
 
         try {
-            const response = await extra.api.get(`/profile/${user.id}`)
+            const response = await extra.api.get(`/profile/${paramsId}`)
             
             if (!response.data) {
                 throw new Error()

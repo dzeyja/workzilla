@@ -35,19 +35,19 @@ const vacancyResponsesApi = rtkApi.injectEndpoints({
         
         sendVacancyResponse: build.mutation<void, VacancyResponse>({
             query: (response) => ({
-                url: '/responses',
+                url: '/response',
                 method: 'POST',
                 body: response,
             }),
-            invalidatesTags: (result, error, { user_id }) => [
-                { type: 'MyResponses', id: `${user_id}-all` },
-                { type: 'MyResponses', id: `${user_id}-pending` }
+            invalidatesTags: (result, error, { userid }) => [
+                { type: 'MyResponses', id: `${userid}-all` },
+                { type: 'MyResponses', id: `${userid}-pending` }
             ],
         }),
         
         updateVacancyResponseStatus: build.mutation<void, {id: string, status: VacancyResponseStatus}>({
             query: ({ id, status }) => ({
-                url: `/responses/${id}`,
+                url: `/response/${id}`,
                 method: 'PATCH',
                 body: {status},
             }),

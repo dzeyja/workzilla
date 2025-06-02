@@ -20,8 +20,10 @@ import { getUserAuthData, updateUserRole, UserRole } from "entities/User";
 import { Specialties } from "entities/Specialty";
 import { ExperienceLevel } from "entities/ExperienceLevel";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useParams } from "next/navigation";
 
 export const ProfilePage = () => {
+    const params = useParams()
     const dispatch = useAppDispatch()
     const user = useSelector(getUserAuthData)
     const isLoading = useSelector(getProfileIsLoading)
@@ -31,10 +33,10 @@ export const ProfilePage = () => {
     const validateErrors = useSelector(getProfileValidateErrors)
 
     useEffect(() => {
-        if (user?.id) {
-            dispatch(fetchProfile())
+        if (params?.id) {
+            dispatch(fetchProfile(Number(params.id)))
         }
-    }, [dispatch, user?.id])
+    }, [dispatch, params?.id])
 
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ firstname: value || '' }))
@@ -66,7 +68,7 @@ export const ProfilePage = () => {
 
     const onChangeRole = useCallback((value?: UserRole) => {
         dispatch(profileActions.updateProfile({role: value || 'null'}))
-        dispatch(updateUserRole(value ?? 'null'))
+        dispatch(updateUserRole(value || 'null'))
     }, [dispatch])
 
     const onChangeEmail = useCallback((value?: string) => {
@@ -75,7 +77,7 @@ export const ProfilePage = () => {
 
     return (
             <Page>
-                <ProfilePageHeader />
+                <ProfilePageHeader paramsId={String(params?.id)}/>
                 <div className="w-200 mx-auto">
                     {validateErrors && (
                         validateErrors.map(error => (

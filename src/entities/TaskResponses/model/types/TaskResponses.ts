@@ -7,12 +7,12 @@ export interface TaskResponse {
     id?: string;
     taskId?: string;
     userId?: string;
-    taskTitle?: string
+    task_title?: string
     status?: TaskResponseStatus;
     message?: string
     portfolio?: string
-    proposedPrice?: string; 
-    estimatedTime?: string; 
+    proposed_price?: string; 
+    estimated_time?: string; 
     portfolioLink?: string;
     specialty?: Specialties
     experience?: ExperienceLevel

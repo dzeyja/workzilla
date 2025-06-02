@@ -9,7 +9,8 @@ import { Text } from "shared/ui/Text/Text"
 export const MyTaskResponseList = () => {
     const user = useSelector(getUserAuthData)
     const {data: myTaskResponses, isLoading, error} = useGetMyTaskResponses({ userId: user?.id! })
-    
+    console.log(myTaskResponses)
+
     if (isLoading) {
         return (
             <div className="min-h-screen flex justify-center items-center">
@@ -56,7 +57,7 @@ export const MyTaskResponseList = () => {
                             </div>
 
                             <h2 className="text-xl font-semibold text-gray-900 mb-4 line-clamp-2">
-                                {response.taskTitle}
+                                {response.task_title}
                             </h2>
 
                             <div className="space-y-4">
@@ -65,11 +66,11 @@ export const MyTaskResponseList = () => {
                                 <div className="flex flex-col gap-2 text-sm">
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Предложенная цена:</span>
-                                        <span className="font-medium text-gray-900">{response.proposedPrice}</span>
+                                        <span className="font-medium text-gray-900">{response.proposed_price}</span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-500">Срок выполнения:</span>
-                                        <span className="font-medium text-gray-900">{response.estimatedTime}</span>
+                                        <span className="font-medium text-gray-900">{response.estimated_time}</span>
                                     </div>
                                 </div>
 
